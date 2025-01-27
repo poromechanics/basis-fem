@@ -305,14 +305,10 @@ In this way, Vandermonde matrix facilitates the transformation from frequency do
 
 ### Uniform Grid over triangles
 
-<!-- markdownlint-disable MD041 MD013 MD033 -->
-
 Unfortunately, as the expansion order $m$ is increased, the accuracy over the uniform grid deteriorates due to the Runge effect. In particular, the interpolated function experiences large oscillations between nodes and the Lebesgue constant increases rapidly with N (Bos, 1983). Thus, the uniform node distribution is only suitable for low-order polynomial expansions, typically $m\le3$. To improve the interpolation accuracy, Bos (1983) cleverly modified the uniform node layout by expanding or contracting the individual sizes of the nested triangles while maintaining the uniformity of the point distribution around their perimeters
 
 
 ### Lobatto grid
-
-<!-- markdownlint-disable MD041 MD013 MD033 -->
 
 A node distribution corresponding to the zeros of Lobatto polynomials is optimal for 1D interpolation, subject to the constraint that one node is placed at the left-end and another node is placed at the right- end of the interpolation domain.
 
@@ -373,8 +369,6 @@ $$
 
 ### Feket nodes
 
-<!-- markdownlint-disable MD041 MD013 MD033 -->
-
 Another way of arranging the interpolation nodes over the triangle is provided by the Fekete points. To define these points, we apply the polynomial expansion nodes over the surface of the triangle, and consider the generalized Vandermonde matrix, regarded as a function of the nodal positions.
 
 By definition, the Fekete points maximize the magnitude of the determinant of the generalized Vandermonde matrix within the confines of the triangle. The significance of the Fekete points lies in the observation that the cardinal interpolation functions may be expressed in the form:
@@ -385,19 +379,13 @@ This means that the Lebesgue constant defined is bounded from above by N . In fa
 
 ### Chen and Babuska nodes
 
-<!-- markdownlint-disable MD041 MD013 MD033 -->
-
 Unlike the Fekete set, this distribution does not include edge nodes corresponding to zeros of the Lobatto polynomials.
 
 ### Hesthaven nodes
 
-<!-- markdownlint-disable MD041 MD013 MD033 -->
-
 Hesthaven (1998) obtained small Lebesgue constants by minimizing an electrostatic energy function. Like the Fekete set, these distributions include edge nodes corresponding to the zeros of the Lobatto polynomials.
 
 ## Appell polynomials
-
-<!-- markdownlint-disable MD041 MD013 MD033 -->
 
 In the previous example we employed $\phi_{n}(\xi,\eta)$ of the form $\xi^{i}\eta^{j}$. In this section we use Appell polynomials.
 
@@ -527,13 +515,9 @@ $$
 \xi_{2}=2 \eta_{2}-1
 $$
 
-:::note
-
 $$
 \lim_{\eta_{2}\rightarrow1}\xi_{1}=-1
 $$
-
-:::
 
 A horizontal line in square, that is $\xi_{2}=\eta_{0}$, maps to a horizontal line in the triangle:
 
@@ -597,13 +581,11 @@ $$
 \frac{\partial \eta_{2}}{\partial\xi_{2}}=\frac{1}{2}
 $$
 
-:::info
+:::{.callout-note appearance="simple"}
 The coordinates $(\xi_{1}, \xi_{2})$ are called the **collapsed Cartesian coordinates** of the point on the triangle whose regular Cartestian coordinates are $(\eta_{1}, \eta_{2})$.
 :::
 
 ## Triangle square mapping (part2)
-
-<!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
 
 The biunit triangle is defined by
 
@@ -676,8 +658,6 @@ $$
 
 ## Orthogonal basis on biunit square
 
-<!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
-
 Simplex domains such as triangle, tetrahedron, prisms, and pyramids are very efficient in handling the complex geometries. However, spectral methods are more efficient on tensor-product domains due to tensor product expansion of basis functions. Therefore, it would be beneficial to introduce the tensor product expansion of basis function on simplex domain such as biunit triangle.
 
 In 1991, Dubiner presented the concept of warped tensor-product expansion on triangles. Let the biunit triangle is defined by $\mathcal{T}$:
@@ -712,15 +692,15 @@ $$
 \Phi_{{\bf k}}\left(\xi_{1},\xi_{2}\right)=P_{k_{1}}^{\left(0,0\right)}\left(\xi_{1}\right)\left(\frac{1-\xi_{2}}{2}\right)^{k_{1}}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right)
 $$
 
-:::note
+:::{.callout-note appearance="simple"}
 $\xi_{1}$ and $\xi_{2}$ belongs to the bi-unit segments.
 :::
 
-:::note
+:::{.callout-tip appearance="simple"}
 $\Phi_{{\bf k}}\left(\xi_{1},\xi_{2}\right)$ is $k_{1}$ order in $\xi_{1}$ and $k_{1}+k_{2}$ order in $\xi_{2}$ direction, as $\psi_{k_{1}}$ is $k_{1}$ order in $\xi_{1}$ and $\psi_{k_{1},k_{2}}$ is $k_{1}+k_{2}$ order in $\xi_{2}$ direction.
 :::
 
-:::info
+:::{.callout-note appearance="simple"}
 Dimension of the polynomial space
 
 $$
@@ -761,8 +741,6 @@ $$
 $$
 
 ## Orthogonal basis on unit triangle
-
-<!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
 
 The unit triangle is given by $\mathcal{T}$,
 
@@ -811,8 +789,6 @@ $$
 
 ## Dubiner basis on biunit triangle
 
-<!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
-
 To calculate the Dubiner basis on the biunit triangle, we use the following mapping from biunit triangle to biunit square:
 
 $$
@@ -833,8 +809,6 @@ $$
 
 ## Hierarchical basis
 
-<!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
-
 The use of orthogonal basis simplifies the structure of mass matrix. However, it complicates the enforcement of boundary conditions, or of matching conditions between two subdomains. To overcome these issues, we classified basis function in a heirarchical order. In other words, we define basis functions for node, edge, and cell.
 
 For example, for $m$th order isotropic approximation on a triangle, we have a total
@@ -849,12 +823,8 @@ modes with following partition:
 - $3\left(m-1\right)$ edge bubble modes
 - $\left(m-1\right)\left(m-2\right)/2$ cell bubble modes
 
-:::note
-
 - For edge bubble modes to exist $m \ge 2$.
 - For cell bubble modes to exist $m \ge 3$.
-
-:::
 
 ### Hierarchical basis using barycentric coordinates
 
@@ -1103,7 +1073,7 @@ Now, we can use a tensor-product Gaussian formula in $\mathcal{Q}$. To do so we 
 
 > The Left Gauss Radau rule is preferable to N+1 point Gauss Lobatto points. This is because it excludes the singular point $\eta_{2} = 1$ from the integration nodes which makes life easier in the construction of stiffness matrices and improves the condition number.
 
-:::note Accuracy
+:::{.callout-note title="Accuracy"}
 This formula is exact for all polynomials in $\mathcal{Q}$ of degree $\le 2N-1$ in each variable $\eta_{1}$, $\eta_{2}$.
 
 This formula is also exact for all polynomials in $\mathcal{T}$ of global degree $2N-1$ in the variables $\xi_{1}$ and $\xi_{2}$.
@@ -1117,7 +1087,7 @@ $$
 
 Compare to this number, then total number of quadrature points are $N(N+1)$, which is almost double.
 
-:::caution
+:::{.callout-caution}
 Therefore, we should not use these quadrature points to construct Lagrange polynomial on triangles.
 :::
 
@@ -1185,8 +1155,6 @@ Dunavant presented an overview of minimum number of quadrature points for Gaussi
 | 5.49759E-02 | 5.49759E-02 | 5.49759E-02 | 0.11169 | 0.11169 | 0.11169 |
 
 ## Barycentric coordiantes
-
-<!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
 
 Barycentric coordinates are also known as the area coordinates. They have been used to construct the basis functions with rotational symmetry. Barycentric coordinates are denoted by $l_1$, $l_{2}$, $l_{3}$, which are given by
 
