@@ -38,6 +38,7 @@ book:
         - ./h1-conforming-line.md
         - ./h1-conforming-triangle.md
         - ./h1-conforming-quadrangle.md
+        - ./h1-conforming-tetrahedron.md
     - summary.md
     - references.md
 
