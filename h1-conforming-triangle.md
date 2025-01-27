@@ -1,32 +1,28 @@
 # Triangle
 
-<!-- markdownlint-disable MD041 MD013 MD033 -->
-
 There are two factors which play an important role in the quality of approximation for high degree polynomials: the smoothness of the function to be interpolated, and the locations of the interpolation points (Chen and Babuska 1995). Interpolation points completely determine the interpolation operator. Also, the norm of the interpolation operator provides a bound for the interpolation error by Lebesgue's inequality. In this way, the interpolation points play an important role in minimizing this error. For example, it is well known that the interpolation using equally spaced points yield undesirable divergent behaviors even for analytical functions as the polynomial degree of interpolation increases. To be more precise, the norm of the interpolation operator for equally spaced point set increases exponentially with the degree of polynomial interpolation. It has been reported in the spectral method community that the interpolation using Gauss quadrature of Chebyshev polynomials or using Lobatto quadrature of Legendre polynomial yields close to optimal interpolation properties in the uniform norm and in other norms. These results are also valid for rectangle in $R^{2}$ and hexahedron in $R^{3}.$ For triangles in $R^{2},$it is possible to obtain the near optimal interpolation set by minimizing appropriate measures related to the interpolation operator.
 
 - The analysis of the quality of approximation of polynomial interpolation and the computation of the approximate optimal interpolation points in the triangle.
 - Various norms for the interpolation operator.
 - For a given polynomial degree, the set that minimizes the mean $L^{2}$ norm of the interpolation operator is close to the smallest Lebesgue constant interpolation set. In particular, for the triangle, this set gives the smallest Lebesgue constant currently known.
 
-# Three-node triangle element
+## Three-node triangle element
 
+## Six-node triangle element
 
-# Six-node triangle element
+## Triangle with straight edges
 
+## Isoparameteric triangle
 
-# Triangle with straight edges
-
-# Isoparameteric triangle
-
-# Master element
+## Master element
 
 <!-- markdownlint-disable MD041 MD013 MD033 -->
 
-## Biunit triangle
+### Biunit triangle
 
 A Biunit triangle is given in figure below.
 
-![Biunit triangle](./figures/biunit-triangle.svg)
+![Bi-unit triangle](./figures/biunit-triangle.svg){#fig-biunit-triangle width=40%}
 
 The coordinates of the biunit triangle are given by following table.
 
@@ -36,13 +32,13 @@ The coordinates of the biunit triangle are given by following table.
 | 2           | 1   | -1  |
 | 3           | -1  | 1   |
 
-:::note
+:::{.callout-note appearance="simple"}
 The biunit triangle serves as a master element for orthogonal basis and heirarchical basis on triangles.
 :::
 
-## Unit triangle
+### Unit triangle
 
-![Unit triangle](./figures/unit-triangle.svg)
+![Unit triangle](./figures/unit-triangle.svg){#fig-unit-triangle width=40%}
 
 The coordinates of a unit triangle are given by following table.
 
@@ -52,11 +48,11 @@ The coordinates of a unit triangle are given by following table.
 | 2           | 1   | 0   |
 | 3           | 0   | 1   |
 
-:::note
+:::{.callout-note appearance="simple"}
 The unit triangle serves as a master element for lagrange polynomials on triangles.
 :::
 
-## Master element for orthogonal and heirarchical polynomials
+### Master element for orthogonal and heirarchical polynomials
 
 The master element for orthogonal polynomials and heirarchical polynomials is given by biunit triangle.
 
@@ -72,7 +68,7 @@ The orientation of edges is given by following table and figure.
 
 - Edge 1 and edge 3 are oriented in the x and y direction respectively.
 
-## Master element for Lagrange polynomials
+### Master element for Lagrange polynomials
 
 The master element for Lagrange polynomial is usually given by unit triangle. The node numbering and coordinates are same as those discussed above. However, the orientation of the edges is slighly different. The orientation of edges is given by following table.
 
@@ -119,21 +115,22 @@ $$
 z_{b}=2z_{u}-1
 $$
 
-# High-order polynomial
+## High-order polynomial
 
-## Linear basis function on triangle
+### Linear basis function on triangle
 
-$$
-\phi_{i}^{(1)}\left(\xi,\eta\right)=a_{i}+b_{i}\xi+c_{i}\eta
-$$
-
-## Basis space
+The basis space for linear shape functions on triangle is given by following expression.
 
 $$
 \mathcal{P}_{\Delta}^{(1)}:=\left\{ 1,\xi,\eta\right\}
 $$
 
-## Pascal triangle
+$$
+\phi_{i}^{(1)}\left(\xi,\eta\right)=a_{i}+b_{i}\xi+c_{i}\eta
+$$
+
+
+### Pascal triangle
 
 $$
 \mathcal{P}_{\Delta}^{(m)}:=\begin{array}{ccccccccccccc}
@@ -156,7 +153,7 @@ Following points should be noted.
 
 There are three useful ways to travel through Pascal's triangle.
 
-### Along the first diagonal
+#### Along the first diagonal
 
 ```fortran
 do j=0,m
@@ -166,7 +163,7 @@ do j=0,m
 end do
 ```
 
-### Along the level/base
+#### Along the level/base
 
 ```fortran
 do l=0,m
@@ -176,7 +173,7 @@ do l=0,m
 end do
 ```
 
-### Along the second diagonal
+#### Along the second diagonal
 
 ```fortran
 do i=0,m
@@ -186,7 +183,7 @@ do i=0,m
 end do
 ```
 
-## Some useful results
+### Some useful results
 
 $$
 \left(\xi+\eta\right)^{m}=\sum_{k=0}^{m}\left(\begin{array}{c}
@@ -202,27 +199,27 @@ k
 \end{array}\right)\left(\partial_{x}^{m-k}f\right)\left(\partial_{x}^{k}g\right)
 $$
 
-## High order polynomial expansion on triangle
+### High order polynomial expansion on triangle
 
-### Left diagonal
+Left diagonal:
 
 $$
 f(\xi,\eta)=\sum_{j=0}^{m}\sum_{i=0}^{m-j}a_{ij}\xi^{i}\eta^{j}
 $$
 
-### Right diagonal
+Right diagonal:
 
 $$
 f(\xi,\eta)=\sum_{i=0}^{m}\sum_{j=0}^{m-i}a_{ij}\xi^{i}\eta^{j}
 $$
 
-### Along the base/level
+Along the base/level:
 
 $$
 f(\xi,\eta)=\sum_{i=0}^{m}\sum_{j=0}^{i}a_{i-j,j}\xi^{i-j}\eta^{j}
 $$
 
-### Degrees of freedom
+Degrees of freedom:
 
 For $m$th order polynomial expansion there are
 
@@ -240,7 +237,7 @@ $$
 
 where, $\left\{ \phi_{n}\right\}_{n=1}^{N}$ are the basis functions.
 
-### Lagrange polynomials
+## Lagrange polynomials
 
 The above interpolation can be viewed as the interpolation in frequency space. The equivalent interpolation in the physical space is given through Cardinal functions (lagrange polynomials):
 
@@ -297,23 +294,23 @@ $$
 
 In this way, Vandermonde matrix facilitates the transformation from frequency domain to physical domain.
 
-## Remarks
+### Remarks
 
 - For higher order polynomials, the solution of the linear system for the nodal interpolation functions can be found by numerical methods. Unlike 1D interpolation problem, existence, and uniqueness of the solution of $\mathbf{V}_{\phi}\mathbf{c}_{j}=\mathbf{e}_{j}$ are not guaranteed and one should be careful in selecting the interpolation points and basis functions. Moreover, the condition number of the generalized Vandermonde matrix is sensitive to the choice of the base functions. The large condition number can lead to the difficulty of solving the linear system. Therefore, in practice, it is advantageous to use a set of polynomial basis functions that enjoy orthogonal or near-orthogonality properties, for example, **Appell** and **Proriol** polynomials.
 
 - The location of nodal points in physical space is also critical for enhancing the interpolation in physical space.
 
-# Lebesque constant
+### Lebesque constant
 
 
-# Uniform Grid over triangles
+### Uniform Grid over triangles
 
 <!-- markdownlint-disable MD041 MD013 MD033 -->
 
 Unfortunately, as the expansion order $m$ is increased, the accuracy over the uniform grid deteriorates due to the Runge effect. In particular, the interpolated function experiences large oscillations between nodes and the Lebesgue constant increases rapidly with N (Bos, 1983). Thus, the uniform node distribution is only suitable for low-order polynomial expansions, typically $m\le3$. To improve the interpolation accuracy, Bos (1983) cleverly modified the uniform node layout by expanding or contracting the individual sizes of the nested triangles while maintaining the uniformity of the point distribution around their perimeters
 
 
-# Lobatto grid
+### Lobatto grid
 
 <!-- markdownlint-disable MD041 MD013 MD033 -->
 
@@ -340,7 +337,7 @@ Note that $v_{i}\in\left[0,1\right],\forall i$.
 
 The location of nodes along the hypotenuse of the triangle is found by moving either vertically upward from the nodes on the $\xi$ axis, or horizontally to the right from the nodes on the $\eta$ axis.
 
-## Horizontal-Vertical distribution (HV)
+Horizontal-Vertical distribution (HV):
 
 For $i=1,2,\cdots,m+1$, and $j=1,2,\cdots,m+2-i$, the location of internal nodes is given by
 
@@ -358,7 +355,7 @@ $$
 
 The asymmetry of the distribution with respect to the three vertices is an unacceptable deficiency.
 
-## Blyth and Pozrikidis grid
+#### Blyth and Pozrikidis grid
 
 Threefold rotational symmetry.
 
@@ -374,7 +371,7 @@ $$
 
 - Recursive grid
 
-# Feket nodes
+### Feket nodes
 
 <!-- markdownlint-disable MD041 MD013 MD033 -->
 
@@ -386,20 +383,19 @@ the vertex and edge nodes turn out to be located precisely at the zeros of the L
 
 This means that the Lebesgue constant defined is bounded from above by N . In fact, numerical evidence suggests that the upper bound is proportional to $\sqrt{N}$ (Taylor et al., 2000). At present, the Lebesgue constant for the Fekete points is the lowest known constant for $m>10$ (Taylor et al., 2000).
 
-# Chen and Babuska nodes
+### Chen and Babuska nodes
 
 <!-- markdownlint-disable MD041 MD013 MD033 -->
 
 Unlike the Fekete set, this distribution does not include edge nodes corresponding to zeros of the Lobatto polynomials.
 
-# Hesthaven nodes
+### Hesthaven nodes
 
 <!-- markdownlint-disable MD041 MD013 MD033 -->
 
 Hesthaven (1998) obtained small Lebesgue constants by minimizing an electrostatic energy function. Like the Fekete set, these distributions include edge nodes corresponding to the zeros of the Lobatto polynomials.
 
-
-# Appell polynomials
+## Appell polynomials
 
 <!-- markdownlint-disable MD041 MD013 MD033 -->
 
@@ -413,25 +409,25 @@ $$
 \end{aligned}
 $$
 
-## Left diagonal
+Left diagonal:
 
 $$
 f(\xi,\eta)=\sum_{q=0}^{m}\sum_{p=0}^{m-q}\hat{a}_{pq}A_{pq}(\xi,\eta)
 $$
 
-## Right diagonal
+Right diagonal:
 
 $$
 f(\xi,\eta)=\sum_{p=0}^{m}\sum_{q=0}^{m-q}\hat{a}_{pq}A_{pq}(\xi,\eta)
 $$
 
-## Along the base/level
+Along the base/level:
 
 $$
 f(\xi,\eta)=\sum_{p=0}^{m}\sum_{q=0}^{p}\hat{a}_{p-q,q}A_{p-q,q}(\xi,\eta)
 $$
 
-## Properties
+### Properties
 
 Properties of $A_{kl}(\xi,\eta)$ polynomials
 
@@ -497,9 +493,9 @@ $$
 
 for $k+l\ne p+q$
 
-# Triangle-Square mapping (part1)
+## Triangle-Square mapping (part1)
 
-![mapping](./figures/triangle-square-mapping.svg)
+![Depiction of triangle-square mapping](./figures/triangle-square-mapping.svg){#fig-triangle-square-map width=50%}
 
 Let $(\eta_{1},\eta_{2})$ be the coordinates in the reference unit triangle $\mathcal{T}$,
 
@@ -605,7 +601,7 @@ $$
 The coordinates $(\xi_{1}, \xi_{2})$ are called the **collapsed Cartesian coordinates** of the point on the triangle whose regular Cartestian coordinates are $(\eta_{1}, \eta_{2})$.
 :::
 
-# Triangle square mapping (part2)
+## Triangle square mapping (part2)
 
 <!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
 
@@ -678,7 +674,7 @@ $$
 \frac{\partial \eta_{2}}{\partial\xi_{2}}=1
 $$
 
-# Orthogonal basis on biunit square
+## Orthogonal basis on biunit square
 
 <!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
 
@@ -734,7 +730,7 @@ $$
 where, $N$ is the order of approximation on triangle.
 :::
 
-## Partial Orthogonality
+### Partial Orthogonality
 
 By using the orthogonality of the Jacobi polynomials, we can show that, for $\mathbf{k} \ne \mathbf{h}$,
 
@@ -754,7 +750,7 @@ $$
 \mathcal{P}_{N}=\left\{ x_{1}^{i}x_{2}^{j}:0\le i,j;i+j\le N\right\}
 $$
 
-## Gradient of orthogonal polynomial
+### Gradient of orthogonal polynomial
 
 $$
 \frac{\partial \Phi_{{\bf k}}\left(\xi_{1},\xi_{2}\right)}{\partial \xi_{1}}{}= \frac{d P_{k_{1}}^{\left(0,0\right)}\left(\xi_{1}\right)}{d\xi_{1}} \left(\frac{1-\xi_{2}}{2}\right)^{k_{1}}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right)
@@ -764,7 +760,7 @@ $$
 \begin{aligned}\frac{\partial\Phi_{{\bf k}}\left(\xi_{1},\xi_{2}\right)}{\partial\xi_{2}} & =P_{k_{1}}^{\left(0,0\right)}\left(\xi_{1}\right)\left(\frac{1-\xi_{2}}{2}\right)^{k_{1}}\frac{d}{d\xi_{2}}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right)\\ & -\frac{k_{1}}{2}P_{k_{1}}^{\left(0,0\right)}\left(\xi_{1}\right)P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right)\left(\frac{1-\xi_{2}}{2}\right)^{k_{1}-1}\\ & =P_{k_{1}}^{\left(0,0\right)}\left(\xi_{1}\right)\left(\frac{1-\xi_{2}}{2}\right)^{k_{1}-1}\left[\left(\frac{1-\xi_{2}}{2}\right)\frac{d}{d\xi_{2}}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right)-\frac{k_{1}}{2}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right)\right] \end{aligned}
 $$
 
-# Orthogonal basis on unit triangle
+## Orthogonal basis on unit triangle
 
 <!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
 
@@ -792,7 +788,7 @@ $$
 \end{aligned}
 $$
 
-## Gradient of orthogonal polynomials
+### Gradient of orthogonal polynomials
 
 The Jacobian of mapping from $(\xi_{1}, \xi_{2}) \mapsto (\eta_{1}, \eta_{2})$ is given by
 
@@ -813,7 +809,7 @@ $$
 \begin{aligned}\frac{\partial\Phi_{{\bf k}}}{\partial\eta_{2}} & =\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{1}}\frac{\partial\xi_{1}}{\partial\eta_{2}}+\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{2}}\frac{\partial\xi_{2}}{\partial\eta_{2}}\\ & =\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{1}}\frac{2\eta_{1}}{\left(1-\eta_{2}\right)^{2}}+2\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{2}}\\ & =\frac{\partial\Phi_{{\bf k}}}{\partial\eta_{1}}\frac{\eta_{1}}{\left(1-\eta_{2}\right)}+2\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{2}}\\ & =\frac{\partial\Phi_{{\bf k}}}{\partial\eta_{1}}\frac{1+\xi_{1}}{2}+2\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{2}} \end{aligned}
 $$
 
-# Dubiner basis on biunit triangle
+## Dubiner basis on biunit triangle
 
 <!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
 
@@ -835,7 +831,7 @@ $$
 \end{aligned}
 $$
 
-# Hierarchical basis
+## Hierarchical basis
 
 <!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
 
@@ -860,9 +856,9 @@ modes with following partition:
 
 :::
 
-## Barycentric coordinates
+### Hierarchical basis using barycentric coordinates
 
-### Biunit triangle
+#### Biunit triangle
 
 Let ${\eta}_{1}, {\eta}_{2}$ be the coordinates of a biunit triangle, then the barycentric coordinates are given by
 
@@ -914,7 +910,7 @@ $$
 
 where $\eta_{1,2} \in [-1, 1]$
 
-### Unit triangle
+#### Unit triangle
 
 For unit triangle, barycentric coordinates are given by
 
@@ -948,7 +944,7 @@ $$
 \phi_{m}(x)=-\frac{\sqrt{2\left(2m+3\right)}}{m+1}P_{m}^{\left(1,1\right)}(x),\quad m\ge0
 $$
 
-## Vertex basis functions Barycentric
+#### Vertex basis functions (in terms of barycentric)
 
 $$
 \phi_{1}^{v}\left({\eta}_{1}, {\eta}_{2}\right)=\lambda_{1}
@@ -964,7 +960,7 @@ $$
 
 The gradient of **Vertex** basis functions is given by:
 
-## Edge basis functions Barycentric
+#### Edge basis functions (in terms of barycentric)
 
 $$
 \phi_{k}^{e_{1}}=\lambda_{1}\lambda_{2}\phi_{k-2}\left(\lambda_{2}-\lambda_{1}\right),\quad k=2,3,\cdots,p^{e_{1}}
@@ -978,20 +974,19 @@ $$
 \phi_{k}^{e_{3}}=\lambda_{2}\lambda_{3}\phi_{k-2}\left(\lambda_{3}-\lambda_{2}\right),\quad k=2,3,\cdots,p^{e_{3}}
 $$
 
-## Cell basis functions Barycentric
+#### Cell basis functions (in terms of barycentric)
 
 $$
 \phi_{k_{1},k_{2}}^{b}=\lambda_{1}\lambda_{2}\lambda_{3}\phi_{k_{1}-1}\left(\lambda_{2}-\lambda_{1}\right)\phi_{k_{2}-1}\left(\lambda_{3}-\lambda_{1}\right),\quad1\le k_{1},k_{2};k_{1}+k_{2}\le p^{b}-1
 $$
 
-## Biunit square coordinates
+### Hierarchical basis using biunit square element
 
-:::note
+:::{.callout-note appearance="simple"}
 In the above section, we have computed the basis function in terms of Barycentric coordinates. In this section, we will compute the basis function on the bi-unit square which is mapped to the triangle via Duffy mapping. This procedure is described in the Karniadakis's textbook, chapter 3.2.3.1.
 
 - We will denote the coordinates of biunit triangle by $\xi_{i}$
 - Coordinates of biunit square by $\eta_{i}$
-
 :::
 
 Let us define the following functions:
@@ -1004,7 +999,7 @@ $$
 l_{1}(y) = \frac{1}{2}(1+y)
 $$
 
-## Vertex basis functions Biunit
+#### Vertex basis functions (in terms of biunit square)
 
 The vertex basis functions are given by:
 
@@ -1037,7 +1032,7 @@ $$
 \nabla_{\eta}\phi_{3}^{v}\left({\xi}_{1},{\xi}_{2}\right) =\left[\begin{array}{c} \frac{d}{d\eta_{1}}l_{1}\left(\eta_{1}\right)l_{1}\left(\eta_{2}\right)+\frac{d}{d\eta_{1}}l_{0}\left(\eta_{1}\right)l_{1}\left(\eta_{2}\right)\\ l_{1}\left(\eta_{1}\right)\frac{d}{d\eta_{2}}l_{1}\left(\eta_{2}\right)+l_{0}\left(\eta_{1}\right)\frac{d}{d\eta_{2}}l_{1}\left(\eta_{2}\right) \end{array}\right]
 $$
 
-## Edge basis functions Biunit
+#### Edge basis functions (in terms of biunit square)
 
 $$
 \phi_{k_{1}}^{e_{1}}\left(\xi_{1},\xi_{2}\right)= l_{0}\left(\eta_{1}\right)l_{1}\left(\eta_{1}\right)P_{k_{1}-2}^{\left(1,1\right)}\left(\eta_{1}\right)\left[l_{0}\left(\eta_{2}\right)\right]^{k_{1}},k_{1}=2,3,\cdots,p^{e_{1}}
@@ -1051,23 +1046,21 @@ $$
 \phi_{k_{2}}^{e_{3}}\left(\xi_{1},\xi_{2}\right)= l_{1}\left(\eta_{1}\right)l_{0}\left(\eta_{2}\right)l_{1}\left(\eta_{2}\right)P_{k_{2}-2}^{\left(1,1\right)}\left(\eta_{2}\right),k_{2}=2,3,\cdots,p^{e_{3}}
 $$
 
-## Cell basis functions Biunit
+#### Cell basis functions (in terms of biunit square)
 
 $$
 \phi_{k_{1},k_{2},t}^{b}\left(\xi_{1},\xi_{2}\right)= l_{0}\left(\eta_{1}\right)l_{1}\left(\eta_{1}\right)P_{k_{1}-2}^{\left(1,1\right)}\left(\eta_{1}\right)\left[l_{0}\left(\eta_{2}\right)\right]^{k_{1}}l_{1}\left(\eta_{2}\right)P_{k_{2}-2}^{\left(2k_{1}-1,1\right)}\left(\eta_{2}\right),k_{1},k_{2}\ge2,k_{1}+k_{2}\le m+1
 $$
 
-# Numerical integration
+## Numerical integration
 
 <!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
 
 For evaluating the integrals on reference triangle one needs to employ the high order accurate quadrature rules. In this chapter we will discuss the two types of quadrature rules on reference triangle. The first type is simpler but less economical. These rules are derived by using Duffy mapping (collapsed coordinates) and tensor product of quadrature rules on bi-unit quadrangle. The other type of quadrature rules are more economical, but they are difficult to generate.
 
-## Tensor product based quadrature rules
+### Tensor product based quadrature rules
 
-![figure1](./figures/triangle-square-mapping.svg)
-
-Let $x_{1},x_{2}$ be the coordinates in the reference unit triangle $\mathcal{T}$, and $\eta_{1},\eta_{2}$ be the coordinates in reference bi-unit square $\mathcal{Q}$.
+Let $x_{1},x_{2}$ be the coordinates in the reference unit triangle $\mathcal{T}$, and $\eta_{1},\eta_{2}$ be the coordinates in reference bi-unit square $\mathcal{Q}$ (see @fig-triangle-square-map).
 
 $$
 \mathcal{T}:=\left\{ \left(x_{1},x_{2}\right)\in\mathbb{R}^{2}:0<x_{1},x_{2};x_{1}+x_{2}<1\right\}
@@ -1128,7 +1121,7 @@ Compare to this number, then total number of quadrature points are $N(N+1)$, whi
 Therefore, we should not use these quadrature points to construct Lagrange polynomial on triangles.
 :::
 
-## Economical quadrature rules
+### Economical quadrature rules
 
 Dunavant presented an overview of minimum number of quadrature points for Gaussian quadrature over triangles as show in table below.
 
@@ -1155,7 +1148,7 @@ Dunavant presented an overview of minimum number of quadrature points for Gaussi
 | 19    | 67                   | 73                        |
 | 20    | 73                   | 79                        |
 
-### order 1
+#### Order 1
 
 `etaj` (order=1)=
 
@@ -1165,7 +1158,7 @@ Dunavant presented an overview of minimum number of quadrature points for Gaussi
 | $\xi_2$ | 0.33333 |
 | $w$     | 0.5     |
 
-### order 2
+#### Order 2
 
 `etaj` (order=2)=
 
@@ -1191,7 +1184,7 @@ Dunavant presented an overview of minimum number of quadrature points for Gaussi
 | 9.15762E-02 | 9.15762E-02 | 0.81685     | 0.1081  | 0.44595 | 0.44595 |
 | 5.49759E-02 | 5.49759E-02 | 5.49759E-02 | 0.11169 | 0.11169 | 0.11169 |
 
-# Barycentric coordiantes
+## Barycentric coordiantes
 
 <!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
 
@@ -1213,7 +1206,7 @@ $$
 l_{1} + l_{3} + l_{3} = 1
 $$
 
-## Barycentric coordinates for biunit triangle
+### Barycentric coordinates for biunit triangle
 
 $$
 l_{1}=-\frac{\xi_{1}+\xi_{2}}{2}
@@ -1227,7 +1220,7 @@ $$
 l_{3}=\frac{1}{2}\left(1+\xi_{2}\right)
 $$
 
-## Barycentric coordinates for unit triangle
+### Barycentric coordinates for unit triangle
 
 $$
 l_{1}= 1 - \xi_{1} - \xi_{2}
@@ -1241,6 +1234,6 @@ $$
 l_{3}= \xi_{2}
 $$
 
-## Relationship between barycentric coordinates and collapsed coordinate
+### Relationship between barycentric coordinates and collapsed coordinate
 
 - [ ] TODO
