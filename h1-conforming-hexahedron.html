@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>H1 conforming basis – Basis functions of Finite Element Methods</title>
+<title>Hexahedron – Basis functions of Finite Element Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./h1-conforming-line.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./summary.html" rel="next">
+<link href="./h1-conforming-tetrahedron.html" rel="prev">
 <link href="././figures/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -70,8 +70,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="H1 conforming basis – Basis functions of Finite Element Methods">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta name="twitter:title" content="Hexahedron – Basis functions of Finite Element Methods">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -85,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./h1-conforming-basis.html">H1 conforming basis</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./h1-conforming-basis.html">H1 conforming basis</a></li><li class="breadcrumb-item"><a href="./h1-conforming-hexahedron.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hexahedron</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -166,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./h1-conforming-basis.html" class="sidebar-item-text sidebar-link active">
+            <a href="./h1-conforming-basis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">H1 conforming basis</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -199,7 +228,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./h1-conforming-hexahedron.html" class="sidebar-item-text sidebar-link">
+  <a href="./h1-conforming-hexahedron.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hexahedron</span></span></a>
   </div>
 </li>
@@ -222,15 +251,37 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#hexahedron8" id="toc-hexahedron8" class="nav-link active" data-scroll-target="#hexahedron8">Hexahedron8</a></li>
+  <li><a href="#hexahedron27" id="toc-hexahedron27" class="nav-link" data-scroll-target="#hexahedron27">Hexahedron27</a></li>
+  <li><a href="#hexahedron20" id="toc-hexahedron20" class="nav-link" data-scroll-target="#hexahedron20">Hexahedron20</a></li>
+  <li><a href="#straight-edge-hexahedron" id="toc-straight-edge-hexahedron" class="nav-link" data-scroll-target="#straight-edge-hexahedron">Straight edge hexahedron</a></li>
+  <li><a href="#isoparametric-hexahedron" id="toc-isoparametric-hexahedron" class="nav-link" data-scroll-target="#isoparametric-hexahedron">Isoparametric hexahedron</a></li>
+  <li><a href="#serendipity-hexahedron" id="toc-serendipity-hexahedron" class="nav-link" data-scroll-target="#serendipity-hexahedron">Serendipity hexahedron</a></li>
+  <li><a href="#lagrange-polynomials" id="toc-lagrange-polynomials" class="nav-link" data-scroll-target="#lagrange-polynomials">Lagrange polynomials</a></li>
+  <li><a href="#tensor-product-based-basis" id="toc-tensor-product-based-basis" class="nav-link" data-scroll-target="#tensor-product-based-basis">Tensor-product based basis</a></li>
+  <li><a href="#hierarchical-basis" id="toc-hierarchical-basis" class="nav-link" data-scroll-target="#hierarchical-basis">Hierarchical basis</a>
+  <ul class="collapse">
+  <li><a href="#affine-coordiantes" id="toc-affine-coordiantes" class="nav-link" data-scroll-target="#affine-coordiantes">Affine coordiantes</a></li>
+  <li><a href="#vertex-basis" id="toc-vertex-basis" class="nav-link" data-scroll-target="#vertex-basis">Vertex basis</a></li>
+  <li><a href="#edge-basis" id="toc-edge-basis" class="nav-link" data-scroll-target="#edge-basis">Edge basis</a></li>
+  <li><a href="#facets-bubble-basis" id="toc-facets-bubble-basis" class="nav-link" data-scroll-target="#facets-bubble-basis">Facets bubble basis</a></li>
+  <li><a href="#cell-bubble-basis" id="toc-cell-bubble-basis" class="nav-link" data-scroll-target="#cell-bubble-basis">Cell bubble basis</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/h1-conforming-hexahedron.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./h1-conforming-basis.html">H1 conforming basis</a></li><li class="breadcrumb-item"><a href="./h1-conforming-hexahedron.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hexahedron</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">H1 conforming basis</h1>
+<h1 class="title">Hexahedron</h1>
 </div>
 
 
@@ -247,9 +298,381 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The construction of scalar hierarchic shape functions is important as they facilitate the design of vector-valued finite elements of arbitrary order in spaces <strong>H</strong>(curl) and <strong>H</strong>(div)</p>
+<section id="hexahedron8" class="level2">
+<h2 class="anchored" data-anchor-id="hexahedron8">Hexahedron8</h2>
+</section>
+<section id="hexahedron27" class="level2">
+<h2 class="anchored" data-anchor-id="hexahedron27">Hexahedron27</h2>
+</section>
+<section id="hexahedron20" class="level2">
+<h2 class="anchored" data-anchor-id="hexahedron20">Hexahedron20</h2>
+</section>
+<section id="straight-edge-hexahedron" class="level2">
+<h2 class="anchored" data-anchor-id="straight-edge-hexahedron">Straight edge hexahedron</h2>
+</section>
+<section id="isoparametric-hexahedron" class="level2">
+<h2 class="anchored" data-anchor-id="isoparametric-hexahedron">Isoparametric hexahedron</h2>
+</section>
+<section id="serendipity-hexahedron" class="level2">
+<h2 class="anchored" data-anchor-id="serendipity-hexahedron">Serendipity hexahedron</h2>
+</section>
+<section id="lagrange-polynomials" class="level2">
+<h2 class="anchored" data-anchor-id="lagrange-polynomials">Lagrange polynomials</h2>
+</section>
+<section id="tensor-product-based-basis" class="level2">
+<h2 class="anchored" data-anchor-id="tensor-product-based-basis">Tensor-product based basis</h2>
+</section>
+<section id="hierarchical-basis" class="level2">
+<h2 class="anchored" data-anchor-id="hierarchical-basis">Hierarchical basis</h2>
+<p>A hexahedron finite element is given by</p>
+<p><span class="math display">\[
+\mathcal{K}_{B} = \left ( K_{B}, \mathbb{W}_{B}, \sum_{B}^{} \right )
+\]</span></p>
+<p>where, <span class="math inline">\(K_{B}\)</span> denotes the biunit hexahedron reference element, which is given by</p>
+<p><span class="math display">\[
+K_{B} := \left\{ \mathbf{\xi} \in \mathbb{R}^{3}, \Vert \xi \Vert \le 1 \right\},
+\]</span></p>
+<p>and <span class="math inline">\(W_{B}\)</span> is the polynomial space, which is given by</p>
+<p><span class="math display">\[
+\mathbb{W}_{B}:=\left\{ w\in\mathcal{Q}_{p^{b,1},p^{b,2},p^{b,3}};w\vert_{s_{i}}\in\mathcal{Q}_{p^{s_{i},1}p^{s_{i},2}};w\vert_{e_{i}}\in\mathcal{P}_{p^{e_{j}}}\left(e_{j}\right)\right\}
+\]</span></p>
+<p>where, <span class="math inline">\(i=1,\cdots, 6\)</span> and <span class="math inline">\(j=1, \cdots, 12\)</span> denote the face and edges of hexahedron.</p>
+<p>and</p>
+<p><span class="math display">\[
+\mathcal{Q}_{p,q,r}=\left\{ \xi_{1}^{i}\xi_{2}^{j} \xi_{3}^{k}\vert 0 \le i\le p, 0 \le j\le q, 0 \le k\le q \right\}
+\]</span></p>
+<p>The set of degrees of freedom <span class="math inline">\(\sum_{B}\)</span> will be uniquely identified by the a concrete choice of basis in <span class="math inline">\(\mathbb{W}_B\)</span></p>
+<p>In above definition we denote by <span class="math inline">\(p^{b,1}, p^{b,2}, p^{b,3}\)</span> the order of polynomial in the interior of element in x, y and z directions, respectively.</p>
+<p>There are six faces in a hexahedron which are denoted by <span class="math inline">\(s_1\)</span>, <span class="math inline">\(s_2\)</span>, <span class="math inline">\(\cdots\)</span>, <span class="math inline">\(s_6\)</span>. Each face, <span class="math inline">\(s_{i}\)</span>, we have two local directions. These directions are denoted by 1, and 2. In this way, <span class="math inline">\(p^{s_i,1}\)</span> and <span class="math inline">\(p^{s_i,2}\)</span> denote the order of polynomial approximation on face <span class="math inline">\(s_i\)</span> in the 1 and 2 direction, respectively.</p>
+<p>There are 12 edges in a hexahedron which are denoted by <span class="math inline">\(e_1\)</span> to <span class="math inline">\(e_{12}\)</span>. <span class="math inline">\(p^{e_j}\)</span> denotes the order of polynomial approximation on edge <span class="math inline">\(e_{j}\)</span>.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In 3D the minimum rule controls the order of approximation on both edge and face. Local orders on faces cannot be more than the minimum of the order of approximation associated with the interior of the adjacenet elements. Local order of approximation on the edges cannot be more than the orders corresponding to faces sharing that edge.</p>
+</div>
+</div>
+</div>
+<section id="affine-coordiantes" class="level3">
+<h3 class="anchored" data-anchor-id="affine-coordiantes">Affine coordiantes</h3>
+<p><span class="math display">\[
+\lambda_{1} = \frac{1}{2}(1+\xi_{1})
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{2} = \frac{1}{2}(1-\xi_{1})
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{3} = \frac{1}{2}(1+\xi_{2})
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{4} = \frac{1}{2}(1-\xi_{2})
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{5} = \frac{1}{2}(1+\xi_{3})
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{6} = \frac{1}{2}(1-\xi_{3})
+\]</span></p>
+</section>
+<section id="vertex-basis" class="level3">
+<h3 class="anchored" data-anchor-id="vertex-basis">Vertex basis</h3>
+<p>There are 8 vertices, their number and coordinates are given by</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th><span class="math inline">\(\xi_{1}\)</span></th>
+<th><span class="math inline">\(\xi_{2}\)</span></th>
+<th><span class="math inline">\(\xi_{3}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>+1</td>
+<td>-1</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>+1</td>
+<td>+1</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>-1</td>
+<td>+1</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>-1</td>
+<td>-1</td>
+<td>+1</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>+1</td>
+<td>-1</td>
+<td>+1</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>+1</td>
+<td>+1</td>
+<td>+1</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>-1</td>
+<td>+1</td>
+<td>+1</td>
+</tr>
+</tbody>
+</table>
+<p>For each vertex we have a vertex basis. Therefore, we have a total number of 8 vertex basis in a hexahedron. These basis will be denoted by <span class="math inline">\(\phi^{v_1}_B\)</span> to <span class="math inline">\(\phi^{v_8}_B\)</span>.</p>
+<p><span class="math display">\[
+\phi_{B}^{v_1} = l_{0}(\xi_1) l_{0}(\xi_2) l_{0}(\xi_3)
+\]</span></p>
+<p><span class="math display">\[
+\phi_{B}^{v_2} = l_{1}(\xi_1) l_{0}(\xi_2) l_{0}(\xi_3)
+\]</span></p>
+<p><span class="math display">\[
+\phi_{B}^{v_3} = l_{1}(\xi_1) l_{1}(\xi_2) l_{0}(\xi_3)
+\]</span></p>
+<p><span class="math display">\[
+\phi_{B}^{v_4} = l_{0}(\xi_1) l_{1}(\xi_2) l_{0}(\xi_3)
+\]</span></p>
+<p><span class="math display">\[
+\phi_{B}^{v_5} = l_{0}(\xi_1) l_{0}(\xi_2) l_{1}(\xi_3)
+\]</span></p>
+<p><span class="math display">\[
+\phi_{B}^{v_6} = l_{1}(\xi_1) l_{0}(\xi_2) l_{1}(\xi_3)
+\]</span></p>
+<p><span class="math display">\[
+\phi_{B}^{v_7} = l_{1}(\xi_1) l_{1}(\xi_2) l_{1}(\xi_3)
+\]</span></p>
+<p><span class="math display">\[
+\phi_{B}^{v_8} = l_{0}(\xi_1) l_{1}(\xi_2) l_{1}(\xi_3)
+\]</span></p>
+<p>where,</p>
+<p><span class="math display">\[
+l_{0}(y) = \frac{1}{2}(1-y)
+\]</span></p>
+<p><span class="math display">\[
+l_{1}(y) = \frac{1}{2}(1+y)
+\]</span></p>
+</section>
+<section id="edge-basis" class="level3">
+<h3 class="anchored" data-anchor-id="edge-basis">Edge basis</h3>
+<p>There are 12 edges. These edges are oriented along the positive x, y, and z axis.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>p1</th>
+<th>p2</th>
+<th>axis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>2</td>
+<td>x</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>3</td>
+<td>x</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>6</td>
+<td>x</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>7</td>
+<td>x</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>4</td>
+<td>y</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>3</td>
+<td>y</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>8</td>
+<td>y</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>7</td>
+<td>y</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>5</td>
+<td>z</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>6</td>
+<td>z</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>7</td>
+<td>z</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>8</td>
+<td>z</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>On an edge <span class="math inline">\(e_{j}\)</span> only one of the coordinates changes, the remaining coordinates remain fixed (either 1 or -1).</p>
+</div>
+</div>
+</div>
+<p>Therefore, we can write the edge bubble basis function as:</p>
+<p><span class="math display">\[
+\phi^{e_j}_{k} = l_{d_1}(\xi_1) l_{d_2}(\xi_2) l_{d_3}(\xi_3)
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="edge on x axis">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+edge on x axis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the edges along the x-axis the value of <span class="math inline">\(d_2\)</span> and <span class="math inline">\(d_3\)</span> will be either 0 or 1 depending on the value of y and z coordinates on these edges. If the y coordiantes is <span class="math inline">\(+1\)</span> then the value of <span class="math inline">\(d_2\)</span> will be <span class="math inline">\(1\)</span>, otherwise it will be <span class="math inline">\(0\)</span>. Similarly for <span class="math inline">\(z\)</span> and <span class="math inline">\(d_3\)</span>. The value of <span class="math inline">\(d_1\)</span> would be greater than or equal to 2.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="edge on y axis">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+edge on y axis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the edges along the y-axis the value of <span class="math inline">\(d_1\)</span> and <span class="math inline">\(d_3\)</span> will be either 0 or 1 depending on the value of x and z coordinates on these edges. If the x coordiantes is <span class="math inline">\(+1\)</span> then the value of <span class="math inline">\(d_1\)</span> will be <span class="math inline">\(1\)</span>, otherwise it will be <span class="math inline">\(0\)</span>. Similarly, for <span class="math inline">\(z\)</span> and <span class="math inline">\(d_3\)</span>. The value of <span class="math inline">\(d_2\)</span> would be greater than or equal to 2.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="edge on z axis">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+edge on z axis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the edges along the z-axis the value of <span class="math inline">\(d_1\)</span> and <span class="math inline">\(d_2\)</span> will be either 0 or 1 depending on the value of x and z coordinates on these edges. If the x coordiantes is <span class="math inline">\(+1\)</span> then the value of <span class="math inline">\(d_1\)</span> will be <span class="math inline">\(1\)</span>, otherwise it will be <span class="math inline">\(0\)</span>. Similarly, for <span class="math inline">\(y\)</span> and <span class="math inline">\(d_2\)</span>. The value of <span class="math inline">\(d_3\)</span> would be greater than or equal to 2.</p>
+</div>
+</div>
+</section>
+<section id="facets-bubble-basis" class="level3">
+<h3 class="anchored" data-anchor-id="facets-bubble-basis">Facets bubble basis</h3>
+<p>Before we derive the basis functions on the hexahedron we should fix some notations.</p>
+<p>There are 6 faces, two faces are normal to x-axis, two are normal to y-axis, and two faces are normal to z-axis. In this way, on each face, only two coordiantes changes. These two local direction will match the appropriate pair of global axes in lexicographic order.</p>
+<p>We will denote the face functions by</p>
+<p><span class="math display">\[
+\phi^{s_{i}}_{n_1, n_2}, 2 \le n_1 \le p^{s_i,1}, 2 \le n_2 \le p^{s_i,2}
+\]</span></p>
+<p>These functions are given by</p>
+<p><span class="math display">\[
+\phi^{s_{i}}_{n_1, n_2}=l_{d_1}(\xi_1)l_{d_2}(\xi_2)l_{d_3}(\xi_3)
+\]</span></p>
+<ul>
+<li>On faces which are normal to x-axis, <span class="math inline">\(d_1\)</span> is 1 if <span class="math inline">\(x=1\)</span>, and <span class="math inline">\(d_1\)</span> is 0 if <span class="math inline">\(x=-1\)</span>.</li>
+<li>On faces which are normal to y-axis, <span class="math inline">\(d_2\)</span> is 1 if <span class="math inline">\(y=1\)</span>, and <span class="math inline">\(d_2\)</span> is 0 if <span class="math inline">\(y=-1\)</span>.</li>
+<li>On faces which are normal to z-axis, <span class="math inline">\(d_3\)</span> is 1 if <span class="math inline">\(z=1\)</span>, and <span class="math inline">\(d_3\)</span> is 0 if <span class="math inline">\(z=-1\)</span>.</li>
+</ul>
+</section>
+<section id="cell-bubble-basis" class="level3">
+<h3 class="anchored" data-anchor-id="cell-bubble-basis">Cell bubble basis</h3>
+<p>The cell bubble basis are denoted by</p>
+<p><span class="math display">\[
+\phi^{b}_{n_1, n_2, n_3}, 2 \le n_1 \le p^{b,1}, 2 \le n_2 \le p^{b,2}, 2 \le n_3 \le p^{b,3}
+\]</span></p>
+</section>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary">Summary</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 68%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>type</th>
+<th>order</th>
+<th>dim</th>
+<th><code>#entity</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Vertex</td>
+<td>always</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Edge</td>
+<td><span class="math inline">\(p^{e_j} \ge 2\)</span></td>
+<td><span class="math inline">\(p^{e_j}-1\)</span></td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>Facet</td>
+<td><span class="math inline">\(p^{s_i,1:2} \ge 2\)</span></td>
+<td><span class="math inline">\((p^{s_i,1}-1)(p^{s_i,2}-1)\)</span></td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>Cell</td>
+<td><span class="math inline">\(p^{b,1:3} \ge 2\)</span></td>
+<td><span class="math inline">\((p^{b,1}-1)(p^{b,2}-1)(p^{b,3}-1)\)</span></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -671,13 +1094,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./h1-conforming-tetrahedron.html" class="pagination-link" aria-label="Tetrahedron">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tetrahedron</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./h1-conforming-line.html" class="pagination-link" aria-label="Line element">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Line element</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./summary.html" class="pagination-link" aria-label="Summary">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -689,7 +1112,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/h1-conforming-basis.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/h1-conforming-hexahedron.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

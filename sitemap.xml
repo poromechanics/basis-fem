@@ -2,34 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://poromechanics.github.io/basis-fem/index.html</loc>
-    <lastmod>2025-01-27T05:54:05.410Z</lastmod>
+    <lastmod>2025-01-27T02:53:39.755Z</lastmod>
   </url>
   <url>
     <loc>https://poromechanics.github.io/basis-fem/intro.html</loc>
-    <lastmod>2025-01-27T05:54:05.410Z</lastmod>
+    <lastmod>2025-01-27T02:49:03.612Z</lastmod>
   </url>
   <url>
     <loc>https://poromechanics.github.io/basis-fem/h1-conforming-basis.html</loc>
-    <lastmod>2025-01-27T05:54:05.410Z</lastmod>
+    <lastmod>2025-01-27T02:55:06.606Z</lastmod>
   </url>
   <url>
     <loc>https://poromechanics.github.io/basis-fem/h1-conforming-line.html</loc>
-    <lastmod>2025-01-27T05:54:05.410Z</lastmod>
+    <lastmod>2025-01-27T02:56:46.127Z</lastmod>
   </url>
   <url>
     <loc>https://poromechanics.github.io/basis-fem/h1-conforming-triangle.html</loc>
-    <lastmod>2025-01-27T05:54:05.410Z</lastmod>
+    <lastmod>2025-01-27T06:52:42.545Z</lastmod>
   </url>
   <url>
     <loc>https://poromechanics.github.io/basis-fem/h1-conforming-quadrangle.html</loc>
-    <lastmod>2025-01-27T05:54:05.410Z</lastmod>
+    <lastmod>2025-01-27T06:52:42.545Z</lastmod>
+  </url>
+  <url>
+    <loc>https://poromechanics.github.io/basis-fem/h1-conforming-tetrahedron.html</loc>
+    <lastmod>2025-01-27T07:27:27.092Z</lastmod>
+  </url>
+  <url>
+    <loc>https://poromechanics.github.io/basis-fem/h1-conforming-hexahedron.html</loc>
+    <lastmod>2025-01-27T07:36:02.918Z</lastmod>
   </url>
   <url>
     <loc>https://poromechanics.github.io/basis-fem/summary.html</loc>
-    <lastmod>2025-01-27T05:54:05.411Z</lastmod>
+    <lastmod>2025-01-27T02:49:11.372Z</lastmod>
   </url>
   <url>
     <loc>https://poromechanics.github.io/basis-fem/references.html</loc>
-    <lastmod>2025-01-27T05:54:05.410Z</lastmod>
+    <lastmod>2025-01-27T02:49:21.499Z</lastmod>
   </url>
 </urlset>
