@@ -1,0 +1,360 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Basis functions of Finite Element Methods",
+    "section": "",
+    "text": "Preface\nThis course is related to the high order adaptive finite element methods.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#prerequisites",
+    "href": "index.html#prerequisites",
+    "title": "Basis functions of Finite Element Methods",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nnone",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#table-of-contents",
+    "href": "index.html#table-of-contents",
+    "title": "Basis functions of Finite Element Methods",
+    "section": "Table of contents",
+    "text": "Table of contents",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-basis.html",
+    "href": "h1-conforming-basis.html",
+    "title": "H1 conforming basis",
+    "section": "",
+    "text": "The construction of scalar hierarchic shape functions is important as they facilitate the design of vector-valued finite elements of arbitrary order in spaces H(curl) and H(div)",
+    "crumbs": [
+      "H1 conforming basis"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html",
+    "href": "h1-conforming-triangle.html",
+    "title": "Triangle",
+    "section": "",
+    "text": "Three-node triangle element\nThere are two factors which play an important role in the quality of approximation for high degree polynomials: the smoothness of the function to be interpolated, and the locations of the interpolation points (Chen and Babuska 1995). Interpolation points completely determine the interpolation operator. Also, the norm of the interpolation operator provides a bound for the interpolation error by Lebesgue’s inequality. In this way, the interpolation points play an important role in minimizing this error. For example, it is well known that the interpolation using equally spaced points yield undesirable divergent behaviors even for analytical functions as the polynomial degree of interpolation increases. To be more precise, the norm of the interpolation operator for equally spaced point set increases exponentially with the degree of polynomial interpolation. It has been reported in the spectral method community that the interpolation using Gauss quadrature of Chebyshev polynomials or using Lobatto quadrature of Legendre polynomial yields close to optimal interpolation properties in the uniform norm and in other norms. These results are also valid for rectangle in \\(R^{2}\\) and hexahedron in \\(R^{3}.\\) For triangles in \\(R^{2},\\)it is possible to obtain the near optimal interpolation set by minimizing appropriate measures related to the interpolation operator.",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#six-node-triangle-element",
+    "href": "h1-conforming-triangle.html#six-node-triangle-element",
+    "title": "Triangle",
+    "section": "Six-node triangle element",
+    "text": "Six-node triangle element",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#triangle-with-straight-edges",
+    "href": "h1-conforming-triangle.html#triangle-with-straight-edges",
+    "title": "Triangle",
+    "section": "Triangle with straight edges",
+    "text": "Triangle with straight edges",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#isoparameteric-triangle",
+    "href": "h1-conforming-triangle.html#isoparameteric-triangle",
+    "title": "Triangle",
+    "section": "Isoparameteric triangle",
+    "text": "Isoparameteric triangle",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#master-element",
+    "href": "h1-conforming-triangle.html#master-element",
+    "title": "Triangle",
+    "section": "Master element",
+    "text": "Master element\n\n\nBiunit triangle\nA Biunit triangle is given in figure below.\n\n\n\n\n\n\nFigure 1: Bi-unit triangle\n\n\n\nThe coordinates of the biunit triangle are given by following table.\n\n\n\nnode number\n\\(x\\)\n\\(y\\)\n\n\n\n\n1\n-1\n-1\n\n\n2\n1\n-1\n\n\n3\n-1\n1\n\n\n\n\n\n\n\n\n\nThe biunit triangle serves as a master element for orthogonal basis and heirarchical basis on triangles.\n\n\n\n\n\nUnit triangle\n\n\n\n\n\n\nFigure 2: Unit triangle\n\n\n\nThe coordinates of a unit triangle are given by following table.\n\n\n\nnode number\n\\(x\\)\n\\(y\\)\n\n\n\n\n1\n0\n0\n\n\n2\n1\n0\n\n\n3\n0\n1\n\n\n\n\n\n\n\n\n\nThe unit triangle serves as a master element for lagrange polynomials on triangles.\n\n\n\n\n\nMaster element for orthogonal and heirarchical polynomials\nThe master element for orthogonal polynomials and heirarchical polynomials is given by biunit triangle.\nThe orientation of edges is given by following table and figure.\n\n\n\nBiunit triangle\n\n\n\n\n\nnode number\nn1\nn2\n\n\n\n\n1\n1\n2\n\n\n2\n2\n3\n\n\n3\n1\n3\n\n\n\n\nEdge 1 and edge 3 are oriented in the x and y direction respectively.\n\n\n\nMaster element for Lagrange polynomials\nThe master element for Lagrange polynomial is usually given by unit triangle. The node numbering and coordinates are same as those discussed above. However, the orientation of the edges is slighly different. The orientation of edges is given by following table.\n\n\n\nnode number\nn1\nn2\n\n\n\n\n1\n1\n2\n\n\n2\n2\n3\n\n\n3\n3\n2\n\n\n\n\nEdge 1 is oriented in the x direction\nEdge 3 is oriented in the negative y direction",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#mapping-from-biunit-tetrahedron-to-unit-tetrahedron",
+    "href": "h1-conforming-triangle.html#mapping-from-biunit-tetrahedron-to-unit-tetrahedron",
+    "title": "Triangle",
+    "section": "Mapping from biunit tetrahedron to unit tetrahedron",
+    "text": "Mapping from biunit tetrahedron to unit tetrahedron\nLet us denote the coordinates in biunit tetrahedron by \\((x_b, y_b, z_b)\\) and unit tetrahedron by \\((x_u, y_u, z_u)\\).\nThen the mapping from \\((x_b, y_b, z_b) \\mapsto (x_u, y_u, z_u)\\) is given by,\n\\[\nx_{u}=\\frac{1}{2}\\left(1+x_{b}\\right)\n\\]\n\\[\ny_{u}=\\frac{1}{2}\\left(1+y_{b}\\right)\n\\]\n\\[\nz_{u}=\\frac{1}{2}\\left(1+z_{b}\\right)\n\\]",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#mapping-from-unit-tetrahedron-to-biunit-tetrahedron",
+    "href": "h1-conforming-triangle.html#mapping-from-unit-tetrahedron-to-biunit-tetrahedron",
+    "title": "Triangle",
+    "section": "Mapping from unit tetrahedron to biunit tetrahedron",
+    "text": "Mapping from unit tetrahedron to biunit tetrahedron\nThe mapping from \\((x_u, y_u, z_u) \\mapsto (x_b, y_b, z_b)\\) is given by,\n\\[\nx_{b}=2x_{u}-1\n\\]\n\\[\ny_{b}=2y_{u}-1\n\\]\n\\[\nz_{b}=2z_{u}-1\n\\]",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#high-order-polynomial",
+    "href": "h1-conforming-triangle.html#high-order-polynomial",
+    "title": "Triangle",
+    "section": "High-order polynomial",
+    "text": "High-order polynomial\n\nLinear basis function on triangle\nThe basis space for linear shape functions on triangle is given by following expression.\n\\[\n\\mathcal{P}_{\\Delta}^{(1)}:=\\left\\{ 1,\\xi,\\eta\\right\\}\n\\]\n\\[\n\\phi_{i}^{(1)}\\left(\\xi,\\eta\\right)=a_{i}+b_{i}\\xi+c_{i}\\eta\n\\]\n\n\nPascal triangle\n\\[\n\\mathcal{P}_{\\Delta}^{(m)}:=\\begin{array}{ccccccccccccc}\n& & & & & & 1\\\\\n& & & & & \\xi & & \\eta\\\\\n& & & & \\xi^{2} & & \\xi\\eta & & \\eta^{2}\\\\\n& & & \\xi^{3} & & \\xi^{2}\\eta & & \\xi\\eta^{2} & & \\eta^{3}\\\\\n& & \\xi^{4} & & \\xi^{3}\\eta & & \\xi^{2}\\eta^{2} & & \\xi\\eta^{3} & & \\eta^{4}\\\\\n& & & & & \\xi^{3}\\eta^{2}\\\\\n& \\cdot & & & & & & & & & & \\ddots\\\\\n\\xi^{m} & & \\xi^{m-1}\\eta & & \\xi^{m-2}\\eta^{2} & & \\xi^{m-3}\\eta^{3} & & \\cdots & & \\xi^{1}\\eta^{m-1} & & \\eta^{m}\n\\end{array}\n\\]\nFollowing points should be noted.\n\nFor a given order \\(m\\), we have \\(m+1\\) levels.\nAt each level, \\(\\xi^{i}\\eta^{j}\\), \\(i+j\\) is constant, and equal to the level number. For example at level \\(l\\) we have \\(i+j=l\\)\nAt level \\(l\\), we have \\(l+1\\) degrees of freedom \\(\\xi^{i}\\eta^{l-i},\\forall i=0,1,\\cdots,l\\)\n\nThere are three useful ways to travel through Pascal’s triangle.\n\nAlong the first diagonal\ndo j=0,m\n  do i = 0, m-j\n      xi^{i}*eta^{j}\n  end do\nend do\n\n\nAlong the level/base\ndo l=0,m\n  do j=0,l\n      xi^{l-j}*eta^{j}\n  end do\nend do\n\n\nAlong the second diagonal\ndo i=0,m\n  do j = 0, m-i\n      xi^{i}*eta^{j}\n  end do\nend do\n\n\n\nSome useful results\n\\[\n\\left(\\xi+\\eta\\right)^{m}=\\sum_{k=0}^{m}\\left(\\begin{array}{c}\nm\\\\\nk\n\\end{array}\\right)\\xi^{m-k}\\eta^{k}\n\\]\n\\[\n\\partial_{x}^{m}\\left(fg\\right)=\\sum_{k=0}^{m}\\left(\\begin{array}{c}\nm\\\\\nk\n\\end{array}\\right)\\left(\\partial_{x}^{m-k}f\\right)\\left(\\partial_{x}^{k}g\\right)\n\\]\n\n\nHigh order polynomial expansion on triangle\nLeft diagonal:\n\\[\nf(\\xi,\\eta)=\\sum_{j=0}^{m}\\sum_{i=0}^{m-j}a_{ij}\\xi^{i}\\eta^{j}\n\\]\nRight diagonal:\n\\[\nf(\\xi,\\eta)=\\sum_{i=0}^{m}\\sum_{j=0}^{m-i}a_{ij}\\xi^{i}\\eta^{j}\n\\]\nAlong the base/level:\n\\[\nf(\\xi,\\eta)=\\sum_{i=0}^{m}\\sum_{j=0}^{i}a_{i-j,j}\\xi^{i-j}\\eta^{j}\n\\]\nDegrees of freedom:\nFor \\(m\\)th order polynomial expansion there are\n\\[\nN=\\frac{1}{2}\\left(m+1\\right)\\left(m+2\\right)\n\\]\nnumber of degrees of freedom.\nSo,\n\\[\nf(\\xi,\\eta)=\\sum_{n=1}^{N}a_{n}\\phi_{n}\\left(\\xi,\\eta\\right)\n\\]\nwhere, \\(\\left\\{ \\phi_{n}\\right\\}_{n=1}^{N}\\) are the basis functions.",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#lagrange-polynomials",
+    "href": "h1-conforming-triangle.html#lagrange-polynomials",
+    "title": "Triangle",
+    "section": "Lagrange polynomials",
+    "text": "Lagrange polynomials\nThe above interpolation can be viewed as the interpolation in frequency space. The equivalent interpolation in the physical space is given through Cardinal functions (lagrange polynomials):\n\\[\nf(\\xi,\\eta)=\\sum_{j=1}^{N}f_{j}l_{j}^{(m)}\\left(\\xi,\\eta\\right)\n\\]\nwhere, \\(l_{j}^{(m)}\\left(\\xi,\\eta\\right)\\) is the mth order cardinal function (lagrange polynomial) at point \\(j\\), satisfying\n\\[\nl_{j}^{(m)}(\\xi_{i},\\eta_{i})=\\delta_{ij}\n\\]\nand \\(f_{i}\\) is \\(f(\\xi_{i},\\eta_{i})\\). We obtain \\(l_{j}^{(m)}\\) as follows:\n\\[\nl_{j}^{(m)}\\left(\\xi,\\eta\\right)=\\sum_{n=1}^{N}c_{n}\\phi_{n}\\left(\\xi,\\eta\\right)\n\\]\nusing the cardinality condition, we get\n\\[\n\\mathbf{V}_{\\phi}\\mathbf{c}_{j}=\\mathbf{e}_{j}\n\\]\nwhere, \\(V\\) is the Vandermonde matrix:\n\\[\n\\mathbf{V}_{\\phi}=\\left[\\begin{array}{cccc}\n\\phi_{1}\\left(\\xi_{1},\\eta_{1}\\right) & \\phi_{2}\\left(\\xi_{1},\\eta_{1}\\right) & \\cdots & \\phi_{N}\\left(\\xi_{1},\\eta_{1}\\right)\\\\\n\\phi_{1}\\left(\\xi_{2},\\eta_{2}\\right) & \\phi_{2}\\left(\\xi_{2},\\eta_{2}\\right) & \\cdots & \\phi_{N}\\left(\\xi_{2},\\eta_{2}\\right)\\\\\n\\vdots & \\vdots & \\ddots & \\vdots\\\\\n\\phi_{1}\\left(\\xi_{N},\\eta_{N}\\right) & \\phi_{2}\\left(\\xi_{N},\\eta_{N}\\right) & & \\phi_{N}\\left(\\xi_{N},\\eta_{N}\\right)\n\\end{array}\\right]\n\\]\nThen the lagrange polynomial is given by\n\\[\nl_{j}^{(m)}\\left(\\xi,\\eta\\right)=\\boldsymbol{\\phi}^{T}\\left\\{ \\mathbf{\\mathbf{V}_{\\phi}}^{-1}\\mathbf{e}_{j}\\right\\}\n\\]\nor\n\\[\n\\mathbf{l}^{(m)}\\left(\\xi,\\eta\\right)=\\mathbf{\\mathbf{V}_{\\phi}}^{-T}\\boldsymbol{\\phi}\n\\]\nor\n\\[\n\\mathbf{\\mathbf{V}_{\\phi}}^{T}\\mathbf{l}^{(m)}\\left(\\xi,\\eta\\right)=\\boldsymbol{\\phi}\\left(\\xi,\\eta\\right)\n\\]\nIn this way, Vandermonde matrix facilitates the transformation from frequency domain to physical domain.\n\nRemarks\n\nFor higher order polynomials, the solution of the linear system for the nodal interpolation functions can be found by numerical methods. Unlike 1D interpolation problem, existence, and uniqueness of the solution of \\(\\mathbf{V}_{\\phi}\\mathbf{c}_{j}=\\mathbf{e}_{j}\\) are not guaranteed and one should be careful in selecting the interpolation points and basis functions. Moreover, the condition number of the generalized Vandermonde matrix is sensitive to the choice of the base functions. The large condition number can lead to the difficulty of solving the linear system. Therefore, in practice, it is advantageous to use a set of polynomial basis functions that enjoy orthogonal or near-orthogonality properties, for example, Appell and Proriol polynomials.\nThe location of nodal points in physical space is also critical for enhancing the interpolation in physical space.\n\n\n\nLebesque constant\n\n\nUniform Grid over triangles\nUnfortunately, as the expansion order \\(m\\) is increased, the accuracy over the uniform grid deteriorates due to the Runge effect. In particular, the interpolated function experiences large oscillations between nodes and the Lebesgue constant increases rapidly with N (Bos, 1983). Thus, the uniform node distribution is only suitable for low-order polynomial expansions, typically \\(m\\le3\\). To improve the interpolation accuracy, Bos (1983) cleverly modified the uniform node layout by expanding or contracting the individual sizes of the nested triangles while maintaining the uniformity of the point distribution around their perimeters\n\n\nLobatto grid\nA node distribution corresponding to the zeros of Lobatto polynomials is optimal for 1D interpolation, subject to the constraint that one node is placed at the left-end and another node is placed at the right- end of the interpolation domain.\nTo construct \\(m\\) th order grid, we need\n\\[\n\\frac{1}{2}\\left(m+1\\right)\\left(m+2\\right)\n\\] nodes. At each edge we have \\(m-1\\) internal nodes. These \\(m-1\\) internal nodes are zeros Lobatto polynomial of order \\(m-1\\), which is given by\n\\[\nL_{m-1}(x)=\\partial_{x}P_{m}(x)\n\\]\nLet \\(\\left\\{ t_{i}\\right\\}_{i=2}^{m}\\) be the zeros of \\(L_{m-1}\\) in \\([-1,1]\\), and \\(t_{0}=-1\\) and \\(t_{m+1}=1\\). Now we transform these nodes to \\([0,1]\\) domain by\n\\[\nv_{i}=\\frac{1}{2}\\left(1+t_{i}\\right),i=1,2\\cdots,m+1\n\\]\nNote that \\(v_{i}\\in\\left[0,1\\right],\\forall i\\).\nThe location of nodes along the hypotenuse of the triangle is found by moving either vertically upward from the nodes on the \\(\\xi\\) axis, or horizontally to the right from the nodes on the \\(\\eta\\) axis.\nHorizontal-Vertical distribution (HV):\nFor \\(i=1,2,\\cdots,m+1\\), and \\(j=1,2,\\cdots,m+2-i\\), the location of internal nodes is given by\n\\[\n\\xi_{i}=v_{i}\n\\]\n\\[\n\\eta_{j}=1-v_{m+2-j}\n\\]\n\nHorizontal-Diagonal\nVertical-Diagonal\n\nThe asymmetry of the distribution with respect to the three vertices is an unacceptable deficiency.\n\nBlyth and Pozrikidis grid\nThreefold rotational symmetry.\nFor \\(i=1,2,\\cdots,m+1\\), For \\(j=1,2,\\cdots,m+2-i\\) and \\(k=m+3-i-j\\):\n\\[\n\\xi_{i}=\\frac{1}{3}\\left(1+2v_{j}-v_{i}-v_{k}\\right)\n\\]\n\\[\n\\eta_{j}=\\frac{1}{3}\\left(1+2v_{j}-v_{i}-v_{k}\\right)\n\\]\n\nRecursive grid\n\n\n\n\nFeket nodes\nAnother way of arranging the interpolation nodes over the triangle is provided by the Fekete points. To define these points, we apply the polynomial expansion nodes over the surface of the triangle, and consider the generalized Vandermonde matrix, regarded as a function of the nodal positions.\nBy definition, the Fekete points maximize the magnitude of the determinant of the generalized Vandermonde matrix within the confines of the triangle. The significance of the Fekete points lies in the observation that the cardinal interpolation functions may be expressed in the form:\nthe vertex and edge nodes turn out to be located precisely at the zeros of the Lobatto polynomial.\nThis means that the Lebesgue constant defined is bounded from above by N . In fact, numerical evidence suggests that the upper bound is proportional to \\(\\sqrt{N}\\) (Taylor et al., 2000). At present, the Lebesgue constant for the Fekete points is the lowest known constant for \\(m&gt;10\\) (Taylor et al., 2000).\n\n\nChen and Babuska nodes\nUnlike the Fekete set, this distribution does not include edge nodes corresponding to zeros of the Lobatto polynomials.\n\n\nHesthaven nodes\nHesthaven (1998) obtained small Lebesgue constants by minimizing an electrostatic energy function. Like the Fekete set, these distributions include edge nodes corresponding to the zeros of the Lobatto polynomials.",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#appell-polynomials",
+    "href": "h1-conforming-triangle.html#appell-polynomials",
+    "title": "Triangle",
+    "section": "Appell polynomials",
+    "text": "Appell polynomials\nIn the previous example we employed \\(\\phi_{n}(\\xi,\\eta)\\) of the form \\(\\xi^{i}\\eta^{j}\\). In this section we use Appell polynomials.\nAppell polynomial \\(A=A_{kl}\\) satisfy the following partial differential equation:\n\\[\n\\begin{aligned}\\xi\\left(\\xi-1\\right)A_{\\xi\\xi}+2\\xi\\eta A_{\\xi\\eta} & +\\eta\\left(\\eta-1\\right)A_{\\eta\\eta}\\\\\n+\\left(3\\xi-1\\right)A_{\\xi}+\\left(3\\eta-1\\right)A_{\\eta} & =\\left(k+l\\right)\\left(k+l+2\\right)A\n\\end{aligned}\n\\]\nLeft diagonal:\n\\[\nf(\\xi,\\eta)=\\sum_{q=0}^{m}\\sum_{p=0}^{m-q}\\hat{a}_{pq}A_{pq}(\\xi,\\eta)\n\\]\nRight diagonal:\n\\[\nf(\\xi,\\eta)=\\sum_{p=0}^{m}\\sum_{q=0}^{m-q}\\hat{a}_{pq}A_{pq}(\\xi,\\eta)\n\\]\nAlong the base/level:\n\\[\nf(\\xi,\\eta)=\\sum_{p=0}^{m}\\sum_{q=0}^{p}\\hat{a}_{p-q,q}A_{p-q,q}(\\xi,\\eta)\n\\]\n\nProperties\nProperties of \\(A_{kl}(\\xi,\\eta)\\) polynomials\n\n\\(A_{kl}\\) has order \\(k+l\\), that is\n\n\\[\nA_{kl}=\\sum_{i=0}^{k+l}\\left(\\sum_{j=0}^{k+l-i}a_{kl}^{ij}\\xi^{i}\\eta^{j}\\right)\n\\]\nwhere,\n\\[\na_{kl}^{ij}=\\left(-1\\right)^{i+j}\\frac{\\left(k+j\\right)!\\left(l+i\\right)!}{\\left(i!j!\\right)^{2}}\\frac{\\left(k+l\\right)!}{\\left(k+l-i-j\\right)!}\n\\]\nalso,\n\\[\na_{kl}^{ij}=a_{lk}^{ji}\n\\]\n\nRodrigues fomula:\n\n\\[\nA_{kl}=\\frac{\\partial^{k+l}}{\\partial\\xi^{k}\\partial\\eta^{l}}\\left(\\xi^{k}\\eta^{l}\\zeta^{k+l}\\right)\n\\]\nwhere, \\(\\zeta=1-\\xi-\\eta\\).\n\n\\(A_{kl}\\in\\mathcal{P}_{\\Delta}^{(k+l)}\\) , for \\(m\\)th order interpolation we have following \\(A_{kl}\\)\n\n\\[\nA_{kl}:=\\begin{array}{ccccccccccccc}\n& & & & & & A_{0,0}\\\\\n& & & & & A_{1,0} & & A_{0,1}\\\\\n& & & & A_{2,0} & & A_{1,1} & & A_{0,2}\\\\\n& & & A_{3,0} & & A_{2,1} & & A_{1,2} & & A_{0,3}\\\\\n& & A_{4,0} & & A_{3,1} & & A_{2,2} & & A_{1,3} & & A_{0,4}\\\\\n& . & & & & & & & & & \\ddots\\\\\nA_{m,0} & & A_{m-1,1} & & A_{m-2,2} & & A_{m-3,3} & & \\cdots & & A_{1,m-1} & & A_{0,m}\n\\end{array}\n\\]\nIncomplete biorthogonality\n\\[\n\\int\\int A_{kl}\\left(\\xi,\\eta\\right)\\xi^{p}\\eta^{q}d\\xi d\\eta=0\n\\]\nfor \\(p+q&lt;k+l\\). Consequently,\n\\[\n\\int\\int A_{kl}\\left(\\xi,\\eta\\right)d\\xi d\\eta=0\n\\]\nfor \\(k,l&gt;0\\).\nIncomplete orthogonality\n\\[\n\\int\\int A_{kl}A_{pq}d\\xi d\\eta=0\n\\]\nfor \\(k+l\\ne p+q\\)",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#triangle-square-mapping-part1",
+    "href": "h1-conforming-triangle.html#triangle-square-mapping-part1",
+    "title": "Triangle",
+    "section": "Triangle-Square mapping (part1)",
+    "text": "Triangle-Square mapping (part1)\n\n\n\n\n\n\nFigure 3: Depiction of triangle-square mapping\n\n\n\nLet \\((\\eta_{1},\\eta_{2})\\) be the coordinates in the reference unit triangle \\(\\mathcal{T}\\),\n\\[\n\\mathcal{T}:=\\left\\{ \\left(\\eta_{1},\\eta_{2}\\right)\\in\\mathbb{R}^{2}:0&lt;\\eta_{1},\\eta_{2};\\eta_{1}+\\eta_{2}&lt;1\\right\\},\n\\]\nand \\((\\xi_{1},\\xi_{2})\\) be the coordinates in reference biunit square \\(\\mathcal{Q}\\).\n\\[\n\\mathcal{Q}:=\\left\\{ \\left(\\xi_{1},\\xi_{2}\\right)\\in\\mathbb{R}^{2}:-1&lt;\\xi_{1},\\xi_{2}&lt;1\\right\\}\n\\]\nThe mapping from (unit) triangle to (biunit) square,\n\\[\n\\left(\\eta_{1},\\eta_{2}\\right)\\mapsto \\left(\\xi_{1},\\xi_{2}\\right)\n\\]\nis given by:\n\\[\n\\begin{aligned}\\xi_{1} & =\\frac{2 \\eta_{1}}{1-\\eta_{2}}-1\\\\\n& =\\frac{2 \\eta_{1}+ \\eta_{2}-1}{1-\\eta_{2}}\n\\end{aligned}\n\\]\n\\[\n\\xi_{2}=2 \\eta_{2}-1\n\\]\n\\[\n\\lim_{\\eta_{2}\\rightarrow1}\\xi_{1}=-1\n\\]\nA horizontal line in square, that is \\(\\xi_{2}=\\eta_{0}\\), maps to a horizontal line in the triangle:\n\\[\n\\eta_{2}=\\frac{\\eta_{0}+1}{2};0\\le \\eta_{1}\\le1-\\eta_{2}\n\\]\nSimilarly, a vertical line in square, that is,\n\\[\n\\xi_{1}=\\xi_{0},\n\\]\nmaps to a line passing through vertex-3 \\((0,1)\\), and intersecting the base which connects vertex-1 and vertex-2. The equation of this line is given below, where it can be seen that the vertical edge of triangle (vertex 1-3) corresponds to the left edge of square, i.e., \\(\\xi_{0}=-1\\), and hypotenuse of triangle (vertex 2-3) corresponds to the right edge of square, i.e., \\(\\xi_{0}=1\\). The line intersects the base of triangle at \\(\\eta_{1}=\\frac{1+\\xi_{0}}{2}\\).\n\\[\n\\eta_{2}=-\\frac{2}{1+\\xi_{0}}\\eta_{1}+1\n\\]\nJacobian of the mapping is given below:\n\\[\n\\frac{\\partial\\xi_{1}}{\\partial \\eta_{1}}=\\frac{2}{1-\\eta_{2}}\n\\]\n\\[\n\\frac{\\partial\\xi_{1}}{\\partial \\eta_{2}}=\\frac{2 \\eta_{1}}{\\left(1-\\eta_{2}\\right)^{2}}\n\\]\n\\[\n\\frac{\\partial\\xi_{2}}{\\partial \\eta_{1}}=0\n\\]\n\\[\n\\frac{\\partial\\xi_{2}}{\\partial \\eta_{2}}=2\n\\]\nThe inverse of mapping, that is from biunit square to unit triangle, \\(\\left(\\xi_{1},\\xi_{2}\\right) \\mapsto \\left(\\eta_{1}, \\eta_{2}\\right)\\) is given below:\n\\[\n\\eta_{1}=\\frac{1}{4}\\left(1+\\xi_{1}\\right)\\left(1-\\xi_{2}\\right)\n\\]\n\\[\n\\eta_{2}=\\frac{\\xi_{2}+1}{2}\n\\]\n\\[\n\\frac{\\partial \\eta_{1}}{\\partial\\xi_{1}}=\\frac{1}{4}\\left(1-\\xi_{2}\\right)\n\\]\n\\[\n\\frac{\\partial \\eta_{1}}{\\partial\\xi_{2}}=-\\frac{1}{4}\\left(1+\\xi_{1}\\right)\n\\]\n\\[\n\\frac{\\partial \\eta_{1}}{\\partial\\xi_{2}}=0\n\\]\n\\[\n\\frac{\\partial \\eta_{2}}{\\partial\\xi_{2}}=\\frac{1}{2}\n\\]\n\n\n\n\n\n\nThe coordinates \\((\\xi_{1}, \\xi_{2})\\) are called the collapsed Cartesian coordinates of the point on the triangle whose regular Cartestian coordinates are \\((\\eta_{1}, \\eta_{2})\\).",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#triangle-square-mapping-part2",
+    "href": "h1-conforming-triangle.html#triangle-square-mapping-part2",
+    "title": "Triangle",
+    "section": "Triangle square mapping (part2)",
+    "text": "Triangle square mapping (part2)\nThe biunit triangle is defined by\n\\[\n\\mathcal{T}:=\\left\\{ \\left(\\eta_{1},\\eta_{2}\\right)\\in\\mathbb{R}^{2}\\vert-1&lt;\\eta_{1},\\eta_{2};\\eta_{1}+\\eta_{2}&lt;0\\right\\}\n\\]\nThe mapping from (biunit) triangle to (biunit) square, \\(\\left(\\eta_{1},\\eta_{2}\\right)\\rightarrow\\left(\\xi_{1},\\xi_{2}\\right)\\) is given by:\n\\[\n\\begin{aligned}\\xi_{1} & =2\\left(\\frac{1+\\eta_{1}}{1-\\eta_{2}}\\right)-1\\\\\n& =\\frac{2+2 \\eta_{1}-1+ \\eta_{2}}{1- \\eta_{2}}\\\\\n& =\\frac{1+2 \\eta_{1}+ \\eta_{2}}{1- \\eta_{2}}\n\\end{aligned}\n\\]\n\\[\n\\lim_{\\eta_{2}\\rightarrow1}=-1\n\\]\n\\[\n\\xi_{2}=\\eta_{2}\n\\]\nJacobian of the mapping is given by:\n\\[\n\\frac{\\partial\\xi_{1}}{\\partial \\eta_{1}}=\\frac{2}{1- \\eta_{2}}\n\\]\n\\[\n\\frac{\\partial\\xi_{1}}{\\partial \\eta_{2}}=2\\frac{1+ \\eta_{1}}{\\left(1-\\eta_{2}\\right)^{2}}\n\\]\n\\[\n\\frac{\\partial\\xi_{2}}{\\partial \\eta_{1}}=0\n\\]\n\\[\n\\frac{\\partial\\xi_{2}}{\\partial \\eta_{2}}=1\n\\]\nThe mapping from square to triangle, \\(\\left(\\xi_{1},\\xi_{2}\\right)\\rightarrow\\left(\\eta_{1},\\eta_{2}\\right)\\)\n\\[\n\\eta_{1}=\\frac{1}{2}\\left(1+\\xi_{1}\\right)\\left(1-\\xi_{2}\\right)-1\n\\]\n\\[\n\\eta_{2}=\\xi_{2}\n\\]\nThe Jacobian of inverse of mapping is given by:\n\\[\n\\frac{\\partial \\eta_{1}}{\\partial\\xi_{1}}=\\frac{1}{2}\\left(1-\\xi_{2}\\right)\n\\]\n\\[\n\\frac{\\partial \\eta_{1}}{\\partial\\xi_{2}}=-\\frac{1}{2}\\left(1+\\xi_{1}\\right)\n\\]\n\\[\n\\frac{\\partial \\eta_{2}}{\\partial\\xi_{1}}=0\n\\]\n\\[\n\\frac{\\partial \\eta_{2}}{\\partial\\xi_{2}}=1\n\\]",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#orthogonal-basis-on-biunit-square",
+    "href": "h1-conforming-triangle.html#orthogonal-basis-on-biunit-square",
+    "title": "Triangle",
+    "section": "Orthogonal basis on biunit square",
+    "text": "Orthogonal basis on biunit square\nSimplex domains such as triangle, tetrahedron, prisms, and pyramids are very efficient in handling the complex geometries. However, spectral methods are more efficient on tensor-product domains due to tensor product expansion of basis functions. Therefore, it would be beneficial to introduce the tensor product expansion of basis function on simplex domain such as biunit triangle.\nIn 1991, Dubiner presented the concept of warped tensor-product expansion on triangles. Let the biunit triangle is defined by \\(\\mathcal{T}\\):\n\\[\n\\mathcal{T}:=\\left\\{ \\left(\\eta_{1},\\eta_{2}\\right)\\in\\mathbb{R}^{2}\\vert-1&lt;\\eta_{1},\\eta_{2};\\eta_{1}+\\eta_{2}&lt;0\\right\\}\n\\]\nLet \\(P_{n}^{\\left(\\alpha,\\beta\\right)}\\left(x\\right)\\) be the Jacobi polynomial of order \\(n\\le N\\), which are orthogonal with respect to the weight \\(\\left(1-x\\right)^{\\alpha}\\left(1+x\\right)^{\\beta}\\). Let \\({\\bf k}=\\left(k_{1},k_{2}\\right),\\) then we define the following warped tensor product on \\(\\mathcal{Q}\\).\n\\[\n\\Phi_{{\\bf k}}\\left(\\xi_{1},\\xi_{2}\\right)=\\psi_{k_{1}}\\left(\\xi_{1}\\right)\\psi_{k_{1},k_{2}}\\left(\\xi_{2}\\right),\n\\]\nwhere,\n\\[\n\\psi_{k_{1}}\\left(\\xi_{1}\\right)=P_{k_{1}}^{\\left(0,0\\right)}\\left(\\xi_{1}\\right)\n\\]\nis the Legendre polynomial, and\n\\[\n\\psi_{k_{1},k_{2}}\\left(\\xi_{2}\\right)=\\left(\\frac{1-\\xi_{2}}{2}\\right)^{k_{1}}P_{k_{2}}^{\\left(2k_{1}+1,0\\right)}\\left(\\xi_{2}\\right),\n\\]\nwhich is a polynomial of degree \\(k_1 + k_2\\) in \\(\\xi_{2}\\).\nTherefore,\n\\[\n\\Phi_{{\\bf k}}\\left(\\xi_{1},\\xi_{2}\\right)=P_{k_{1}}^{\\left(0,0\\right)}\\left(\\xi_{1}\\right)\\left(\\frac{1-\\xi_{2}}{2}\\right)^{k_{1}}P_{k_{2}}^{\\left(2k_{1}+1,0\\right)}\\left(\\xi_{2}\\right)\n\\]\n\n\n\n\n\n\n\\(\\xi_{1}\\) and \\(\\xi_{2}\\) belongs to the bi-unit segments.\n\n\n\n\n\n\n\n\n\n\\(\\Phi_{{\\bf k}}\\left(\\xi_{1},\\xi_{2}\\right)\\) is \\(k_{1}\\) order in \\(\\xi_{1}\\) and \\(k_{1}+k_{2}\\) order in \\(\\xi_{2}\\) direction, as \\(\\psi_{k_{1}}\\) is \\(k_{1}\\) order in \\(\\xi_{1}\\) and \\(\\psi_{k_{1},k_{2}}\\) is \\(k_{1}+k_{2}\\) order in \\(\\xi_{2}\\) direction.\n\n\n\n\n\n\n\n\n\nDimension of the polynomial space\n\\[\n\\frac{1}{2}\\left(N+1\\right)\\left(N+2\\right)\n\\]\nwhere, \\(N\\) is the order of approximation on triangle.\n\n\n\n\nPartial Orthogonality\nBy using the orthogonality of the Jacobi polynomials, we can show that, for \\(\\mathbf{k} \\ne \\mathbf{h}\\),\n\\[\n\\int_{\\mathcal{T}} \\phi_{\\mathbf{k}}(x_1, x_2) \\phi_{\\mathbf{h}}(x_1, x_2)dx_1 dx_2=0\n\\]\nIn this way, we can conclude that the set\n\\[\n\\mathbb{P}_{N}:=\\left\\{ \\phi_{k1,k2}\\left(x_{1},x_{2}\\right):0\\le k_{1},k_{2};k_{1}+k_{2}\\le N\\right\\}\n\\]\nforms the orthogonal modal basis of the space:\n\\[\n\\mathcal{P}_{N}=\\left\\{ x_{1}^{i}x_{2}^{j}:0\\le i,j;i+j\\le N\\right\\}\n\\]\n\n\nGradient of orthogonal polynomial\n\\[\n\\frac{\\partial \\Phi_{{\\bf k}}\\left(\\xi_{1},\\xi_{2}\\right)}{\\partial \\xi_{1}}{}= \\frac{d P_{k_{1}}^{\\left(0,0\\right)}\\left(\\xi_{1}\\right)}{d\\xi_{1}} \\left(\\frac{1-\\xi_{2}}{2}\\right)^{k_{1}}P_{k_{2}}^{\\left(2k_{1}+1,0\\right)}\\left(\\xi_{2}\\right)\n\\]\n\\[\n\\begin{aligned}\\frac{\\partial\\Phi_{{\\bf k}}\\left(\\xi_{1},\\xi_{2}\\right)}{\\partial\\xi_{2}} & =P_{k_{1}}^{\\left(0,0\\right)}\\left(\\xi_{1}\\right)\\left(\\frac{1-\\xi_{2}}{2}\\right)^{k_{1}}\\frac{d}{d\\xi_{2}}P_{k_{2}}^{\\left(2k_{1}+1,0\\right)}\\left(\\xi_{2}\\right)\\\\ & -\\frac{k_{1}}{2}P_{k_{1}}^{\\left(0,0\\right)}\\left(\\xi_{1}\\right)P_{k_{2}}^{\\left(2k_{1}+1,0\\right)}\\left(\\xi_{2}\\right)\\left(\\frac{1-\\xi_{2}}{2}\\right)^{k_{1}-1}\\\\ & =P_{k_{1}}^{\\left(0,0\\right)}\\left(\\xi_{1}\\right)\\left(\\frac{1-\\xi_{2}}{2}\\right)^{k_{1}-1}\\left[\\left(\\frac{1-\\xi_{2}}{2}\\right)\\frac{d}{d\\xi_{2}}P_{k_{2}}^{\\left(2k_{1}+1,0\\right)}\\left(\\xi_{2}\\right)-\\frac{k_{1}}{2}P_{k_{2}}^{\\left(2k_{1}+1,0\\right)}\\left(\\xi_{2}\\right)\\right] \\end{aligned}\n\\]",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#orthogonal-basis-on-unit-triangle",
+    "href": "h1-conforming-triangle.html#orthogonal-basis-on-unit-triangle",
+    "title": "Triangle",
+    "section": "Orthogonal basis on unit triangle",
+    "text": "Orthogonal basis on unit triangle\nThe unit triangle is given by \\(\\mathcal{T}\\),\n\\[\n\\mathcal{T}:=\\left\\{ \\left(\\eta_{1},\\eta_{2}\\right)\\in\\mathbb{R}^{2}:0&lt;\\eta_{1},\\eta_{2};\\eta_{1}+\\eta_{2}&lt;1\\right\\},\n\\]\nTo calculate the Orthogonal basis (Dubiner) on the unit triangle, we use the mapping from a unit triangle to a biunit square \\((\\xi_1, \\xi_2)\\):\n\\[\n\\xi_{1}=\\frac{2 \\eta_{1}}{1- \\eta_{2}}-1\n\\]\n\\[\n\\xi_{2}=2 \\eta_{2}-1\n\\]\nThen,\n\\[\n\\begin{aligned}\\phi_{{\\bf k}}\\left(\\eta_{1},\\eta_{2}\\right) & =\\Phi_{{\\bf k}}\\left(\\xi_{1},\\xi_{2}\\right)\\\\\n& =P_{k_{1}}^{\\left(0,0\\right)}\\left[\\xi_{1}\\left(\\eta_{1},\\eta_{2}\\right)\\right]\\left(1-\\eta_{2}\\right)^{k_{1}}P_{k_{2}}^{\\left(2k_{1}+1,0\\right)}\\left[\\xi_{2}\\left(\\eta_{1}, \\eta_{2}\\right)\\right]\n\\end{aligned}\n\\]\n\nGradient of orthogonal polynomials\nThe Jacobian of mapping from \\((\\xi_{1}, \\xi_{2}) \\mapsto (\\eta_{1}, \\eta_{2})\\) is given by\n\\[\n\\frac{\\partial\\xi_{i}}{\\partial\\eta_{j}}=\\left[\\begin{array}{cc} \\frac{2}{1-\\eta_{2}} & \\frac{2\\eta_{1}}{\\left(1-\\eta_{2}\\right)^{2}}\\\\ 0 & 2 \\end{array}\\right]\n\\] Then, the gradient of orthogonal polynomials in triangular domain is given by:\n\\[\n\\begin{aligned}\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\eta_{1}} & =\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{1}}\\frac{\\partial\\xi_{1}}{\\partial\\eta_{1}}+\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{2}}\\frac{\\partial\\xi_{2}}{\\partial\\eta_{1}}\\\\ & =\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{1}}\\frac{2}{1-\\eta_{2}} \\end{aligned}\n\\]\n\\[\n\\begin{aligned}\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\eta_{1}} & =\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{1}}\\frac{\\partial\\xi_{1}}{\\partial\\eta_{1}}+\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{2}}\\frac{\\partial\\xi_{2}}{\\partial\\eta_{1}}\\\\ & =\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{1}}\\frac{2}{1-\\eta_{2}}\\\\ & =\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{1}}\\frac{4}{1-\\xi_{2}} \\end{aligned}\n\\]\n\\[\n\\begin{aligned}\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\eta_{2}} & =\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{1}}\\frac{\\partial\\xi_{1}}{\\partial\\eta_{2}}+\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{2}}\\frac{\\partial\\xi_{2}}{\\partial\\eta_{2}}\\\\ & =\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{1}}\\frac{2\\eta_{1}}{\\left(1-\\eta_{2}\\right)^{2}}+2\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{2}}\\\\ & =\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\eta_{1}}\\frac{\\eta_{1}}{\\left(1-\\eta_{2}\\right)}+2\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{2}}\\\\ & =\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\eta_{1}}\\frac{1+\\xi_{1}}{2}+2\\frac{\\partial\\Phi_{{\\bf k}}}{\\partial\\xi_{2}} \\end{aligned}\n\\]",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#dubiner-basis-on-biunit-triangle",
+    "href": "h1-conforming-triangle.html#dubiner-basis-on-biunit-triangle",
+    "title": "Triangle",
+    "section": "Dubiner basis on biunit triangle",
+    "text": "Dubiner basis on biunit triangle\nTo calculate the Dubiner basis on the biunit triangle, we use the following mapping from biunit triangle to biunit square:\n\\[\n\\xi_{1}=2\\left(\\frac{1+x_{1}}{1-x_{2}}\\right)-1\n\\]\n\\[\n\\xi_{2}=x_{2}\n\\]\nThen,\n\\[\n\\begin{aligned}\\phi_{{\\bf k}}\\left(x_{1},x_{2}\\right) & =\\Phi_{{\\bf k}}\\left(\\xi_{1},\\xi_{2}\\right)\\\\\n& =P_{k_{1}}^{\\left(0,0\\right)}\\left[\\xi_{1}\\left(x_{1},x_{2}\\right)\\right]\\left(\\frac{1-x_{2}}{2}\\right)^{k_{1}}P_{k_{2}}^{\\left(2k_{1}+1,0\\right)}\\left(x_{2}\\right)\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#hierarchical-basis",
+    "href": "h1-conforming-triangle.html#hierarchical-basis",
+    "title": "Triangle",
+    "section": "Hierarchical basis",
+    "text": "Hierarchical basis\nThe use of orthogonal basis simplifies the structure of mass matrix. However, it complicates the enforcement of boundary conditions, or of matching conditions between two subdomains. To overcome these issues, we classified basis function in a heirarchical order. In other words, we define basis functions for node, edge, and cell.\nFor example, for \\(m\\)th order isotropic approximation on a triangle, we have a total\n\\[\n\\left(m+1\\right)\\left(m+2\\right)/2\n\\]\nmodes with following partition:\n\n3 vertex mode\n\\(3\\left(m-1\\right)\\) edge bubble modes\n\\(\\left(m-1\\right)\\left(m-2\\right)/2\\) cell bubble modes\nFor edge bubble modes to exist \\(m \\ge 2\\).\nFor cell bubble modes to exist \\(m \\ge 3\\).\n\n\nHierarchical basis using barycentric coordinates\n\nBiunit triangle\nLet \\({\\eta}_{1}, {\\eta}_{2}\\) be the coordinates of a biunit triangle, then the barycentric coordinates are given by\n\\[\n\\lambda_{1,t}\\left({\\eta}_{1},{\\eta}_{2}\\right)=-\\frac{1}{2}\\left({\\eta}_{1}+{\\eta}_{2}\\right)\n\\]\n\\[\n\\lambda_{2,t}\\left({\\eta}_{1},{\\eta}_{2}\\right)=\\frac{1}{2}\\left(1+{\\eta}_{1}\\right)\n\\]\n\\[\n\\lambda_{3,t}\\left({\\eta}_{1},{\\eta}_{2}\\right)=\\frac{1}{2}\\left(1+{\\eta}_{2}\\right)\n\\]\nThe Jacobian of mapping is given by:\n\\[\n\\frac{\\partial\\lambda}{\\partial\\eta}=\\left[\\begin{array}{cc} -\\frac{1}{2} & -\\frac{1}{2}\\\\ \\frac{1}{2} & 0\\\\ 0 & \\frac{1}{2} \\end{array}\\right]\n\\]\nExample: Let’s consider an edge (2-1). On this edge \\(\\lambda_{3}=0\\). Therefore, we have \\(\\eta_{2} = -1\\). Therefore,\n\\[\n2*\\lambda_{1} = 1 - \\eta_{1}\n\\]\n\\[\n2*\\lambda_{2} = 1.0 + \\eta_{1}\n\\]\nTherefore,\n\\[\n\\lambda_{2} - \\lambda_{1} = \\eta_{1}\n\\]\nTherefore, on edge (2-1), we have following relation:\n\\[\n\\eta_{1} = \\lambda_{2} - \\lambda_{1}\n\\]\nSimilarly, on edge (1-3) we have\n\\[\n\\eta_{2} = \\lambda_{3} - \\lambda_{1}\n\\]\nwhere \\(\\eta_{1,2} \\in [-1, 1]\\)\n\n\nUnit triangle\nFor unit triangle, barycentric coordinates are given by\n\\[\n\\lambda_{1,t}\\left({\\eta}_{1},{\\eta}_{2}\\right)=1-{\\eta}_{1}-{\\eta}_{2}\n\\]\n\\[\n\\lambda_{2,t}\\left({\\eta}_{1},{\\eta}_{2}\\right)={\\eta}_{1}\n\\]\n\\[\n\\lambda_{3,t}\\left({\\eta}_{1},{\\eta}_{2}\\right)={\\eta}_{2}\n\\]\nThe Jacobian of mapping is given by\n\\[\n\\frac{\\partial\\lambda}{\\partial\\eta}=\\left[\\begin{array}{cc} -1 & -1\\\\ 1 & 0\\\\ 0 & 1 \\end{array}\\right]\n\\]\nLet \\(\\phi_{n}(x)\\) for \\(x\\in[-1,1]\\) be the Kernel polynomial corresponding to the Lobatto polynomials.\n\\[\n\\phi_{m}(x)=-\\frac{\\sqrt{8\\left(2m+3\\right)}}{\\left(m+1\\right)\\left(m+2\\right)}P_{m}^{(1.5)}\\left(x\\right),\\quad m\\ge0\n\\]\nor\n\\[\n\\phi_{m}(x)=-\\frac{\\sqrt{2\\left(2m+3\\right)}}{m+1}P_{m}^{\\left(1,1\\right)}(x),\\quad m\\ge0\n\\]\n\n\nVertex basis functions (in terms of barycentric)\n\\[\n\\phi_{1}^{v}\\left({\\eta}_{1}, {\\eta}_{2}\\right)=\\lambda_{1}\n\\]\n\\[\n\\phi_{2}^{v}\\left({\\eta}_{1},{\\eta}_{2}\\right)=\\lambda_{2}\n\\]\n\\[\n\\phi_{3}^{v}\\left({\\eta}_{1}, {\\eta}_{2}\\right)=\\lambda_{3}\n\\]\nThe gradient of Vertex basis functions is given by:\n\n\nEdge basis functions (in terms of barycentric)\n\\[\n\\phi_{k}^{e_{1}}=\\lambda_{1}\\lambda_{2}\\phi_{k-2}\\left(\\lambda_{2}-\\lambda_{1}\\right),\\quad k=2,3,\\cdots,p^{e_{1}}\n\\]\n\\[\n\\phi_{k}^{e_{2}}=\\lambda_{1}\\lambda_{3}\\phi_{k-2}\\left(\\lambda_{3}-\\lambda_{1}\\right),\\quad k=2,3,\\cdots,p^{e_{2}}\n\\]\n\\[\n\\phi_{k}^{e_{3}}=\\lambda_{2}\\lambda_{3}\\phi_{k-2}\\left(\\lambda_{3}-\\lambda_{2}\\right),\\quad k=2,3,\\cdots,p^{e_{3}}\n\\]\n\n\nCell basis functions (in terms of barycentric)\n\\[\n\\phi_{k_{1},k_{2}}^{b}=\\lambda_{1}\\lambda_{2}\\lambda_{3}\\phi_{k_{1}-1}\\left(\\lambda_{2}-\\lambda_{1}\\right)\\phi_{k_{2}-1}\\left(\\lambda_{3}-\\lambda_{1}\\right),\\quad1\\le k_{1},k_{2};k_{1}+k_{2}\\le p^{b}-1\n\\]\n\n\n\nHierarchical basis using biunit square element\n\n\n\n\n\n\nIn the above section, we have computed the basis function in terms of Barycentric coordinates. In this section, we will compute the basis function on the bi-unit square which is mapped to the triangle via Duffy mapping. This procedure is described in the Karniadakis’s textbook, chapter 3.2.3.1.\n\nWe will denote the coordinates of biunit triangle by \\(\\xi_{i}\\)\nCoordinates of biunit square by \\(\\eta_{i}\\)\n\n\n\n\nLet us define the following functions:\n\\[\nl_{0}(y) = \\frac{1}{2}(1-y)\n\\]\n\\[\nl_{1}(y) = \\frac{1}{2}(1+y)\n\\]\n\nVertex basis functions (in terms of biunit square)\nThe vertex basis functions are given by:\n\\[\n\\phi_{1}^{v}\\left({\\xi}_{1}, {\\xi}_{2}\\right)=l_{0}\\left(\\eta_{1}\\right)l_{0}\\left(\\eta_{2}\\right)\n\\]\n\\[\n\\phi_{2}^{v}\\left({\\xi}_{1},{\\xi}_{2}\\right)=l_{1}\\left(\\eta_{1}\\right)l_{0}\\left(\\eta_{2}\\right)\n\\]\n\\[\n\\phi_{3}^{v}\\left({\\xi}_{1},{\\xi}_{2}\\right)=l_{1}\\left(\\eta_{1}\\right)l_{1}\\left(\\eta_{2}\\right)+l_{0}\\left(\\eta_{1}\\right)l_{1}\\left(\\eta_{2}\\right)\n\\]\nThe gradient of vertex basis functions are given by\n\\[\n\\nabla_{\\eta}\\phi_{1}^{v}\\left(\\xi_{1},\\xi_{2}\\right)=\\left[\\begin{array}{c}\n\\frac{dl_{0}\\left(\\eta_{1}\\right)}{d\\eta_{1}}l_{0}\\left(\\eta_{2}\\right)\\\\\nl_{0}\\left(\\eta_{1}\\right)\\frac{d}{d\\eta_{2}}l_{0}\\left(\\eta_{2}\\right)\n\\end{array}\\right]\n\\]\n\\[\n\\nabla_{\\eta}\\phi_{2}^{v}\\left({\\xi}_{1},{\\xi}_{2}\\right) =\\left[\\begin{array}{c} \\frac{dl_{1}\\left(\\eta_{1}\\right)}{d\\eta_{1}}l_{0}\\left(\\eta_{2}\\right)\\\\ l_{1}\\left(\\eta_{1}\\right)\\frac{d}{d\\eta_{2}}l_{0}\\left(\\eta_{2}\\right) \\end{array}\\right]\n\\]\n\\[\n\\nabla_{\\eta}\\phi_{3}^{v}\\left({\\xi}_{1},{\\xi}_{2}\\right) =\\left[\\begin{array}{c} \\frac{d}{d\\eta_{1}}l_{1}\\left(\\eta_{1}\\right)l_{1}\\left(\\eta_{2}\\right)+\\frac{d}{d\\eta_{1}}l_{0}\\left(\\eta_{1}\\right)l_{1}\\left(\\eta_{2}\\right)\\\\ l_{1}\\left(\\eta_{1}\\right)\\frac{d}{d\\eta_{2}}l_{1}\\left(\\eta_{2}\\right)+l_{0}\\left(\\eta_{1}\\right)\\frac{d}{d\\eta_{2}}l_{1}\\left(\\eta_{2}\\right) \\end{array}\\right]\n\\]\n\n\nEdge basis functions (in terms of biunit square)\n\\[\n\\phi_{k_{1}}^{e_{1}}\\left(\\xi_{1},\\xi_{2}\\right)= l_{0}\\left(\\eta_{1}\\right)l_{1}\\left(\\eta_{1}\\right)P_{k_{1}-2}^{\\left(1,1\\right)}\\left(\\eta_{1}\\right)\\left[l_{0}\\left(\\eta_{2}\\right)\\right]^{k_{1}},k_{1}=2,3,\\cdots,p^{e_{1}}\n\\]\n\\[\n\\phi_{k_{2}}^{e_{2}}\\left(\\xi_{1},\\xi_{2}\\right)= l_{0}\\left(\\eta_{1}\\right)l_{0}\\left(\\eta_{2}\\right)l_{1}\\left(\\eta_{2}\\right)P_{k_{2}-2}^{\\left(1,1\\right)}\\left(\\eta_{2}\\right),k_{2}=2,3,\\cdots,p^{e_{2}}\n\\]\n\\[\n\\phi_{k_{2}}^{e_{3}}\\left(\\xi_{1},\\xi_{2}\\right)= l_{1}\\left(\\eta_{1}\\right)l_{0}\\left(\\eta_{2}\\right)l_{1}\\left(\\eta_{2}\\right)P_{k_{2}-2}^{\\left(1,1\\right)}\\left(\\eta_{2}\\right),k_{2}=2,3,\\cdots,p^{e_{3}}\n\\]\n\n\nCell basis functions (in terms of biunit square)\n\\[\n\\phi_{k_{1},k_{2},t}^{b}\\left(\\xi_{1},\\xi_{2}\\right)= l_{0}\\left(\\eta_{1}\\right)l_{1}\\left(\\eta_{1}\\right)P_{k_{1}-2}^{\\left(1,1\\right)}\\left(\\eta_{1}\\right)\\left[l_{0}\\left(\\eta_{2}\\right)\\right]^{k_{1}}l_{1}\\left(\\eta_{2}\\right)P_{k_{2}-2}^{\\left(2k_{1}-1,1\\right)}\\left(\\eta_{2}\\right),k_{1},k_{2}\\ge2,k_{1}+k_{2}\\le m+1\n\\]",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#numerical-integration",
+    "href": "h1-conforming-triangle.html#numerical-integration",
+    "title": "Triangle",
+    "section": "Numerical integration",
+    "text": "Numerical integration\n\nFor evaluating the integrals on reference triangle one needs to employ the high order accurate quadrature rules. In this chapter we will discuss the two types of quadrature rules on reference triangle. The first type is simpler but less economical. These rules are derived by using Duffy mapping (collapsed coordinates) and tensor product of quadrature rules on bi-unit quadrangle. The other type of quadrature rules are more economical, but they are difficult to generate.\n\nTensor product based quadrature rules\nLet \\(x_{1},x_{2}\\) be the coordinates in the reference unit triangle \\(\\mathcal{T}\\), and \\(\\eta_{1},\\eta_{2}\\) be the coordinates in reference bi-unit square \\(\\mathcal{Q}\\) (see Figure fig-triangle-square-map).\n\\[\n\\mathcal{T}:=\\left\\{ \\left(x_{1},x_{2}\\right)\\in\\mathbb{R}^{2}:0&lt;x_{1},x_{2};x_{1}+x_{2}&lt;1\\right\\}\n\\]\n\\[\n\\mathcal{Q}:=\\left\\{ \\left(\\eta_{1},\\eta_{2}\\right)\\in\\mathbb{R}^{2}:-1&lt;\\eta_{1},\\eta_{2}&lt;1\\right\\}\n\\]\n\\[\n\\int_{\\mathcal{T}} f(\\xi_{1}, \\xi_{2}) d\\Omega = \\int_{\\mathcal{Q}} F(\\eta_1, \\eta_2) J_{TQ} d\\Omega\n\\]\nThe mapping between \\(\\mathcal{Q}\\) and \\(\\mathcal{T}\\), \\(\\left(\\eta_{1},\\eta_{2}\\right)\\rightarrow\\left(\\xi_{1},\\xi_{2}\\right)\\) is given by:\n\\[\n\\xi_{1}=\\frac{1}{4}\\left(1+\\eta_{1}\\right)\\left(1-\\eta_{2}\\right)\n\\]\n\\[\n\\xi_{2}=\\frac{\\eta_{2}+1}{2}\n\\]\nThe determinant of Jacobian of this mapping is given by\n\\[\nJ_{TQ} = \\frac{1}{8}(1-\\eta_{2})\n\\]\nTherefore,\n\\[\n\\int_{\\mathcal{T}} f(\\xi_{1}, \\xi_{2}) d\\Omega = \\frac{1}{8} \\int_{\\mathcal{Q}} F(\\eta_1, \\eta_2) (1-\\eta_{2}) d\\Omega\n\\]\nNow, we can use a tensor-product Gaussian formula in \\(\\mathcal{Q}\\). To do so we will use following strategy:\n\nGenerate \\(N+1\\) Gauss Legendre Lobatto points in \\(\\eta_1\\) direction.\nGenerate \\(N\\) point Left Gauss Radau points in \\(\\eta_2\\) direction with weight \\((1-\\eta_2)\\). This means left Gauss Jacobi Radau points with \\(\\alpha=1\\), \\(\\beta=0\\).\n\n\nThe Left Gauss Radau rule is preferable to N+1 point Gauss Lobatto points. This is because it excludes the singular point \\(\\eta_{2} = 1\\) from the integration nodes which makes life easier in the construction of stiffness matrices and improves the condition number.\n\n\n\n\n\n\n\nAccuracy\n\n\n\nThis formula is exact for all polynomials in \\(\\mathcal{Q}\\) of degree \\(\\le 2N-1\\) in each variable \\(\\eta_{1}\\), \\(\\eta_{2}\\).\nThis formula is also exact for all polynomials in \\(\\mathcal{T}\\) of global degree \\(2N-1\\) in the variables \\(\\xi_{1}\\) and \\(\\xi_{2}\\).\n\n\nNote that number of degrees of freedom in triangle is\n\\[\n\\frac{1}{2}(N+1)(N+2)\n\\]\nCompare to this number, then total number of quadrature points are \\(N(N+1)\\), which is almost double.\n\n\n\n\n\n\nCaution\n\n\n\nTherefore, we should not use these quadrature points to construct Lagrange polynomial on triangles.\n\n\n\n\nEconomical quadrature rules\nDunavant presented an overview of minimum number of quadrature points for Gaussian quadrature over triangles as show in table below.\n\n\n\nOrder\nMin number of points\nAchieved number of points\n\n\n\n\n1\n1\n1\n\n\n2\n3\n3\n\n\n3\n4\n4\n\n\n4\n6\n6\n\n\n5\n7\n7\n\n\n6\n12\n12\n\n\n7\n13\n13\n\n\n8\n16\n16\n\n\n9\n19\n19\n\n\n10\n24\n25\n\n\n11\n27\n27\n\n\n12\n33\n33\n\n\n13\n36\n37\n\n\n14\n40\n42\n\n\n15\n45\n48\n\n\n16\n51\n52\n\n\n17\n55\n61\n\n\n18\n63\n70\n\n\n19\n67\n73\n\n\n20\n73\n79\n\n\n\n\nOrder 1\netaj (order=1)=\n\n\n\n\nPoint 1\n\n\n\n\n\\(\\xi_1\\)\n0.33333\n\n\n\\(\\xi_2\\)\n0.33333\n\n\n\\(w\\)\n0.5\n\n\n\n\n\nOrder 2\netaj (order=2)=\n\n\n\n0.66667\n0.16667\n0.16667\n\n\n0.16667\n0.66667\n0.16667\n\n\n0.16667\n0.16667\n0.16667\n\n\n\n\n\norder 3\n\n\n\n0.33333\n0.2\n0.2\n0.6\n\n\n0.33333\n0.2\n0.6\n0.2\n\n\n-0.28125\n0.26042\n0.26042\n0.26042\n\n\n\n\n\norder 4\n\n\n\n\n\n\n\n\n\n\n\n9.15762E-02\n0.81685\n9.15762E-02\n0.44595\n0.44595\n0.1081\n\n\n9.15762E-02\n9.15762E-02\n0.81685\n0.1081\n0.44595\n0.44595\n\n\n5.49759E-02\n5.49759E-02\n5.49759E-02\n0.11169\n0.11169\n0.11169",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-triangle.html#barycentric-coordiantes",
+    "href": "h1-conforming-triangle.html#barycentric-coordiantes",
+    "title": "Triangle",
+    "section": "Barycentric coordiantes",
+    "text": "Barycentric coordiantes\nBarycentric coordinates are also known as the area coordinates. They have been used to construct the basis functions with rotational symmetry. Barycentric coordinates are denoted by \\(l_1\\), \\(l_{2}\\), \\(l_{3}\\), which are given by\n\\[\nl_{i} = \\frac{A_{i}}{A}, i=1,2,3\n\\]\nwhere,\n\\[\nA_{1} + A_{2} + A_{3} = A\n\\]\nIn this way, barycentric coordinates are NOT independent of each other as they satisfies the following equation:\n\\[\nl_{1} + l_{3} + l_{3} = 1\n\\]\n\nBarycentric coordinates for biunit triangle\n\\[\nl_{1}=-\\frac{\\xi_{1}+\\xi_{2}}{2}\n\\]\n\\[\nl_{2}=\\frac{1}{2}\\left(1+\\xi_{1}\\right)\n\\]\n\\[\nl_{3}=\\frac{1}{2}\\left(1+\\xi_{2}\\right)\n\\]\n\n\nBarycentric coordinates for unit triangle\n\\[\nl_{1}= 1 - \\xi_{1} - \\xi_{2}\n\\]\n\\[\nl_{2}= \\xi_{1}\n\\]\n\\[\nl_{3}= \\xi_{2}\n\\]\n\n\nRelationship between barycentric coordinates and collapsed coordinate\n\nTODO",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Triangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-quadrangle.html",
+    "href": "h1-conforming-quadrangle.html",
+    "title": "Quadrangle",
+    "section": "",
+    "text": "Four-node quadrangle element",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quadrangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-quadrangle.html#nine-node-quadrangle-element",
+    "href": "h1-conforming-quadrangle.html#nine-node-quadrangle-element",
+    "title": "Quadrangle",
+    "section": "Nine-node quadrangle element",
+    "text": "Nine-node quadrangle element",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quadrangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-quadrangle.html#sixteen-node-quadrangle-element",
+    "href": "h1-conforming-quadrangle.html#sixteen-node-quadrangle-element",
+    "title": "Quadrangle",
+    "section": "Sixteen-node quadrangle element",
+    "text": "Sixteen-node quadrangle element",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quadrangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-quadrangle.html#element-with-straight-edge",
+    "href": "h1-conforming-quadrangle.html#element-with-straight-edge",
+    "title": "Quadrangle",
+    "section": "Element with straight edge",
+    "text": "Element with straight edge",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quadrangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-quadrangle.html#isoparametric-elements",
+    "href": "h1-conforming-quadrangle.html#isoparametric-elements",
+    "title": "Quadrangle",
+    "section": "Isoparametric elements",
+    "text": "Isoparametric elements",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quadrangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-quadrangle.html#master-element",
+    "href": "h1-conforming-quadrangle.html#master-element",
+    "title": "Quadrangle",
+    "section": "Master element",
+    "text": "Master element\n\n\n\n\n\n\nFigure 1: Master element for quadrangle",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quadrangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-quadrangle.html#tensor-product-based-basis",
+    "href": "h1-conforming-quadrangle.html#tensor-product-based-basis",
+    "title": "Quadrangle",
+    "section": "Tensor-product based basis",
+    "text": "Tensor-product based basis\nIf we have higher order polynomial family in one dimension, then by using tensor product we can construct the higher order polynomial basis on quadrangle. Following points are noteworthy.\n\nIn each dimension we can have different order of interpolation\nIn each dimension we can have different family of polynomials\nWe can also construct the nodal Lagrange polynomials.\n\nLet \\(\\mathcal{P}_{p}\\left(e\\right)\\) denotes the space of polynomials of the order of at most \\(p\\), defined on one-dimensional interval \\(e\\).\nUsually,\n\n\\(e=\\left[-1,1\\right]\\), that is, biunit interval, or\n\\(e=\\left[0,1\\right]\\), that is, unit interval.\n\nLet \\({\\bf k}=\\left(k_{1},k_{2}\\right)\\), then we defined the following polynomial space on \\(\\mathcal{Q}\\):\n\\[\n\\mathcal{Q}_{p,q}=\\left\\{ \\xi_{1}^{i}\\xi_{2}^{j} \\vert 0 \\le i \\le p, 0 \\le j \\le q\\right\\}\n\\]\nthen, \\(\\phi_{k1,k2}\\in \\mathcal{Q}_{p,q}\\)\n\\[\n\\phi_{k1,k2}\\left(\\xi_{1},\\xi_{2}\\right):=\\psi_{k_{1}}^{a}\\left(\\xi_{1}\\right)\\psi_{k_{2}}^{a}\\left(\\xi_{2}\\right)\n\\]\nwhere,\n\n\\(\\psi_{k_{1}}\\) and \\(\\phi_{k1,k2}\\) has order \\(k_{1}\\) in \\(\\xi_{1}\\) direction, and\n\\(\\psi_{k_{2}}\\) and \\(\\phi_{k1,k2}\\) has order \\(k_{2}\\) in \\(\\xi_{2}\\) direction.\n\nThese polynomials form the basis of \\(\\mathcal{Q}_{p,q}\\), that is:\n\\[\n\\mathcal{Q}_{p,q}=\\left\\{ \\phi_{k1,k2}\\left(\\xi_{1},\\xi_{2}\\right)\\vert 0 \\le k_{1}\\le p,0\\le k_{2}\\le q\\right\\}\n\\]\n\n\n\n\n\n\nThe dimension of \\(Q_{p,q}\\) is \\(\\left(p+1\\right)\\left(q+1\\right)\\).\n\n\n\n\\[\n\\phi_{{\\bf k}}\\left(\\xi,\\eta\\right)=\\phi_{k_{1}}\\left(\\xi\\right)\\phi_{k_{2}}\\left(\\eta\\right)\n\\]\n\nPolynomials space\n\nTODO Add Pascal triangle\n\n\n\nExamples\n\n\n\n\n\n\nFigure 2: Lobatto polynomials over quadrangle\n\n\n\n\n\n\n\n\n\nFigure 3: Legendre polynomials over quadrangle\n\n\n\nFigure fig-lobatto-poly-quadrangle shows the basis of \\(\\mathcal{Q}_{4,4}\\) for Lobatto polynomials. Figure fig-legendre-poly-quadrangle shows the basis of \\(\\mathcal{Q}_{4,4}\\) for Legendre polynomials.",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quadrangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-quadrangle.html#hierarchic-basis",
+    "href": "h1-conforming-quadrangle.html#hierarchic-basis",
+    "title": "Quadrangle",
+    "section": "Hierarchic basis",
+    "text": "Hierarchic basis\nIn Heirarchical basis, we decompose the basis function in terms of vertex, facet, and cell basis. This type of decomposition is particularly convenient when a \\(C^{0}\\) global expansion base is required since a global expansion can be generated from the local expansion simply by matching the shape fo individual boundary modes.\nTo construct the heirarchical basis, following notations will be used:\n\nInside the element, in the \\(\\xi_{1}\\) direction, the maximum polynomial order is denoted by \\(p^{b}\\)\nInside the element, in \\(\\xi_{2}\\) direction, the maximum polynomial order is denoted by \\(q^{b}\\)\nAt horizontal edges, \\(e_{3}\\) and \\(e_{4}\\), the maximum polynomial order will be denoted by \\(p^{e_{3}}\\) and \\(p^{e_{4}}\\), respectively.\nAt vertical edges, \\(e_{1}\\) and \\(e_{2}\\), the maximum polynomial order will be denoted by \\(q^{e_{1}}\\) and \\(q^{e_{2}}\\), respectively.\n\n\n\n\n\n\n\nOn the master element we have,\n\\[\np^{e_{3}},p^{e_{4}}\\le p^{b}\n\\]\nand\n\\[\nq^{e_{1}},q^{e_{2}}\\le q^{b}\n\\]\n\n\n\nThese local orders of approximation determine that a finite element of the form\n\\[\n\\mathcal{K}_{q}^{1}=\\left(K_{q},W_{q},\\sum_{q}^{1}\\right)\n\\]\nhas to be equipped with a polynomial space:\n\\[\nW_{q}=\\left\\{ w\\in \\mathcal{Q}_{p^{b},q^{b}};w\\vert_{e_{j}}\\in\\mathcal{P}_{p^{e_{j}}}\\left(e_{j}\\right),j=1,2,3,4\\right\\}\n\\]\nLet\n\\[\nl_{0}\\left(x\\right)=\\frac{1}{2}\\left(1-x\\right)\n\\]\n\\[\nl_{1}\\left(x\\right)=\\frac{1}{2}\\left(1+x\\right)\n\\]\n\\[\nl_{m}(x)=-l_{0}(x)l_{1}(x)\\frac{\\sqrt{2\\left(2m-1\\right)}}{m-1}P_{m-2}^{\\left(1,1\\right)}(x),\\quad m\\ge2\n\\]\nor\n\\[\nl_{m}(x)=-l_{0}(x)l_{1}(x)\\frac{\\sqrt{8\\left(2m-1\\right)}}{m\\left(m-1\\right)}P_{m-2}^{(3/2)}\\left(x\\right),\\quad m\\ge2\n\\]\nwhere, \\(P_{m-2}^{1,1}\\) is the Jacobi polynomial of order \\(m-2\\), and \\(P_{m-2}^{(3/2)}\\) is the Ultraspherical polynomial of order \\(m-2\\).\n\nMaster element\nMaster element for quadrangle is a little different than the master element for Lagrange polynomials.\n\n\nVertex functions\nThere are four vertex basis in a quadrangle corresponding to each vertex. The vertex basis corresponding to a vertex \\(v_{i}\\) will be denoted by \\(\\phi_{q}^{v_{i}}\\). This basis function vanishes at all remaining vertices \\(v_{j}, j=1, \\cdots, 4, j \\ne i\\).\n\n\n\n\n\n\nVertex basis are linear in \\(\\xi_{1}\\), \\(\\xi_{2}\\).\n\n\n\n\\[\n\\phi_{q}^{v_{1}}\\left(\\xi_{1},\\xi_{2}\\right)=l_{0}\\left(\\xi_{1}\\right)l_{0}\\left(\\xi_{2}\\right)\n\\]\n\\[\n\\phi_{q}^{v_{2}}\\left(\\xi_{1},\\xi_{2}\\right)=l_{1}\\left(\\xi_{1}\\right)l_{0}\\left(\\xi_{2}\\right)\n\\]\n\\[\n\\phi_{q}^{v_{3}}\\left(\\xi_{1},\\xi_{2}\\right)=l_{1}\\left(\\xi_{1}\\right)l_{1}\\left(\\xi_{2}\\right)\n\\]\n\\[\n\\phi_{q}^{v_{4}}\\left(\\xi_{1},\\xi_{2}\\right)=l_{0}\\left(\\xi_{1}\\right)l_{1}\\left(\\xi_{2}\\right)\n\\]\n\n\nEdge bubble functions\n\\[\n\\phi_{k_{2},q}^{e_{1}}\\left(\\xi_{1},\\xi_{2}\\right)=l_{0}\\left(\\xi_{1}\\right)l_{k_{2}}\\left(\\xi_{2}\\right),k_{2}=2,3,\\cdots,q^{e_{1}}\n\\]\n\\[\n\\phi_{k_{2},q}^{e_{2}}\\left(\\xi_{1},\\xi_{2}\\right)=l_{1}\\left(\\xi_{1}\\right)l_{k_{2}}\\left(\\xi_{2}\\right),k_{2}=2,3,\\cdots,q^{e_{2}}\n\\]\n\\[\n\\phi_{k_{1},q}^{e_{3}}\\left(\\xi_{1},\\xi_{2}\\right)=l_{k_{1}}\\left(\\xi_{1}\\right)l_{0}\\left(\\xi_{2}\\right),k_{1}=2,3,\\cdots,p^{e_{3}}\n\\]\n\\[\n\\phi_{k_{1},q}^{e_{4}}\\left(\\xi_{1},\\xi_{2}\\right)=l_{k_{1}}\\left(\\xi_{1}\\right)l_{1}\\left(\\xi_{2}\\right),k_{1}=2,3,\\cdots,p^{e_{4}}\n\\]\n\n\n\n\n\n\nThe number of function on \\(e_{1},e_{2},e_{3},e_{4}\\) are \\(q^{e_{1}}-1\\), \\(q^{e_{2}}-1\\), \\(p^{e_{3}}-1\\), and \\(p^{e_{4}}-1\\). Therefore, for edge bubble function to exist, \\(p^{e_3}\\), \\(p^{e_4}\\), \\(q^{e_1}\\), and \\(q^{e_2}\\) should be greater than or equal to 2.\n\n\n\n\n\nCell Bubble functions\n\\[\n\\phi_{k_{1},k_{2},q}^{b}\\left(\\xi_{1},\\xi_{2}\\right)=l_{k_{1}}\\left(\\xi_{1}\\right)l_{k_{2}}\\left(\\xi_{2}\\right),2\\le k_{1}\\le p^{b},2\\le k_{2}\\le q^{b}\n\\]\nTherefore, inorder to construct a higher order polynomial space on quadrangle, we need to specify, \\(q^{e_{1}},q^{e_{2}},p^{e_{3}},p^{e_{4}}\\),\\(p^{b}\\) and \\(q^{b}\\), with \\(p^{e_{3}},p^{e_{4}}\\le p^{b}\\) and \\(q^{e_{1}},q^{e_{2}}\\le q^{b}\\).\n\n\nHeirarchical degrees of freedom\n\nTotal vertex function \\(4\\)\nTotal number of edge bubble function \\(p^{e_{3}}+p^{e_{4}}+q^{e_{1}}+q^{e_{2}}-4\\)\nTotal number of cell bubble function \\(\\left(p^{b}-1\\right)\\times\\left(q^{b}-1\\right)\\)\n\n\n\n\n\n\n\nThe local order of approximation \\(p^{b}\\), \\(q^{b}\\), \\(p^{e_{3}}\\), \\(p^{e_4}\\), \\(q^{e_1}\\), and \\(q^{e_2}\\) should obey the minimum rule for \\(H^1\\)-conforming approximation. This rule states that the polynomial order assigned to an edge in the physical mesh is equal to the minimum of appropriate directional orders in the interior of adjacent elements.\n\n\n\n\n\n\n\n\n\nMinimum rule for \\(H^{1}\\) conforming approximation\n\n\n\n\\[\np^{e_3}, p^{e_4} \\le p^{b}\n\\]\n\\[\nq^{e_1}, q^{e_2} \\le q^{b}\n\\]",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quadrangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-quadrangle.html#affine-coordinates",
+    "href": "h1-conforming-quadrangle.html#affine-coordinates",
+    "title": "Quadrangle",
+    "section": "Affine coordinates",
+    "text": "Affine coordinates\nFor the master element we can define following affine coordinates:\n\\[\n\\lambda_{1} = \\frac{\\xi_{1} + 1}{2}\n\\]\n\\[\n\\lambda_{2} = \\frac{1- \\xi_{1} }{2}\n\\]\n\\[\n\\lambda_{3} = \\frac{\\xi_{2} + 1}{2}\n\\]\n\\[\n\\lambda_{4} = \\frac{1- \\xi_{2} }{2}\n\\]\nThen, it is convenient to write the shape function in terms of affine coordinates by using:\n\\[\n\\xi_{1} = \\lambda_{1} - \\lambda_{2}\n\\]\n\\[\n\\xi_{2} = \\lambda_{3} - \\lambda_{4}\n\\]\n\nIt is advantageous to describe the shape functions in terms of affine coordinates as they are invariants with respect to the affine transformation of the reference domain.",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quadrangle</span>"
+    ]
+  },
+  {
+    "objectID": "h1-conforming-quadrangle.html#serendipity-basis",
+    "href": "h1-conforming-quadrangle.html#serendipity-basis",
+    "title": "Quadrangle",
+    "section": "Serendipity basis",
+    "text": "Serendipity basis",
+    "crumbs": [
+      "H1 conforming basis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quadrangle</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "5  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  }
+]

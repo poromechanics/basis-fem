@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="65.993983mm" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 376.117 187.093" width="132.66899mm" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<clipPath id="ArtboardFrame">
+<rect height="187.093" width="376.117" x="0" y="0"/>
+</clipPath>
+<g clip-path="url(#ArtboardFrame)" id="layer1">
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.85308" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 9.32945 163.106)" x="0" y="0">
+<tspan textLength="1.92654" x="0" y="3">1</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.85308" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 148.549 164.211)" x="0" y="0">
+<tspan textLength="1.92654" x="0" y="3">2</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.85308" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 10.6845 36.9989)" x="0" y="0">
+<tspan textLength="1.92654" x="0" y="3">3</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.2109" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 18.1459 175.1)" x="0" y="0">
+<tspan textLength="8.29065" x="0" y="3">(-1,-1)</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.2109" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 79.4319 93.8503)" x="0" y="0">
+<tspan textLength="6.15214" x="0" y="3">(0,0)</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.2109" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 21.8355 26.9266)" x="0" y="0">
+<tspan textLength="7.2214" x="0" y="3">(-1,1)</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="4" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 153.59 111.485)" x="0" y="0">
+<tspan textLength="4" x="0" y="4">x1</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="4" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 57.1815 8.57262)" x="0" y="0">
+<tspan textLength="4" x="0" y="4">x2</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.38666" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 96.4401 74.8315)" x="0" y="0">
+<tspan textLength="19.6585" x="0" y="3">Biunit triangle</tspan>
+</text>
+<g opacity="1">
+<path d="M175.82 107.392C164.581 107.392-7.93191e-06 107.392-7.93191e-06 107.392" fill="none" stroke="#666666" stroke-dasharray="0.9676336646080017" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.967634"/>
+<g fill="#666666" stroke="none">
+<path d="M174.974 107.392L172.434 110.779L179.207 107.392L172.434 104.006L174.974 107.392Z" fill="#666666"/>
+</g>
+</g>
+<g opacity="1">
+<path d="M79.8588 11.2725C79.8588 22.5121 79.8588 187.093 79.8588 187.093" fill="none" stroke="#666666" stroke-dasharray="0.9676336646080017" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.967634"/>
+<g fill="#666666" stroke="none">
+<path d="M79.8588 12.1192L83.2455 14.6592L79.8588 7.88578L76.4721 14.6592L79.8588 12.1192Z" fill="#666666"/>
+</g>
+</g>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.38666" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 9.77553 104.702)" x="0" y="0">
+<tspan textLength="3.19649" x="0" y="3">e2</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.38666" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 84.7936 177.375)" x="0" y="0">
+<tspan textLength="3.19649" x="0" y="3">e1</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.38666" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 107.483 120.366)" x="0" y="0">
+<tspan textLength="3.19649" x="0" y="3">e3</tspan>
+</text>
+<path d="M23.3713 44.1539L23.3713 171.67L139.636 171.67L23.3713 44.1539Z" fill="#eebf5b" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.600074"/>
+<path d="M133.927 170.572C133.927 168.043 135.977 165.994 138.506 165.994C141.035 165.994 143.085 168.043 143.085 170.572C143.085 173.101 141.035 175.151 138.506 175.151C135.977 175.151 133.927 173.101 133.927 170.572Z" fill="#d9d7b7" fill-rule="nonzero" opacity="1" stroke="#241c1c" stroke-linecap="round" stroke-linejoin="miter" stroke-width="0.519148"/>
+<path d="M18.6162 170.814C18.6162 168.285 20.6661 166.235 23.1948 166.235C25.7235 166.235 27.7734 168.285 27.7734 170.814C27.7734 173.343 25.7235 175.393 23.1948 175.393C20.6661 175.393 18.6162 173.343 18.6162 170.814Z" fill="#d9d7b7" fill-rule="nonzero" opacity="1" stroke="#241c1c" stroke-linecap="round" stroke-linejoin="miter" stroke-width="0.519148"/>
+<path d="M19.41 44.5921C19.41 42.0634 21.4599 40.0135 23.9886 40.0135C26.5172 40.0135 28.5671 42.0634 28.5671 44.5921C28.5671 47.1208 26.5172 49.1707 23.9886 49.1707C21.4599 49.1707 19.41 47.1208 19.41 44.5921Z" fill="#d9d7b7" fill-rule="nonzero" opacity="1" stroke="#241c1c" stroke-linecap="round" stroke-linejoin="miter" stroke-width="0.519148"/>
+<g opacity="1">
+<path d="M23.5958 82.9127C23.5959 82.9109 23.3713 117.663 23.3713 117.663" fill="none" stroke="#ff0000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.600074"/>
+<g fill="#ff0000" stroke="none">
+<path d="M23.5925 83.4378L25.6825 85.0265L23.6094 80.8125L21.4821 84.9994L23.5925 83.4378Z" fill="#ff0000"/>
+</g>
+</g>
+<g opacity="1">
+<path d="M59.6025 172.009C71.2791 171.896 82.955 171.783 94.6302 171.67" fill="#ff5555" fill-rule="nonzero" stroke="none"/>
+<path d="M92.5287 171.69C92.5303 171.69 59.6025 172.009 59.6025 172.009" fill="none" stroke="#0000ff" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.600074"/>
+<g fill="#0000ff" stroke="none">
+<path d="M92.0036 171.695L90.4488 173.811L94.6288 171.67L90.4082 169.61L92.0036 171.695Z" fill="#0000ff"/>
+</g>
+</g>
+<g opacity="1">
+<path d="M88.6294 117.11C80.3417 108.044 72.053 98.9774 63.7648 89.9111" fill="#00ff00" fill-rule="nonzero" stroke="none"/>
+<path d="M65.182 91.4614C65.1808 91.46 88.6294 117.11 88.6294 117.11" fill="none" stroke="#ff00ff" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.600074"/>
+<g fill="#ff00ff" stroke="none">
+<path d="M65.5363 91.8489L68.1493 91.5944L63.765 89.9113L65.049 94.4286L65.5363 91.8489Z" fill="#ff00ff"/>
+</g>
+</g>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.85308" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 204.354 157.105)" x="0" y="0">
+<tspan textLength="1.92654" x="0" y="3">1</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.85308" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 333.801 148.922)" x="0" y="0">
+<tspan textLength="1.92654" x="0" y="3">2</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.85308" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 205.709 30.9982)" x="0" y="0">
+<tspan textLength="1.92654" x="0" y="3">3</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.2109" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 322.926 169.101)" x="0" y="0">
+<tspan textLength="6.15214" x="0" y="3">(1,0)</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.2109" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 221.168 168.406)" x="0" y="0">
+<tspan textLength="6.15214" x="0" y="3">(0,0)</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.2109" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 224.742 31.2942)" x="0" y="0">
+<tspan textLength="6.15214" x="0" y="3">(0,1)</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="4" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 347.391 143.749)" x="0" y="0">
+<tspan textLength="4" x="0" y="4">x1</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="4" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 226.601 16.2765)" x="0" y="0">
+<tspan textLength="4" x="0" y="4">x2</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.38666" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 258.701 53.3614)" x="0" y="0">
+<tspan textLength="17.2111" x="0" y="3">Unit triangle</tspan>
+</text>
+<g opacity="1">
+<path d="M374.083 164.098C362.844 164.098 198.263 164.098 198.263 164.098" fill="none" stroke="#666666" stroke-dasharray="0.9676336646080017" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.967634"/>
+<g fill="#666666" stroke="none">
+<path d="M373.237 164.098L370.697 167.485L377.47 164.098L370.697 160.711L373.237 164.098Z" fill="#666666"/>
+</g>
+</g>
+<g opacity="1">
+<path d="M218.675 5.9838C218.675 17.2234 218.675 181.804 218.675 181.804" fill="none" stroke="#666666" stroke-dasharray="0.9676336646080017" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.967634"/>
+<g fill="#666666" stroke="none">
+<path d="M218.675 6.83048L222.062 9.37052L218.675 2.59708L215.288 9.37052L218.675 6.83048Z" fill="#666666"/>
+</g>
+</g>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.38666" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 204.8 98.7014)" x="0" y="0">
+<tspan textLength="3.19649" x="0" y="3">e2</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.38666" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 279.818 171.374)" x="0" y="0">
+<tspan textLength="3.19649" x="0" y="3">e1</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.38666" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 276.411 89.0054)" x="0" y="0">
+<tspan textLength="3.19649" x="0" y="3">e3</tspan>
+</text>
+<path d="M218.396 38.1532L218.396 165.669L334.66 165.669L218.396 38.1532Z" fill="#eebf5b" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.600074"/>
+<path d="M328.952 164.571C328.952 162.043 331.002 159.993 333.53 159.993C336.059 159.993 338.109 162.043 338.109 164.571C338.109 167.1 336.059 169.15 333.53 169.15C331.002 169.15 328.952 167.1 328.952 164.571Z" fill="#d9d7b7" fill-rule="nonzero" opacity="1" stroke="#241c1c" stroke-linecap="round" stroke-linejoin="miter" stroke-width="0.519148"/>
+<path d="M213.641 164.813C213.641 162.284 215.691 160.235 218.219 160.235C220.748 160.235 222.798 162.284 222.798 164.813C222.798 167.342 220.748 169.392 218.219 169.392C215.691 169.392 213.641 167.342 213.641 164.813Z" fill="#d9d7b7" fill-rule="nonzero" opacity="1" stroke="#241c1c" stroke-linecap="round" stroke-linejoin="miter" stroke-width="0.519148"/>
+<path d="M214.434 38.5913C214.434 36.0627 216.484 34.0127 219.013 34.0127C221.542 34.0127 223.592 36.0627 223.592 38.5913C223.592 41.12 221.542 43.1699 219.013 43.1699C216.484 43.1699 214.434 41.12 214.434 38.5913Z" fill="#d9d7b7" fill-rule="nonzero" opacity="1" stroke="#241c1c" stroke-linecap="round" stroke-linejoin="miter" stroke-width="0.519148"/>
+<g opacity="1">
+<path d="M218.62 76.912C218.62 76.9101 218.396 111.662 218.396 111.662" fill="none" stroke="#ff0000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.600074"/>
+<g fill="#ff0000" stroke="none">
+<path d="M218.617 77.437L220.707 79.0258L218.634 74.8118L216.506 78.9986L218.617 77.437Z" fill="#ff0000"/>
+</g>
+</g>
+<g opacity="1">
+<path d="M254.627 166.008C266.304 165.895 277.979 165.782 289.655 165.669" fill="#ff5555" fill-rule="nonzero" stroke="none"/>
+<path d="M287.553 165.689C287.555 165.689 254.627 166.008 254.627 166.008" fill="none" stroke="#0000ff" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.600074"/>
+<g fill="#0000ff" stroke="none">
+<path d="M287.028 165.695L285.473 167.81L289.653 165.669L285.433 163.61L287.028 165.695Z" fill="#0000ff"/>
+</g>
+</g>
+<g opacity="1">
+<path d="M283.654 111.109C275.366 102.044 267.077 92.9767 258.789 83.9103" fill="#00ff00" fill-rule="nonzero" stroke="none"/>
+<path d="M260.206 85.4607C260.205 85.4593 283.654 111.109 283.654 111.109" fill="none" stroke="#ff00ff" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.600074"/>
+<g fill="#ff00ff" stroke="none">
+<path d="M260.561 85.8482L263.174 85.5937L258.789 83.9105L260.073 88.4279L260.561 85.8482Z" fill="#ff00ff"/>
+</g>
+</g>
+</g>
+</svg>

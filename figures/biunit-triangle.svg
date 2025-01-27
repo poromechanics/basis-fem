@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 200 200" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Layer-1" vectornator:layerName="Layer 1">
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="8" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 24.3294 163.106)" vectornator:layerName="tspan" vectornator:width="7" x="0" y="0">
+<tspan textLength="4" x="0" y="7">1</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="8" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 163.549 164.211)" vectornator:layerName="tspan" vectornator:width="7" x="0" y="0">
+<tspan textLength="4" x="0" y="7">2</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="8" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 25.6845 36.9989)" vectornator:layerName="tspan" vectornator:width="7" x="0" y="0">
+<tspan textLength="4" x="0" y="7">3</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="8" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 33.1459 175.1)" vectornator:layerName="tspan" vectornator:width="23.6562" x="0" y="0">
+<tspan textLength="20.6562" x="0" y="7">(-1,-1)</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="8" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 94.4319 93.8503)" vectornator:layerName="tspan" vectornator:width="18.3281" x="0" y="0">
+<tspan textLength="15.3281" x="0" y="7">(0,0)</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="8" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 36.8355 26.9266)" vectornator:layerName="tspan" vectornator:width="20.9922" x="0" y="0">
+<tspan textLength="17.9922" x="0" y="7">(-1,1)</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="8" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 168.59 111.485)" vectornator:layerName="tspan" vectornator:width="11" x="0" y="0">
+<tspan textLength="8" x="0" y="7">x1</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="8" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 72.1815 8.57262)" vectornator:layerName="tspan" vectornator:width="11" x="0" y="0">
+<tspan textLength="8" x="0" y="7">x2</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="8" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 111.44 74.8315)" vectornator:layerName="tspan" vectornator:width="49.4375" x="0" y="0">
+<tspan textLength="46.4375" x="0" y="7">Biunit triangle</tspan>
+</text>
+<g opacity="1" vectornator:layerName="path">
+<path d="M190.82 107.392C179.581 107.392 15 107.392 15 107.392" fill="none" opacity="1" stroke="#666666" stroke-dasharray="0.9676336646080017" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.967634" vectornator:layerName="path"/>
+<path d="M189.974 107.392L187.434 110.779L194.207 107.392L187.434 104.006L189.974 107.392Z" fill="#666666" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="path"/>
+</g>
+<g opacity="1" vectornator:layerName="path 1">
+<path d="M94.8588 11.2725C94.8588 22.5121 94.8588 187.093 94.8588 187.093" fill="none" opacity="1" stroke="#666666" stroke-dasharray="0.9676336646080017" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.967634" vectornator:layerName="path"/>
+<path d="M94.8588 12.1192L98.2455 14.6592L94.8588 7.88578L91.4721 14.6592L94.8588 12.1192Z" fill="#666666" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="path"/>
+</g>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="8" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 24.7755 96.7021)" vectornator:layerName="tspan" vectornator:width="10.5508" x="0" y="0">
+<tspan textLength="7.55078" x="0" y="7">e2</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="8" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 99.7936 177.375)" vectornator:layerName="tspan" vectornator:width="10.5508" x="0" y="0">
+<tspan textLength="7.55078" x="0" y="7">e1</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="8" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 122.483 120.366)" vectornator:layerName="tspan" vectornator:width="10.5508" x="0" y="0">
+<tspan textLength="7.55078" x="0" y="7">e3</tspan>
+</text>
+<path d="M38.3713 44.1539L38.3713 171.67L154.636 171.67L38.3713 44.1539Z" fill="#eebf5b" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.600074" vectornator:layerName="path 2"/>
+<path d="M148.927 170.572C148.927 168.043 150.977 165.994 153.506 165.994C156.035 165.994 158.085 168.043 158.085 170.572C158.085 173.101 156.035 175.151 153.506 175.151C150.977 175.151 148.927 173.101 148.927 170.572Z" fill="#d9d7b7" fill-rule="nonzero" opacity="1" stroke="#241c1c" stroke-linecap="round" stroke-linejoin="miter" stroke-width="0.519148" vectornator:layerName="ellipse"/>
+<path d="M33.6162 170.814C33.6162 168.285 35.6661 166.235 38.1948 166.235C40.7235 166.235 42.7734 168.285 42.7734 170.814C42.7734 173.343 40.7235 175.393 38.1948 175.393C35.6661 175.393 33.6162 173.343 33.6162 170.814Z" fill="#d9d7b7" fill-rule="nonzero" opacity="1" stroke="#241c1c" stroke-linecap="round" stroke-linejoin="miter" stroke-width="0.519148" vectornator:layerName="ellipse 1"/>
+<path d="M34.41 44.5921C34.41 42.0634 36.4599 40.0135 38.9886 40.0135C41.5172 40.0135 43.5671 42.0634 43.5671 44.5921C43.5671 47.1208 41.5172 49.1707 38.9886 49.1707C36.4599 49.1707 34.41 47.1208 34.41 44.5921Z" fill="#d9d7b7" fill-rule="nonzero" opacity="1" stroke="#241c1c" stroke-linecap="round" stroke-linejoin="miter" stroke-width="0.519148" vectornator:layerName="ellipse 2"/>
+</g>
+</svg>

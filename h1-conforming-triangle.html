@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Triangle – Basis functions of Finite Element Methods</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./h1-conforming-quadrangle.html" rel="next">
+<link href="./h1-conforming-line.html" rel="prev">
+<link href="././figures/favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-93074729595c0d1bb0917954c6b21507.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta name="twitter:title" content="Triangle – Basis functions of Finite Element Methods">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://poromechanics.github.io/basis-fem/figures/biunit-triangle.svg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./h1-conforming-basis.html">H1 conforming basis</a></li><li class="breadcrumb-item"><a href="./h1-conforming-triangle.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Triangle</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Basis functions of Finite Element Methods</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/poromechanics/basis-fem/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Basis-functions-of-Finite-Element-Methods.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Basis-functions-of-Finite-Element-Methods.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./h1-conforming-basis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">H1 conforming basis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./h1-conforming-line.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Line element</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./h1-conforming-triangle.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Triangle</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./h1-conforming-quadrangle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quadrangle</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#three-node-triangle-element" id="toc-three-node-triangle-element" class="nav-link active" data-scroll-target="#three-node-triangle-element">Three-node triangle element</a></li>
+  <li><a href="#six-node-triangle-element" id="toc-six-node-triangle-element" class="nav-link" data-scroll-target="#six-node-triangle-element">Six-node triangle element</a></li>
+  <li><a href="#triangle-with-straight-edges" id="toc-triangle-with-straight-edges" class="nav-link" data-scroll-target="#triangle-with-straight-edges">Triangle with straight edges</a></li>
+  <li><a href="#isoparameteric-triangle" id="toc-isoparameteric-triangle" class="nav-link" data-scroll-target="#isoparameteric-triangle">Isoparameteric triangle</a></li>
+  <li><a href="#master-element" id="toc-master-element" class="nav-link" data-scroll-target="#master-element">Master element</a>
+  <ul class="collapse">
+  <li><a href="#biunit-triangle" id="toc-biunit-triangle" class="nav-link" data-scroll-target="#biunit-triangle">Biunit triangle</a></li>
+  <li><a href="#unit-triangle" id="toc-unit-triangle" class="nav-link" data-scroll-target="#unit-triangle">Unit triangle</a></li>
+  <li><a href="#master-element-for-orthogonal-and-heirarchical-polynomials" id="toc-master-element-for-orthogonal-and-heirarchical-polynomials" class="nav-link" data-scroll-target="#master-element-for-orthogonal-and-heirarchical-polynomials">Master element for orthogonal and heirarchical polynomials</a></li>
+  <li><a href="#master-element-for-lagrange-polynomials" id="toc-master-element-for-lagrange-polynomials" class="nav-link" data-scroll-target="#master-element-for-lagrange-polynomials">Master element for Lagrange polynomials</a></li>
+  </ul></li>
+  <li><a href="#mapping-from-biunit-tetrahedron-to-unit-tetrahedron" id="toc-mapping-from-biunit-tetrahedron-to-unit-tetrahedron" class="nav-link" data-scroll-target="#mapping-from-biunit-tetrahedron-to-unit-tetrahedron">Mapping from biunit tetrahedron to unit tetrahedron</a></li>
+  <li><a href="#mapping-from-unit-tetrahedron-to-biunit-tetrahedron" id="toc-mapping-from-unit-tetrahedron-to-biunit-tetrahedron" class="nav-link" data-scroll-target="#mapping-from-unit-tetrahedron-to-biunit-tetrahedron">Mapping from unit tetrahedron to biunit tetrahedron</a></li>
+  <li><a href="#high-order-polynomial" id="toc-high-order-polynomial" class="nav-link" data-scroll-target="#high-order-polynomial">High-order polynomial</a>
+  <ul class="collapse">
+  <li><a href="#linear-basis-function-on-triangle" id="toc-linear-basis-function-on-triangle" class="nav-link" data-scroll-target="#linear-basis-function-on-triangle">Linear basis function on triangle</a></li>
+  <li><a href="#pascal-triangle" id="toc-pascal-triangle" class="nav-link" data-scroll-target="#pascal-triangle">Pascal triangle</a></li>
+  <li><a href="#some-useful-results" id="toc-some-useful-results" class="nav-link" data-scroll-target="#some-useful-results">Some useful results</a></li>
+  <li><a href="#high-order-polynomial-expansion-on-triangle" id="toc-high-order-polynomial-expansion-on-triangle" class="nav-link" data-scroll-target="#high-order-polynomial-expansion-on-triangle">High order polynomial expansion on triangle</a></li>
+  </ul></li>
+  <li><a href="#lagrange-polynomials" id="toc-lagrange-polynomials" class="nav-link" data-scroll-target="#lagrange-polynomials">Lagrange polynomials</a>
+  <ul class="collapse">
+  <li><a href="#remarks" id="toc-remarks" class="nav-link" data-scroll-target="#remarks">Remarks</a></li>
+  <li><a href="#lebesque-constant" id="toc-lebesque-constant" class="nav-link" data-scroll-target="#lebesque-constant">Lebesque constant</a></li>
+  <li><a href="#uniform-grid-over-triangles" id="toc-uniform-grid-over-triangles" class="nav-link" data-scroll-target="#uniform-grid-over-triangles">Uniform Grid over triangles</a></li>
+  <li><a href="#lobatto-grid" id="toc-lobatto-grid" class="nav-link" data-scroll-target="#lobatto-grid">Lobatto grid</a></li>
+  <li><a href="#feket-nodes" id="toc-feket-nodes" class="nav-link" data-scroll-target="#feket-nodes">Feket nodes</a></li>
+  <li><a href="#chen-and-babuska-nodes" id="toc-chen-and-babuska-nodes" class="nav-link" data-scroll-target="#chen-and-babuska-nodes">Chen and Babuska nodes</a></li>
+  <li><a href="#hesthaven-nodes" id="toc-hesthaven-nodes" class="nav-link" data-scroll-target="#hesthaven-nodes">Hesthaven nodes</a></li>
+  </ul></li>
+  <li><a href="#appell-polynomials" id="toc-appell-polynomials" class="nav-link" data-scroll-target="#appell-polynomials">Appell polynomials</a>
+  <ul class="collapse">
+  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties">Properties</a></li>
+  </ul></li>
+  <li><a href="#triangle-square-mapping-part1" id="toc-triangle-square-mapping-part1" class="nav-link" data-scroll-target="#triangle-square-mapping-part1">Triangle-Square mapping (part1)</a></li>
+  <li><a href="#triangle-square-mapping-part2" id="toc-triangle-square-mapping-part2" class="nav-link" data-scroll-target="#triangle-square-mapping-part2">Triangle square mapping (part2)</a></li>
+  <li><a href="#orthogonal-basis-on-biunit-square" id="toc-orthogonal-basis-on-biunit-square" class="nav-link" data-scroll-target="#orthogonal-basis-on-biunit-square">Orthogonal basis on biunit square</a>
+  <ul class="collapse">
+  <li><a href="#partial-orthogonality" id="toc-partial-orthogonality" class="nav-link" data-scroll-target="#partial-orthogonality">Partial Orthogonality</a></li>
+  <li><a href="#gradient-of-orthogonal-polynomial" id="toc-gradient-of-orthogonal-polynomial" class="nav-link" data-scroll-target="#gradient-of-orthogonal-polynomial">Gradient of orthogonal polynomial</a></li>
+  </ul></li>
+  <li><a href="#orthogonal-basis-on-unit-triangle" id="toc-orthogonal-basis-on-unit-triangle" class="nav-link" data-scroll-target="#orthogonal-basis-on-unit-triangle">Orthogonal basis on unit triangle</a>
+  <ul class="collapse">
+  <li><a href="#gradient-of-orthogonal-polynomials" id="toc-gradient-of-orthogonal-polynomials" class="nav-link" data-scroll-target="#gradient-of-orthogonal-polynomials">Gradient of orthogonal polynomials</a></li>
+  </ul></li>
+  <li><a href="#dubiner-basis-on-biunit-triangle" id="toc-dubiner-basis-on-biunit-triangle" class="nav-link" data-scroll-target="#dubiner-basis-on-biunit-triangle">Dubiner basis on biunit triangle</a></li>
+  <li><a href="#hierarchical-basis" id="toc-hierarchical-basis" class="nav-link" data-scroll-target="#hierarchical-basis">Hierarchical basis</a>
+  <ul class="collapse">
+  <li><a href="#hierarchical-basis-using-barycentric-coordinates" id="toc-hierarchical-basis-using-barycentric-coordinates" class="nav-link" data-scroll-target="#hierarchical-basis-using-barycentric-coordinates">Hierarchical basis using barycentric coordinates</a></li>
+  <li><a href="#hierarchical-basis-using-biunit-square-element" id="toc-hierarchical-basis-using-biunit-square-element" class="nav-link" data-scroll-target="#hierarchical-basis-using-biunit-square-element">Hierarchical basis using biunit square element</a></li>
+  </ul></li>
+  <li><a href="#numerical-integration" id="toc-numerical-integration" class="nav-link" data-scroll-target="#numerical-integration">Numerical integration</a>
+  <ul class="collapse">
+  <li><a href="#tensor-product-based-quadrature-rules" id="toc-tensor-product-based-quadrature-rules" class="nav-link" data-scroll-target="#tensor-product-based-quadrature-rules">Tensor product based quadrature rules</a></li>
+  <li><a href="#economical-quadrature-rules" id="toc-economical-quadrature-rules" class="nav-link" data-scroll-target="#economical-quadrature-rules">Economical quadrature rules</a></li>
+  </ul></li>
+  <li><a href="#barycentric-coordiantes" id="toc-barycentric-coordiantes" class="nav-link" data-scroll-target="#barycentric-coordiantes">Barycentric coordiantes</a>
+  <ul class="collapse">
+  <li><a href="#barycentric-coordinates-for-biunit-triangle" id="toc-barycentric-coordinates-for-biunit-triangle" class="nav-link" data-scroll-target="#barycentric-coordinates-for-biunit-triangle">Barycentric coordinates for biunit triangle</a></li>
+  <li><a href="#barycentric-coordinates-for-unit-triangle" id="toc-barycentric-coordinates-for-unit-triangle" class="nav-link" data-scroll-target="#barycentric-coordinates-for-unit-triangle">Barycentric coordinates for unit triangle</a></li>
+  <li><a href="#relationship-between-barycentric-coordinates-and-collapsed-coordinate" id="toc-relationship-between-barycentric-coordinates-and-collapsed-coordinate" class="nav-link" data-scroll-target="#relationship-between-barycentric-coordinates-and-collapsed-coordinate">Relationship between barycentric coordinates and collapsed coordinate</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/h1-conforming-triangle.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./h1-conforming-basis.html">H1 conforming basis</a></li><li class="breadcrumb-item"><a href="./h1-conforming-triangle.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Triangle</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Triangle</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>There are two factors which play an important role in the quality of approximation for high degree polynomials: the smoothness of the function to be interpolated, and the locations of the interpolation points (Chen and Babuska 1995). Interpolation points completely determine the interpolation operator. Also, the norm of the interpolation operator provides a bound for the interpolation error by Lebesgue’s inequality. In this way, the interpolation points play an important role in minimizing this error. For example, it is well known that the interpolation using equally spaced points yield undesirable divergent behaviors even for analytical functions as the polynomial degree of interpolation increases. To be more precise, the norm of the interpolation operator for equally spaced point set increases exponentially with the degree of polynomial interpolation. It has been reported in the spectral method community that the interpolation using Gauss quadrature of Chebyshev polynomials or using Lobatto quadrature of Legendre polynomial yields close to optimal interpolation properties in the uniform norm and in other norms. These results are also valid for rectangle in <span class="math inline">\(R^{2}\)</span> and hexahedron in <span class="math inline">\(R^{3}.\)</span> For triangles in <span class="math inline">\(R^{2},\)</span>it is possible to obtain the near optimal interpolation set by minimizing appropriate measures related to the interpolation operator.</p>
+<ul>
+<li>The analysis of the quality of approximation of polynomial interpolation and the computation of the approximate optimal interpolation points in the triangle.</li>
+<li>Various norms for the interpolation operator.</li>
+<li>For a given polynomial degree, the set that minimizes the mean <span class="math inline">\(L^{2}\)</span> norm of the interpolation operator is close to the smallest Lebesgue constant interpolation set. In particular, for the triangle, this set gives the smallest Lebesgue constant currently known.</li>
+</ul>
+<section id="three-node-triangle-element" class="level2">
+<h2 class="anchored" data-anchor-id="three-node-triangle-element">Three-node triangle element</h2>
+</section>
+<section id="six-node-triangle-element" class="level2">
+<h2 class="anchored" data-anchor-id="six-node-triangle-element">Six-node triangle element</h2>
+</section>
+<section id="triangle-with-straight-edges" class="level2">
+<h2 class="anchored" data-anchor-id="triangle-with-straight-edges">Triangle with straight edges</h2>
+</section>
+<section id="isoparameteric-triangle" class="level2">
+<h2 class="anchored" data-anchor-id="isoparameteric-triangle">Isoparameteric triangle</h2>
+</section>
+<section id="master-element" class="level2">
+<h2 class="anchored" data-anchor-id="master-element">Master element</h2>
+<!-- markdownlint-disable MD041 MD013 MD033 -->
+<section id="biunit-triangle" class="level3">
+<h3 class="anchored" data-anchor-id="biunit-triangle">Biunit triangle</h3>
+<p>A Biunit triangle is given in figure below.</p>
+<div id="fig-biunit-triangle" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-biunit-triangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures/biunit-triangle.svg" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biunit-triangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Bi-unit triangle
+</figcaption>
+</figure>
+</div>
+<p>The coordinates of the biunit triangle are given by following table.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>node number</th>
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The biunit triangle serves as a master element for orthogonal basis and heirarchical basis on triangles.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="unit-triangle" class="level3">
+<h3 class="anchored" data-anchor-id="unit-triangle">Unit triangle</h3>
+<div id="fig-unit-triangle" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-unit-triangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures/unit-triangle.svg" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unit-triangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Unit triangle
+</figcaption>
+</figure>
+</div>
+<p>The coordinates of a unit triangle are given by following table.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>node number</th>
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The unit triangle serves as a master element for lagrange polynomials on triangles.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="master-element-for-orthogonal-and-heirarchical-polynomials" class="level3">
+<h3 class="anchored" data-anchor-id="master-element-for-orthogonal-and-heirarchical-polynomials">Master element for orthogonal and heirarchical polynomials</h3>
+<p>The master element for orthogonal polynomials and heirarchical polynomials is given by biunit triangle.</p>
+<p>The orientation of edges is given by following table and figure.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/master-triangle.svg" class="img-fluid figure-img"></p>
+<figcaption>Biunit triangle</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>node number</th>
+<th>n1</th>
+<th>n2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>1</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Edge 1 and edge 3 are oriented in the x and y direction respectively.</li>
+</ul>
+</section>
+<section id="master-element-for-lagrange-polynomials" class="level3">
+<h3 class="anchored" data-anchor-id="master-element-for-lagrange-polynomials">Master element for Lagrange polynomials</h3>
+<p>The master element for Lagrange polynomial is usually given by unit triangle. The node numbering and coordinates are same as those discussed above. However, the orientation of the edges is slighly different. The orientation of edges is given by following table.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>node number</th>
+<th>n1</th>
+<th>n2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Edge 1 is oriented in the x direction</li>
+<li>Edge 3 is oriented in the negative y direction</li>
+</ul>
+</section>
+</section>
+<section id="mapping-from-biunit-tetrahedron-to-unit-tetrahedron" class="level2">
+<h2 class="anchored" data-anchor-id="mapping-from-biunit-tetrahedron-to-unit-tetrahedron">Mapping from biunit tetrahedron to unit tetrahedron</h2>
+<p>Let us denote the coordinates in biunit tetrahedron by <span class="math inline">\((x_b, y_b, z_b)\)</span> and unit tetrahedron by <span class="math inline">\((x_u, y_u, z_u)\)</span>.</p>
+<p>Then the mapping from <span class="math inline">\((x_b, y_b, z_b) \mapsto (x_u, y_u, z_u)\)</span> is given by,</p>
+<p><span class="math display">\[
+x_{u}=\frac{1}{2}\left(1+x_{b}\right)
+\]</span></p>
+<p><span class="math display">\[
+y_{u}=\frac{1}{2}\left(1+y_{b}\right)
+\]</span></p>
+<p><span class="math display">\[
+z_{u}=\frac{1}{2}\left(1+z_{b}\right)
+\]</span></p>
+</section>
+<section id="mapping-from-unit-tetrahedron-to-biunit-tetrahedron" class="level2">
+<h2 class="anchored" data-anchor-id="mapping-from-unit-tetrahedron-to-biunit-tetrahedron">Mapping from unit tetrahedron to biunit tetrahedron</h2>
+<p>The mapping from <span class="math inline">\((x_u, y_u, z_u) \mapsto (x_b, y_b, z_b)\)</span> is given by,</p>
+<p><span class="math display">\[
+x_{b}=2x_{u}-1
+\]</span></p>
+<p><span class="math display">\[
+y_{b}=2y_{u}-1
+\]</span></p>
+<p><span class="math display">\[
+z_{b}=2z_{u}-1
+\]</span></p>
+</section>
+<section id="high-order-polynomial" class="level2">
+<h2 class="anchored" data-anchor-id="high-order-polynomial">High-order polynomial</h2>
+<section id="linear-basis-function-on-triangle" class="level3">
+<h3 class="anchored" data-anchor-id="linear-basis-function-on-triangle">Linear basis function on triangle</h3>
+<p>The basis space for linear shape functions on triangle is given by following expression.</p>
+<p><span class="math display">\[
+\mathcal{P}_{\Delta}^{(1)}:=\left\{ 1,\xi,\eta\right\}
+\]</span></p>
+<p><span class="math display">\[
+\phi_{i}^{(1)}\left(\xi,\eta\right)=a_{i}+b_{i}\xi+c_{i}\eta
+\]</span></p>
+</section>
+<section id="pascal-triangle" class="level3">
+<h3 class="anchored" data-anchor-id="pascal-triangle">Pascal triangle</h3>
+<p><span class="math display">\[
+\mathcal{P}_{\Delta}^{(m)}:=\begin{array}{ccccccccccccc}
+&amp; &amp; &amp; &amp; &amp; &amp; 1\\
+&amp; &amp; &amp; &amp; &amp; \xi &amp; &amp; \eta\\
+&amp; &amp; &amp; &amp; \xi^{2} &amp; &amp; \xi\eta &amp; &amp; \eta^{2}\\
+&amp; &amp; &amp; \xi^{3} &amp; &amp; \xi^{2}\eta &amp; &amp; \xi\eta^{2} &amp; &amp; \eta^{3}\\
+&amp; &amp; \xi^{4} &amp; &amp; \xi^{3}\eta &amp; &amp; \xi^{2}\eta^{2} &amp; &amp; \xi\eta^{3} &amp; &amp; \eta^{4}\\
+&amp; &amp; &amp; &amp; &amp; \xi^{3}\eta^{2}\\
+&amp; \cdot &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \ddots\\
+\xi^{m} &amp; &amp; \xi^{m-1}\eta &amp; &amp; \xi^{m-2}\eta^{2} &amp; &amp; \xi^{m-3}\eta^{3} &amp; &amp; \cdots &amp; &amp; \xi^{1}\eta^{m-1} &amp; &amp; \eta^{m}
+\end{array}
+\]</span></p>
+<p>Following points should be noted.</p>
+<ul>
+<li>For a given order <span class="math inline">\(m\)</span>, we have <span class="math inline">\(m+1\)</span> levels.</li>
+<li>At each level, <span class="math inline">\(\xi^{i}\eta^{j}\)</span>, <span class="math inline">\(i+j\)</span> is constant, and equal to the level number. For example at level <span class="math inline">\(l\)</span> we have <span class="math inline">\(i+j=l\)</span></li>
+<li>At level <span class="math inline">\(l\)</span>, we have <span class="math inline">\(l+1\)</span> degrees of freedom <span class="math inline">\(\xi^{i}\eta^{l-i},\forall i=0,1,\cdots,l\)</span></li>
+</ul>
+<p>There are three useful ways to travel through Pascal’s triangle.</p>
+<section id="along-the-first-diagonal" class="level4">
+<h4 class="anchored" data-anchor-id="along-the-first-diagonal">Along the first diagonal</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode fortran code-with-copy"><code class="sourceCode fortranfixed"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> j<span class="kw">=</span><span class="dv">0</span>,m</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> i <span class="kw">=</span> <span class="dv">0</span>, m<span class="kw">-</span>j</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      xi<span class="kw">^{</span>i<span class="kw">}*</span>eta<span class="kw">^{</span>j<span class="kw">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end do</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end do</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="along-the-levelbase" class="level4">
+<h4 class="anchored" data-anchor-id="along-the-levelbase">Along the level/base</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode fortran code-with-copy"><code class="sourceCode fortranfixed"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> l<span class="kw">=</span><span class="dv">0</span>,m</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> j<span class="kw">=</span><span class="dv">0</span>,l</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      xi<span class="kw">^{</span>l<span class="kw">-</span>j<span class="kw">}*</span>eta<span class="kw">^{</span>j<span class="kw">}</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end do</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end do</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="along-the-second-diagonal" class="level4">
+<h4 class="anchored" data-anchor-id="along-the-second-diagonal">Along the second diagonal</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode fortran code-with-copy"><code class="sourceCode fortranfixed"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> i<span class="kw">=</span><span class="dv">0</span>,m</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> j <span class="kw">=</span> <span class="dv">0</span>, m<span class="kw">-</span>i</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      xi<span class="kw">^{</span>i<span class="kw">}*</span>eta<span class="kw">^{</span>j<span class="kw">}</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end do</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end do</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="some-useful-results" class="level3">
+<h3 class="anchored" data-anchor-id="some-useful-results">Some useful results</h3>
+<p><span class="math display">\[
+\left(\xi+\eta\right)^{m}=\sum_{k=0}^{m}\left(\begin{array}{c}
+m\\
+k
+\end{array}\right)\xi^{m-k}\eta^{k}
+\]</span></p>
+<p><span class="math display">\[
+\partial_{x}^{m}\left(fg\right)=\sum_{k=0}^{m}\left(\begin{array}{c}
+m\\
+k
+\end{array}\right)\left(\partial_{x}^{m-k}f\right)\left(\partial_{x}^{k}g\right)
+\]</span></p>
+</section>
+<section id="high-order-polynomial-expansion-on-triangle" class="level3">
+<h3 class="anchored" data-anchor-id="high-order-polynomial-expansion-on-triangle">High order polynomial expansion on triangle</h3>
+<p>Left diagonal:</p>
+<p><span class="math display">\[
+f(\xi,\eta)=\sum_{j=0}^{m}\sum_{i=0}^{m-j}a_{ij}\xi^{i}\eta^{j}
+\]</span></p>
+<p>Right diagonal:</p>
+<p><span class="math display">\[
+f(\xi,\eta)=\sum_{i=0}^{m}\sum_{j=0}^{m-i}a_{ij}\xi^{i}\eta^{j}
+\]</span></p>
+<p>Along the base/level:</p>
+<p><span class="math display">\[
+f(\xi,\eta)=\sum_{i=0}^{m}\sum_{j=0}^{i}a_{i-j,j}\xi^{i-j}\eta^{j}
+\]</span></p>
+<p>Degrees of freedom:</p>
+<p>For <span class="math inline">\(m\)</span>th order polynomial expansion there are</p>
+<p><span class="math display">\[
+N=\frac{1}{2}\left(m+1\right)\left(m+2\right)
+\]</span></p>
+<p>number of degrees of freedom.</p>
+<p>So,</p>
+<p><span class="math display">\[
+f(\xi,\eta)=\sum_{n=1}^{N}a_{n}\phi_{n}\left(\xi,\eta\right)
+\]</span></p>
+<p>where, <span class="math inline">\(\left\{ \phi_{n}\right\}_{n=1}^{N}\)</span> are the basis functions.</p>
+</section>
+</section>
+<section id="lagrange-polynomials" class="level2">
+<h2 class="anchored" data-anchor-id="lagrange-polynomials">Lagrange polynomials</h2>
+<p>The above interpolation can be viewed as the interpolation in frequency space. The equivalent interpolation in the physical space is given through Cardinal functions (lagrange polynomials):</p>
+<p><span class="math display">\[
+f(\xi,\eta)=\sum_{j=1}^{N}f_{j}l_{j}^{(m)}\left(\xi,\eta\right)
+\]</span></p>
+<p>where, <span class="math inline">\(l_{j}^{(m)}\left(\xi,\eta\right)\)</span> is the mth order cardinal function (lagrange polynomial) at point <span class="math inline">\(j\)</span>, satisfying</p>
+<p><span class="math display">\[
+l_{j}^{(m)}(\xi_{i},\eta_{i})=\delta_{ij}
+\]</span></p>
+<p>and <span class="math inline">\(f_{i}\)</span> is <span class="math inline">\(f(\xi_{i},\eta_{i})\)</span>. We obtain <span class="math inline">\(l_{j}^{(m)}\)</span> as follows:</p>
+<p><span class="math display">\[
+l_{j}^{(m)}\left(\xi,\eta\right)=\sum_{n=1}^{N}c_{n}\phi_{n}\left(\xi,\eta\right)
+\]</span></p>
+<p>using the cardinality condition, we get</p>
+<p><span class="math display">\[
+\mathbf{V}_{\phi}\mathbf{c}_{j}=\mathbf{e}_{j}
+\]</span></p>
+<p>where, <span class="math inline">\(V\)</span> is the Vandermonde matrix:</p>
+<p><span class="math display">\[
+\mathbf{V}_{\phi}=\left[\begin{array}{cccc}
+\phi_{1}\left(\xi_{1},\eta_{1}\right) &amp; \phi_{2}\left(\xi_{1},\eta_{1}\right) &amp; \cdots &amp; \phi_{N}\left(\xi_{1},\eta_{1}\right)\\
+\phi_{1}\left(\xi_{2},\eta_{2}\right) &amp; \phi_{2}\left(\xi_{2},\eta_{2}\right) &amp; \cdots &amp; \phi_{N}\left(\xi_{2},\eta_{2}\right)\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+\phi_{1}\left(\xi_{N},\eta_{N}\right) &amp; \phi_{2}\left(\xi_{N},\eta_{N}\right) &amp; &amp; \phi_{N}\left(\xi_{N},\eta_{N}\right)
+\end{array}\right]
+\]</span></p>
+<p>Then the lagrange polynomial is given by</p>
+<p><span class="math display">\[
+l_{j}^{(m)}\left(\xi,\eta\right)=\boldsymbol{\phi}^{T}\left\{ \mathbf{\mathbf{V}_{\phi}}^{-1}\mathbf{e}_{j}\right\}
+\]</span></p>
+<p>or</p>
+<p><span class="math display">\[
+\mathbf{l}^{(m)}\left(\xi,\eta\right)=\mathbf{\mathbf{V}_{\phi}}^{-T}\boldsymbol{\phi}
+\]</span></p>
+<p>or</p>
+<p><span class="math display">\[
+\mathbf{\mathbf{V}_{\phi}}^{T}\mathbf{l}^{(m)}\left(\xi,\eta\right)=\boldsymbol{\phi}\left(\xi,\eta\right)
+\]</span></p>
+<p>In this way, Vandermonde matrix facilitates the transformation from frequency domain to physical domain.</p>
+<section id="remarks" class="level3">
+<h3 class="anchored" data-anchor-id="remarks">Remarks</h3>
+<ul>
+<li><p>For higher order polynomials, the solution of the linear system for the nodal interpolation functions can be found by numerical methods. Unlike 1D interpolation problem, existence, and uniqueness of the solution of <span class="math inline">\(\mathbf{V}_{\phi}\mathbf{c}_{j}=\mathbf{e}_{j}\)</span> are not guaranteed and one should be careful in selecting the interpolation points and basis functions. Moreover, the condition number of the generalized Vandermonde matrix is sensitive to the choice of the base functions. The large condition number can lead to the difficulty of solving the linear system. Therefore, in practice, it is advantageous to use a set of polynomial basis functions that enjoy orthogonal or near-orthogonality properties, for example, <strong>Appell</strong> and <strong>Proriol</strong> polynomials.</p></li>
+<li><p>The location of nodal points in physical space is also critical for enhancing the interpolation in physical space.</p></li>
+</ul>
+</section>
+<section id="lebesque-constant" class="level3">
+<h3 class="anchored" data-anchor-id="lebesque-constant">Lebesque constant</h3>
+</section>
+<section id="uniform-grid-over-triangles" class="level3">
+<h3 class="anchored" data-anchor-id="uniform-grid-over-triangles">Uniform Grid over triangles</h3>
+<p>Unfortunately, as the expansion order <span class="math inline">\(m\)</span> is increased, the accuracy over the uniform grid deteriorates due to the Runge effect. In particular, the interpolated function experiences large oscillations between nodes and the Lebesgue constant increases rapidly with N (Bos, 1983). Thus, the uniform node distribution is only suitable for low-order polynomial expansions, typically <span class="math inline">\(m\le3\)</span>. To improve the interpolation accuracy, Bos (1983) cleverly modified the uniform node layout by expanding or contracting the individual sizes of the nested triangles while maintaining the uniformity of the point distribution around their perimeters</p>
+</section>
+<section id="lobatto-grid" class="level3">
+<h3 class="anchored" data-anchor-id="lobatto-grid">Lobatto grid</h3>
+<p>A node distribution corresponding to the zeros of Lobatto polynomials is optimal for 1D interpolation, subject to the constraint that one node is placed at the left-end and another node is placed at the right- end of the interpolation domain.</p>
+<p>To construct <span class="math inline">\(m\)</span> th order grid, we need</p>
+<p><span class="math display">\[
+\frac{1}{2}\left(m+1\right)\left(m+2\right)
+\]</span> nodes. At each edge we have <span class="math inline">\(m-1\)</span> internal nodes. These <span class="math inline">\(m-1\)</span> internal nodes are zeros Lobatto polynomial of order <span class="math inline">\(m-1\)</span>, which is given by</p>
+<p><span class="math display">\[
+L_{m-1}(x)=\partial_{x}P_{m}(x)
+\]</span></p>
+<p>Let <span class="math inline">\(\left\{ t_{i}\right\}_{i=2}^{m}\)</span> be the zeros of <span class="math inline">\(L_{m-1}\)</span> in <span class="math inline">\([-1,1]\)</span>, and <span class="math inline">\(t_{0}=-1\)</span> and <span class="math inline">\(t_{m+1}=1\)</span>. Now we transform these nodes to <span class="math inline">\([0,1]\)</span> domain by</p>
+<p><span class="math display">\[
+v_{i}=\frac{1}{2}\left(1+t_{i}\right),i=1,2\cdots,m+1
+\]</span></p>
+<p>Note that <span class="math inline">\(v_{i}\in\left[0,1\right],\forall i\)</span>.</p>
+<p>The location of nodes along the hypotenuse of the triangle is found by moving either vertically upward from the nodes on the <span class="math inline">\(\xi\)</span> axis, or horizontally to the right from the nodes on the <span class="math inline">\(\eta\)</span> axis.</p>
+<p>Horizontal-Vertical distribution (HV):</p>
+<p>For <span class="math inline">\(i=1,2,\cdots,m+1\)</span>, and <span class="math inline">\(j=1,2,\cdots,m+2-i\)</span>, the location of internal nodes is given by</p>
+<p><span class="math display">\[
+\xi_{i}=v_{i}
+\]</span></p>
+<p><span class="math display">\[
+\eta_{j}=1-v_{m+2-j}
+\]</span></p>
+<ul>
+<li><p>Horizontal-Diagonal</p></li>
+<li><p>Vertical-Diagonal</p></li>
+</ul>
+<p>The asymmetry of the distribution with respect to the three vertices is an unacceptable deficiency.</p>
+<section id="blyth-and-pozrikidis-grid" class="level4">
+<h4 class="anchored" data-anchor-id="blyth-and-pozrikidis-grid">Blyth and Pozrikidis grid</h4>
+<p>Threefold rotational symmetry.</p>
+<p>For <span class="math inline">\(i=1,2,\cdots,m+1\)</span>, For <span class="math inline">\(j=1,2,\cdots,m+2-i\)</span> and <span class="math inline">\(k=m+3-i-j\)</span>:</p>
+<p><span class="math display">\[
+\xi_{i}=\frac{1}{3}\left(1+2v_{j}-v_{i}-v_{k}\right)
+\]</span></p>
+<p><span class="math display">\[
+\eta_{j}=\frac{1}{3}\left(1+2v_{j}-v_{i}-v_{k}\right)
+\]</span></p>
+<ul>
+<li>Recursive grid</li>
+</ul>
+</section>
+</section>
+<section id="feket-nodes" class="level3">
+<h3 class="anchored" data-anchor-id="feket-nodes">Feket nodes</h3>
+<p>Another way of arranging the interpolation nodes over the triangle is provided by the Fekete points. To define these points, we apply the polynomial expansion nodes over the surface of the triangle, and consider the generalized Vandermonde matrix, regarded as a function of the nodal positions.</p>
+<p>By definition, the Fekete points maximize the magnitude of the determinant of the generalized Vandermonde matrix within the confines of the triangle. The significance of the Fekete points lies in the observation that the cardinal interpolation functions may be expressed in the form:</p>
+<p>the vertex and edge nodes turn out to be located precisely at the zeros of the Lobatto polynomial.</p>
+<p>This means that the Lebesgue constant defined is bounded from above by N . In fact, numerical evidence suggests that the upper bound is proportional to <span class="math inline">\(\sqrt{N}\)</span> (Taylor et al., 2000). At present, the Lebesgue constant for the Fekete points is the lowest known constant for <span class="math inline">\(m&gt;10\)</span> (Taylor et al., 2000).</p>
+</section>
+<section id="chen-and-babuska-nodes" class="level3">
+<h3 class="anchored" data-anchor-id="chen-and-babuska-nodes">Chen and Babuska nodes</h3>
+<p>Unlike the Fekete set, this distribution does not include edge nodes corresponding to zeros of the Lobatto polynomials.</p>
+</section>
+<section id="hesthaven-nodes" class="level3">
+<h3 class="anchored" data-anchor-id="hesthaven-nodes">Hesthaven nodes</h3>
+<p>Hesthaven (1998) obtained small Lebesgue constants by minimizing an electrostatic energy function. Like the Fekete set, these distributions include edge nodes corresponding to the zeros of the Lobatto polynomials.</p>
+</section>
+</section>
+<section id="appell-polynomials" class="level2">
+<h2 class="anchored" data-anchor-id="appell-polynomials">Appell polynomials</h2>
+<p>In the previous example we employed <span class="math inline">\(\phi_{n}(\xi,\eta)\)</span> of the form <span class="math inline">\(\xi^{i}\eta^{j}\)</span>. In this section we use Appell polynomials.</p>
+<p>Appell polynomial <span class="math inline">\(A=A_{kl}\)</span> satisfy the following partial differential equation:</p>
+<p><span class="math display">\[
+\begin{aligned}\xi\left(\xi-1\right)A_{\xi\xi}+2\xi\eta A_{\xi\eta} &amp; +\eta\left(\eta-1\right)A_{\eta\eta}\\
++\left(3\xi-1\right)A_{\xi}+\left(3\eta-1\right)A_{\eta} &amp; =\left(k+l\right)\left(k+l+2\right)A
+\end{aligned}
+\]</span></p>
+<p>Left diagonal:</p>
+<p><span class="math display">\[
+f(\xi,\eta)=\sum_{q=0}^{m}\sum_{p=0}^{m-q}\hat{a}_{pq}A_{pq}(\xi,\eta)
+\]</span></p>
+<p>Right diagonal:</p>
+<p><span class="math display">\[
+f(\xi,\eta)=\sum_{p=0}^{m}\sum_{q=0}^{m-q}\hat{a}_{pq}A_{pq}(\xi,\eta)
+\]</span></p>
+<p>Along the base/level:</p>
+<p><span class="math display">\[
+f(\xi,\eta)=\sum_{p=0}^{m}\sum_{q=0}^{p}\hat{a}_{p-q,q}A_{p-q,q}(\xi,\eta)
+\]</span></p>
+<section id="properties" class="level3">
+<h3 class="anchored" data-anchor-id="properties">Properties</h3>
+<p>Properties of <span class="math inline">\(A_{kl}(\xi,\eta)\)</span> polynomials</p>
+<ul>
+<li><span class="math inline">\(A_{kl}\)</span> has order <span class="math inline">\(k+l\)</span>, that is</li>
+</ul>
+<p><span class="math display">\[
+A_{kl}=\sum_{i=0}^{k+l}\left(\sum_{j=0}^{k+l-i}a_{kl}^{ij}\xi^{i}\eta^{j}\right)
+\]</span></p>
+<p>where,</p>
+<p><span class="math display">\[
+a_{kl}^{ij}=\left(-1\right)^{i+j}\frac{\left(k+j\right)!\left(l+i\right)!}{\left(i!j!\right)^{2}}\frac{\left(k+l\right)!}{\left(k+l-i-j\right)!}
+\]</span></p>
+<p>also,</p>
+<p><span class="math display">\[
+a_{kl}^{ij}=a_{lk}^{ji}
+\]</span></p>
+<ul>
+<li>Rodrigues fomula:</li>
+</ul>
+<p><span class="math display">\[
+A_{kl}=\frac{\partial^{k+l}}{\partial\xi^{k}\partial\eta^{l}}\left(\xi^{k}\eta^{l}\zeta^{k+l}\right)
+\]</span></p>
+<p>where, <span class="math inline">\(\zeta=1-\xi-\eta\)</span>.</p>
+<ul>
+<li><span class="math inline">\(A_{kl}\in\mathcal{P}_{\Delta}^{(k+l)}\)</span> , for <span class="math inline">\(m\)</span>th order interpolation we have following <span class="math inline">\(A_{kl}\)</span></li>
+</ul>
+<p><span class="math display">\[
+A_{kl}:=\begin{array}{ccccccccccccc}
+&amp; &amp; &amp; &amp; &amp; &amp; A_{0,0}\\
+&amp; &amp; &amp; &amp; &amp; A_{1,0} &amp; &amp; A_{0,1}\\
+&amp; &amp; &amp; &amp; A_{2,0} &amp; &amp; A_{1,1} &amp; &amp; A_{0,2}\\
+&amp; &amp; &amp; A_{3,0} &amp; &amp; A_{2,1} &amp; &amp; A_{1,2} &amp; &amp; A_{0,3}\\
+&amp; &amp; A_{4,0} &amp; &amp; A_{3,1} &amp; &amp; A_{2,2} &amp; &amp; A_{1,3} &amp; &amp; A_{0,4}\\
+&amp; . &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \ddots\\
+A_{m,0} &amp; &amp; A_{m-1,1} &amp; &amp; A_{m-2,2} &amp; &amp; A_{m-3,3} &amp; &amp; \cdots &amp; &amp; A_{1,m-1} &amp; &amp; A_{0,m}
+\end{array}
+\]</span></p>
+<p>Incomplete biorthogonality</p>
+<p><span class="math display">\[
+\int\int A_{kl}\left(\xi,\eta\right)\xi^{p}\eta^{q}d\xi d\eta=0
+\]</span></p>
+<p>for <span class="math inline">\(p+q&lt;k+l\)</span>. Consequently,</p>
+<p><span class="math display">\[
+\int\int A_{kl}\left(\xi,\eta\right)d\xi d\eta=0
+\]</span></p>
+<p>for <span class="math inline">\(k,l&gt;0\)</span>.</p>
+<p>Incomplete orthogonality</p>
+<p><span class="math display">\[
+\int\int A_{kl}A_{pq}d\xi d\eta=0
+\]</span></p>
+<p>for <span class="math inline">\(k+l\ne p+q\)</span></p>
+</section>
+</section>
+<section id="triangle-square-mapping-part1" class="level2">
+<h2 class="anchored" data-anchor-id="triangle-square-mapping-part1">Triangle-Square mapping (part1)</h2>
+<div id="fig-triangle-square-map" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-triangle-square-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures/triangle-square-mapping.svg" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-triangle-square-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Depiction of triangle-square mapping
+</figcaption>
+</figure>
+</div>
+<p>Let <span class="math inline">\((\eta_{1},\eta_{2})\)</span> be the coordinates in the reference unit triangle <span class="math inline">\(\mathcal{T}\)</span>,</p>
+<p><span class="math display">\[
+\mathcal{T}:=\left\{ \left(\eta_{1},\eta_{2}\right)\in\mathbb{R}^{2}:0&lt;\eta_{1},\eta_{2};\eta_{1}+\eta_{2}&lt;1\right\},
+\]</span></p>
+<p>and <span class="math inline">\((\xi_{1},\xi_{2})\)</span> be the coordinates in reference biunit square <span class="math inline">\(\mathcal{Q}\)</span>.</p>
+<p><span class="math display">\[
+\mathcal{Q}:=\left\{ \left(\xi_{1},\xi_{2}\right)\in\mathbb{R}^{2}:-1&lt;\xi_{1},\xi_{2}&lt;1\right\}
+\]</span></p>
+<p>The mapping from (unit) triangle to (biunit) square,</p>
+<p><span class="math display">\[
+\left(\eta_{1},\eta_{2}\right)\mapsto \left(\xi_{1},\xi_{2}\right)
+\]</span></p>
+<p>is given by:</p>
+<p><span class="math display">\[
+\begin{aligned}\xi_{1} &amp; =\frac{2 \eta_{1}}{1-\eta_{2}}-1\\
+&amp; =\frac{2 \eta_{1}+ \eta_{2}-1}{1-\eta_{2}}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\xi_{2}=2 \eta_{2}-1
+\]</span></p>
+<p><span class="math display">\[
+\lim_{\eta_{2}\rightarrow1}\xi_{1}=-1
+\]</span></p>
+<p>A horizontal line in square, that is <span class="math inline">\(\xi_{2}=\eta_{0}\)</span>, maps to a horizontal line in the triangle:</p>
+<p><span class="math display">\[
+\eta_{2}=\frac{\eta_{0}+1}{2};0\le \eta_{1}\le1-\eta_{2}
+\]</span></p>
+<p>Similarly, a vertical line in square, that is,</p>
+<p><span class="math display">\[
+\xi_{1}=\xi_{0},
+\]</span></p>
+<p>maps to a line passing through vertex-3 <span class="math inline">\((0,1)\)</span>, and intersecting the base which connects vertex-1 and vertex-2. The equation of this line is given below, where it can be seen that the vertical edge of triangle (vertex 1-3) corresponds to the left edge of square, i.e., <span class="math inline">\(\xi_{0}=-1\)</span>, and hypotenuse of triangle (vertex 2-3) corresponds to the right edge of square, i.e., <span class="math inline">\(\xi_{0}=1\)</span>. The line intersects the base of triangle at <span class="math inline">\(\eta_{1}=\frac{1+\xi_{0}}{2}\)</span>.</p>
+<p><span class="math display">\[
+\eta_{2}=-\frac{2}{1+\xi_{0}}\eta_{1}+1
+\]</span></p>
+<p>Jacobian of the mapping is given below:</p>
+<p><span class="math display">\[
+\frac{\partial\xi_{1}}{\partial \eta_{1}}=\frac{2}{1-\eta_{2}}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial\xi_{1}}{\partial \eta_{2}}=\frac{2 \eta_{1}}{\left(1-\eta_{2}\right)^{2}}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial\xi_{2}}{\partial \eta_{1}}=0
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial\xi_{2}}{\partial \eta_{2}}=2
+\]</span></p>
+<p>The inverse of mapping, that is from biunit square to unit triangle, <span class="math inline">\(\left(\xi_{1},\xi_{2}\right) \mapsto \left(\eta_{1}, \eta_{2}\right)\)</span> is given below:</p>
+<p><span class="math display">\[
+\eta_{1}=\frac{1}{4}\left(1+\xi_{1}\right)\left(1-\xi_{2}\right)
+\]</span></p>
+<p><span class="math display">\[
+\eta_{2}=\frac{\xi_{2}+1}{2}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \eta_{1}}{\partial\xi_{1}}=\frac{1}{4}\left(1-\xi_{2}\right)
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \eta_{1}}{\partial\xi_{2}}=-\frac{1}{4}\left(1+\xi_{1}\right)
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \eta_{1}}{\partial\xi_{2}}=0
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \eta_{2}}{\partial\xi_{2}}=\frac{1}{2}
+\]</span></p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The coordinates <span class="math inline">\((\xi_{1}, \xi_{2})\)</span> are called the <strong>collapsed Cartesian coordinates</strong> of the point on the triangle whose regular Cartestian coordinates are <span class="math inline">\((\eta_{1}, \eta_{2})\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="triangle-square-mapping-part2" class="level2">
+<h2 class="anchored" data-anchor-id="triangle-square-mapping-part2">Triangle square mapping (part2)</h2>
+<p>The biunit triangle is defined by</p>
+<p><span class="math display">\[
+\mathcal{T}:=\left\{ \left(\eta_{1},\eta_{2}\right)\in\mathbb{R}^{2}\vert-1&lt;\eta_{1},\eta_{2};\eta_{1}+\eta_{2}&lt;0\right\}
+\]</span></p>
+<p>The mapping from (biunit) triangle to (biunit) square, <span class="math inline">\(\left(\eta_{1},\eta_{2}\right)\rightarrow\left(\xi_{1},\xi_{2}\right)\)</span> is given by:</p>
+<p><span class="math display">\[
+\begin{aligned}\xi_{1} &amp; =2\left(\frac{1+\eta_{1}}{1-\eta_{2}}\right)-1\\
+&amp; =\frac{2+2 \eta_{1}-1+ \eta_{2}}{1- \eta_{2}}\\
+&amp; =\frac{1+2 \eta_{1}+ \eta_{2}}{1- \eta_{2}}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\lim_{\eta_{2}\rightarrow1}=-1
+\]</span></p>
+<p><span class="math display">\[
+\xi_{2}=\eta_{2}
+\]</span></p>
+<p>Jacobian of the mapping is given by:</p>
+<p><span class="math display">\[
+\frac{\partial\xi_{1}}{\partial \eta_{1}}=\frac{2}{1- \eta_{2}}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial\xi_{1}}{\partial \eta_{2}}=2\frac{1+ \eta_{1}}{\left(1-\eta_{2}\right)^{2}}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial\xi_{2}}{\partial \eta_{1}}=0
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial\xi_{2}}{\partial \eta_{2}}=1
+\]</span></p>
+<p>The mapping from square to triangle, <span class="math inline">\(\left(\xi_{1},\xi_{2}\right)\rightarrow\left(\eta_{1},\eta_{2}\right)\)</span></p>
+<p><span class="math display">\[
+\eta_{1}=\frac{1}{2}\left(1+\xi_{1}\right)\left(1-\xi_{2}\right)-1
+\]</span></p>
+<p><span class="math display">\[
+\eta_{2}=\xi_{2}
+\]</span></p>
+<p>The Jacobian of inverse of mapping is given by:</p>
+<p><span class="math display">\[
+\frac{\partial \eta_{1}}{\partial\xi_{1}}=\frac{1}{2}\left(1-\xi_{2}\right)
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \eta_{1}}{\partial\xi_{2}}=-\frac{1}{2}\left(1+\xi_{1}\right)
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \eta_{2}}{\partial\xi_{1}}=0
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \eta_{2}}{\partial\xi_{2}}=1
+\]</span></p>
+</section>
+<section id="orthogonal-basis-on-biunit-square" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonal-basis-on-biunit-square">Orthogonal basis on biunit square</h2>
+<p>Simplex domains such as triangle, tetrahedron, prisms, and pyramids are very efficient in handling the complex geometries. However, spectral methods are more efficient on tensor-product domains due to tensor product expansion of basis functions. Therefore, it would be beneficial to introduce the tensor product expansion of basis function on simplex domain such as biunit triangle.</p>
+<p>In 1991, Dubiner presented the concept of warped tensor-product expansion on triangles. Let the biunit triangle is defined by <span class="math inline">\(\mathcal{T}\)</span>:</p>
+<p><span class="math display">\[
+\mathcal{T}:=\left\{ \left(\eta_{1},\eta_{2}\right)\in\mathbb{R}^{2}\vert-1&lt;\eta_{1},\eta_{2};\eta_{1}+\eta_{2}&lt;0\right\}
+\]</span></p>
+<p>Let <span class="math inline">\(P_{n}^{\left(\alpha,\beta\right)}\left(x\right)\)</span> be the Jacobi polynomial of order <span class="math inline">\(n\le N\)</span>, which are orthogonal with respect to the weight <span class="math inline">\(\left(1-x\right)^{\alpha}\left(1+x\right)^{\beta}\)</span>. Let <span class="math inline">\({\bf k}=\left(k_{1},k_{2}\right),\)</span> then we define the following warped tensor product on <span class="math inline">\(\mathcal{Q}\)</span>.</p>
+<p><span class="math display">\[
+\Phi_{{\bf k}}\left(\xi_{1},\xi_{2}\right)=\psi_{k_{1}}\left(\xi_{1}\right)\psi_{k_{1},k_{2}}\left(\xi_{2}\right),
+\]</span></p>
+<p>where,</p>
+<p><span class="math display">\[
+\psi_{k_{1}}\left(\xi_{1}\right)=P_{k_{1}}^{\left(0,0\right)}\left(\xi_{1}\right)
+\]</span></p>
+<p>is the Legendre polynomial, and</p>
+<p><span class="math display">\[
+\psi_{k_{1},k_{2}}\left(\xi_{2}\right)=\left(\frac{1-\xi_{2}}{2}\right)^{k_{1}}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right),
+\]</span></p>
+<p>which is a polynomial of degree <span class="math inline">\(k_1 + k_2\)</span> in <span class="math inline">\(\xi_{2}\)</span>.</p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+\Phi_{{\bf k}}\left(\xi_{1},\xi_{2}\right)=P_{k_{1}}^{\left(0,0\right)}\left(\xi_{1}\right)\left(\frac{1-\xi_{2}}{2}\right)^{k_{1}}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right)
+\]</span></p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><span class="math inline">\(\xi_{1}\)</span> and <span class="math inline">\(\xi_{2}\)</span> belongs to the bi-unit segments.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><span class="math inline">\(\Phi_{{\bf k}}\left(\xi_{1},\xi_{2}\right)\)</span> is <span class="math inline">\(k_{1}\)</span> order in <span class="math inline">\(\xi_{1}\)</span> and <span class="math inline">\(k_{1}+k_{2}\)</span> order in <span class="math inline">\(\xi_{2}\)</span> direction, as <span class="math inline">\(\psi_{k_{1}}\)</span> is <span class="math inline">\(k_{1}\)</span> order in <span class="math inline">\(\xi_{1}\)</span> and <span class="math inline">\(\psi_{k_{1},k_{2}}\)</span> is <span class="math inline">\(k_{1}+k_{2}\)</span> order in <span class="math inline">\(\xi_{2}\)</span> direction.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Dimension of the polynomial space</p>
+<p><span class="math display">\[
+\frac{1}{2}\left(N+1\right)\left(N+2\right)
+\]</span></p>
+<p>where, <span class="math inline">\(N\)</span> is the order of approximation on triangle.</p>
+</div>
+</div>
+</div>
+<section id="partial-orthogonality" class="level3">
+<h3 class="anchored" data-anchor-id="partial-orthogonality">Partial Orthogonality</h3>
+<p>By using the orthogonality of the Jacobi polynomials, we can show that, for <span class="math inline">\(\mathbf{k} \ne \mathbf{h}\)</span>,</p>
+<p><span class="math display">\[
+\int_{\mathcal{T}} \phi_{\mathbf{k}}(x_1, x_2) \phi_{\mathbf{h}}(x_1, x_2)dx_1 dx_2=0
+\]</span></p>
+<p>In this way, we can conclude that the set</p>
+<p><span class="math display">\[
+\mathbb{P}_{N}:=\left\{ \phi_{k1,k2}\left(x_{1},x_{2}\right):0\le k_{1},k_{2};k_{1}+k_{2}\le N\right\}
+\]</span></p>
+<p>forms the orthogonal modal basis of the space:</p>
+<p><span class="math display">\[
+\mathcal{P}_{N}=\left\{ x_{1}^{i}x_{2}^{j}:0\le i,j;i+j\le N\right\}
+\]</span></p>
+</section>
+<section id="gradient-of-orthogonal-polynomial" class="level3">
+<h3 class="anchored" data-anchor-id="gradient-of-orthogonal-polynomial">Gradient of orthogonal polynomial</h3>
+<p><span class="math display">\[
+\frac{\partial \Phi_{{\bf k}}\left(\xi_{1},\xi_{2}\right)}{\partial \xi_{1}}{}= \frac{d P_{k_{1}}^{\left(0,0\right)}\left(\xi_{1}\right)}{d\xi_{1}} \left(\frac{1-\xi_{2}}{2}\right)^{k_{1}}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right)
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}\frac{\partial\Phi_{{\bf k}}\left(\xi_{1},\xi_{2}\right)}{\partial\xi_{2}} &amp; =P_{k_{1}}^{\left(0,0\right)}\left(\xi_{1}\right)\left(\frac{1-\xi_{2}}{2}\right)^{k_{1}}\frac{d}{d\xi_{2}}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right)\\ &amp; -\frac{k_{1}}{2}P_{k_{1}}^{\left(0,0\right)}\left(\xi_{1}\right)P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right)\left(\frac{1-\xi_{2}}{2}\right)^{k_{1}-1}\\ &amp; =P_{k_{1}}^{\left(0,0\right)}\left(\xi_{1}\right)\left(\frac{1-\xi_{2}}{2}\right)^{k_{1}-1}\left[\left(\frac{1-\xi_{2}}{2}\right)\frac{d}{d\xi_{2}}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right)-\frac{k_{1}}{2}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(\xi_{2}\right)\right] \end{aligned}
+\]</span></p>
+</section>
+</section>
+<section id="orthogonal-basis-on-unit-triangle" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonal-basis-on-unit-triangle">Orthogonal basis on unit triangle</h2>
+<p>The unit triangle is given by <span class="math inline">\(\mathcal{T}\)</span>,</p>
+<p><span class="math display">\[
+\mathcal{T}:=\left\{ \left(\eta_{1},\eta_{2}\right)\in\mathbb{R}^{2}:0&lt;\eta_{1},\eta_{2};\eta_{1}+\eta_{2}&lt;1\right\},
+\]</span></p>
+<p>To calculate the Orthogonal basis (Dubiner) on the unit triangle, we use the mapping from a unit triangle to a biunit square <span class="math inline">\((\xi_1, \xi_2)\)</span>:</p>
+<p><span class="math display">\[
+\xi_{1}=\frac{2 \eta_{1}}{1- \eta_{2}}-1
+\]</span></p>
+<p><span class="math display">\[
+\xi_{2}=2 \eta_{2}-1
+\]</span></p>
+<p>Then,</p>
+<p><span class="math display">\[
+\begin{aligned}\phi_{{\bf k}}\left(\eta_{1},\eta_{2}\right) &amp; =\Phi_{{\bf k}}\left(\xi_{1},\xi_{2}\right)\\
+&amp; =P_{k_{1}}^{\left(0,0\right)}\left[\xi_{1}\left(\eta_{1},\eta_{2}\right)\right]\left(1-\eta_{2}\right)^{k_{1}}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left[\xi_{2}\left(\eta_{1}, \eta_{2}\right)\right]
+\end{aligned}
+\]</span></p>
+<section id="gradient-of-orthogonal-polynomials" class="level3">
+<h3 class="anchored" data-anchor-id="gradient-of-orthogonal-polynomials">Gradient of orthogonal polynomials</h3>
+<p>The Jacobian of mapping from <span class="math inline">\((\xi_{1}, \xi_{2}) \mapsto (\eta_{1}, \eta_{2})\)</span> is given by</p>
+<p><span class="math display">\[
+\frac{\partial\xi_{i}}{\partial\eta_{j}}=\left[\begin{array}{cc} \frac{2}{1-\eta_{2}} &amp; \frac{2\eta_{1}}{\left(1-\eta_{2}\right)^{2}}\\ 0 &amp; 2 \end{array}\right]
+\]</span> Then, the gradient of orthogonal polynomials in triangular domain is given by:</p>
+<p><span class="math display">\[
+\begin{aligned}\frac{\partial\Phi_{{\bf k}}}{\partial\eta_{1}} &amp; =\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{1}}\frac{\partial\xi_{1}}{\partial\eta_{1}}+\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{2}}\frac{\partial\xi_{2}}{\partial\eta_{1}}\\ &amp; =\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{1}}\frac{2}{1-\eta_{2}} \end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}\frac{\partial\Phi_{{\bf k}}}{\partial\eta_{1}} &amp; =\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{1}}\frac{\partial\xi_{1}}{\partial\eta_{1}}+\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{2}}\frac{\partial\xi_{2}}{\partial\eta_{1}}\\ &amp; =\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{1}}\frac{2}{1-\eta_{2}}\\ &amp; =\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{1}}\frac{4}{1-\xi_{2}} \end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}\frac{\partial\Phi_{{\bf k}}}{\partial\eta_{2}} &amp; =\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{1}}\frac{\partial\xi_{1}}{\partial\eta_{2}}+\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{2}}\frac{\partial\xi_{2}}{\partial\eta_{2}}\\ &amp; =\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{1}}\frac{2\eta_{1}}{\left(1-\eta_{2}\right)^{2}}+2\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{2}}\\ &amp; =\frac{\partial\Phi_{{\bf k}}}{\partial\eta_{1}}\frac{\eta_{1}}{\left(1-\eta_{2}\right)}+2\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{2}}\\ &amp; =\frac{\partial\Phi_{{\bf k}}}{\partial\eta_{1}}\frac{1+\xi_{1}}{2}+2\frac{\partial\Phi_{{\bf k}}}{\partial\xi_{2}} \end{aligned}
+\]</span></p>
+</section>
+</section>
+<section id="dubiner-basis-on-biunit-triangle" class="level2">
+<h2 class="anchored" data-anchor-id="dubiner-basis-on-biunit-triangle">Dubiner basis on biunit triangle</h2>
+<p>To calculate the Dubiner basis on the biunit triangle, we use the following mapping from biunit triangle to biunit square:</p>
+<p><span class="math display">\[
+\xi_{1}=2\left(\frac{1+x_{1}}{1-x_{2}}\right)-1
+\]</span></p>
+<p><span class="math display">\[
+\xi_{2}=x_{2}
+\]</span></p>
+<p>Then,</p>
+<p><span class="math display">\[
+\begin{aligned}\phi_{{\bf k}}\left(x_{1},x_{2}\right) &amp; =\Phi_{{\bf k}}\left(\xi_{1},\xi_{2}\right)\\
+&amp; =P_{k_{1}}^{\left(0,0\right)}\left[\xi_{1}\left(x_{1},x_{2}\right)\right]\left(\frac{1-x_{2}}{2}\right)^{k_{1}}P_{k_{2}}^{\left(2k_{1}+1,0\right)}\left(x_{2}\right)
+\end{aligned}
+\]</span></p>
+</section>
+<section id="hierarchical-basis" class="level2">
+<h2 class="anchored" data-anchor-id="hierarchical-basis">Hierarchical basis</h2>
+<p>The use of orthogonal basis simplifies the structure of mass matrix. However, it complicates the enforcement of boundary conditions, or of matching conditions between two subdomains. To overcome these issues, we classified basis function in a heirarchical order. In other words, we define basis functions for node, edge, and cell.</p>
+<p>For example, for <span class="math inline">\(m\)</span>th order isotropic approximation on a triangle, we have a total</p>
+<p><span class="math display">\[
+\left(m+1\right)\left(m+2\right)/2
+\]</span></p>
+<p>modes with following partition:</p>
+<ul>
+<li><p>3 vertex mode</p></li>
+<li><p><span class="math inline">\(3\left(m-1\right)\)</span> edge bubble modes</p></li>
+<li><p><span class="math inline">\(\left(m-1\right)\left(m-2\right)/2\)</span> cell bubble modes</p></li>
+<li><p>For edge bubble modes to exist <span class="math inline">\(m \ge 2\)</span>.</p></li>
+<li><p>For cell bubble modes to exist <span class="math inline">\(m \ge 3\)</span>.</p></li>
+</ul>
+<section id="hierarchical-basis-using-barycentric-coordinates" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical-basis-using-barycentric-coordinates">Hierarchical basis using barycentric coordinates</h3>
+<section id="biunit-triangle-1" class="level4">
+<h4 class="anchored" data-anchor-id="biunit-triangle-1">Biunit triangle</h4>
+<p>Let <span class="math inline">\({\eta}_{1}, {\eta}_{2}\)</span> be the coordinates of a biunit triangle, then the barycentric coordinates are given by</p>
+<p><span class="math display">\[
+\lambda_{1,t}\left({\eta}_{1},{\eta}_{2}\right)=-\frac{1}{2}\left({\eta}_{1}+{\eta}_{2}\right)
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{2,t}\left({\eta}_{1},{\eta}_{2}\right)=\frac{1}{2}\left(1+{\eta}_{1}\right)
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{3,t}\left({\eta}_{1},{\eta}_{2}\right)=\frac{1}{2}\left(1+{\eta}_{2}\right)
+\]</span></p>
+<p>The Jacobian of mapping is given by:</p>
+<p><span class="math display">\[
+\frac{\partial\lambda}{\partial\eta}=\left[\begin{array}{cc} -\frac{1}{2} &amp; -\frac{1}{2}\\ \frac{1}{2} &amp; 0\\ 0 &amp; \frac{1}{2} \end{array}\right]
+\]</span></p>
+<p>Example: Let’s consider an edge (2-1). On this edge <span class="math inline">\(\lambda_{3}=0\)</span>. Therefore, we have <span class="math inline">\(\eta_{2} = -1\)</span>. Therefore,</p>
+<p><span class="math display">\[
+2*\lambda_{1} = 1 - \eta_{1}
+\]</span></p>
+<p><span class="math display">\[
+2*\lambda_{2} = 1.0 + \eta_{1}
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+\lambda_{2} - \lambda_{1} = \eta_{1}
+\]</span></p>
+<p>Therefore, on edge (2-1), we have following relation:</p>
+<p><span class="math display">\[
+\eta_{1} = \lambda_{2} - \lambda_{1}
+\]</span></p>
+<p>Similarly, on edge (1-3) we have</p>
+<p><span class="math display">\[
+\eta_{2} = \lambda_{3} - \lambda_{1}
+\]</span></p>
+<p>where <span class="math inline">\(\eta_{1,2} \in [-1, 1]\)</span></p>
+</section>
+<section id="unit-triangle-1" class="level4">
+<h4 class="anchored" data-anchor-id="unit-triangle-1">Unit triangle</h4>
+<p>For unit triangle, barycentric coordinates are given by</p>
+<p><span class="math display">\[
+\lambda_{1,t}\left({\eta}_{1},{\eta}_{2}\right)=1-{\eta}_{1}-{\eta}_{2}
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{2,t}\left({\eta}_{1},{\eta}_{2}\right)={\eta}_{1}
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{3,t}\left({\eta}_{1},{\eta}_{2}\right)={\eta}_{2}
+\]</span></p>
+<p>The Jacobian of mapping is given by</p>
+<p><span class="math display">\[
+\frac{\partial\lambda}{\partial\eta}=\left[\begin{array}{cc} -1 &amp; -1\\ 1 &amp; 0\\ 0 &amp; 1 \end{array}\right]
+\]</span></p>
+<p>Let <span class="math inline">\(\phi_{n}(x)\)</span> for <span class="math inline">\(x\in[-1,1]\)</span> be the Kernel polynomial corresponding to the Lobatto polynomials.</p>
+<p><span class="math display">\[
+\phi_{m}(x)=-\frac{\sqrt{8\left(2m+3\right)}}{\left(m+1\right)\left(m+2\right)}P_{m}^{(1.5)}\left(x\right),\quad m\ge0
+\]</span></p>
+<p>or</p>
+<p><span class="math display">\[
+\phi_{m}(x)=-\frac{\sqrt{2\left(2m+3\right)}}{m+1}P_{m}^{\left(1,1\right)}(x),\quad m\ge0
+\]</span></p>
+</section>
+<section id="vertex-basis-functions-in-terms-of-barycentric" class="level4">
+<h4 class="anchored" data-anchor-id="vertex-basis-functions-in-terms-of-barycentric">Vertex basis functions (in terms of barycentric)</h4>
+<p><span class="math display">\[
+\phi_{1}^{v}\left({\eta}_{1}, {\eta}_{2}\right)=\lambda_{1}
+\]</span></p>
+<p><span class="math display">\[
+\phi_{2}^{v}\left({\eta}_{1},{\eta}_{2}\right)=\lambda_{2}
+\]</span></p>
+<p><span class="math display">\[
+\phi_{3}^{v}\left({\eta}_{1}, {\eta}_{2}\right)=\lambda_{3}
+\]</span></p>
+<p>The gradient of <strong>Vertex</strong> basis functions is given by:</p>
+</section>
+<section id="edge-basis-functions-in-terms-of-barycentric" class="level4">
+<h4 class="anchored" data-anchor-id="edge-basis-functions-in-terms-of-barycentric">Edge basis functions (in terms of barycentric)</h4>
+<p><span class="math display">\[
+\phi_{k}^{e_{1}}=\lambda_{1}\lambda_{2}\phi_{k-2}\left(\lambda_{2}-\lambda_{1}\right),\quad k=2,3,\cdots,p^{e_{1}}
+\]</span></p>
+<p><span class="math display">\[
+\phi_{k}^{e_{2}}=\lambda_{1}\lambda_{3}\phi_{k-2}\left(\lambda_{3}-\lambda_{1}\right),\quad k=2,3,\cdots,p^{e_{2}}
+\]</span></p>
+<p><span class="math display">\[
+\phi_{k}^{e_{3}}=\lambda_{2}\lambda_{3}\phi_{k-2}\left(\lambda_{3}-\lambda_{2}\right),\quad k=2,3,\cdots,p^{e_{3}}
+\]</span></p>
+</section>
+<section id="cell-basis-functions-in-terms-of-barycentric" class="level4">
+<h4 class="anchored" data-anchor-id="cell-basis-functions-in-terms-of-barycentric">Cell basis functions (in terms of barycentric)</h4>
+<p><span class="math display">\[
+\phi_{k_{1},k_{2}}^{b}=\lambda_{1}\lambda_{2}\lambda_{3}\phi_{k_{1}-1}\left(\lambda_{2}-\lambda_{1}\right)\phi_{k_{2}-1}\left(\lambda_{3}-\lambda_{1}\right),\quad1\le k_{1},k_{2};k_{1}+k_{2}\le p^{b}-1
+\]</span></p>
+</section>
+</section>
+<section id="hierarchical-basis-using-biunit-square-element" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical-basis-using-biunit-square-element">Hierarchical basis using biunit square element</h3>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In the above section, we have computed the basis function in terms of Barycentric coordinates. In this section, we will compute the basis function on the bi-unit square which is mapped to the triangle via Duffy mapping. This procedure is described in the Karniadakis’s textbook, chapter 3.2.3.1.</p>
+<ul>
+<li>We will denote the coordinates of biunit triangle by <span class="math inline">\(\xi_{i}\)</span></li>
+<li>Coordinates of biunit square by <span class="math inline">\(\eta_{i}\)</span></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Let us define the following functions:</p>
+<p><span class="math display">\[
+l_{0}(y) = \frac{1}{2}(1-y)
+\]</span></p>
+<p><span class="math display">\[
+l_{1}(y) = \frac{1}{2}(1+y)
+\]</span></p>
+<section id="vertex-basis-functions-in-terms-of-biunit-square" class="level4">
+<h4 class="anchored" data-anchor-id="vertex-basis-functions-in-terms-of-biunit-square">Vertex basis functions (in terms of biunit square)</h4>
+<p>The vertex basis functions are given by:</p>
+<p><span class="math display">\[
+\phi_{1}^{v}\left({\xi}_{1}, {\xi}_{2}\right)=l_{0}\left(\eta_{1}\right)l_{0}\left(\eta_{2}\right)
+\]</span></p>
+<p><span class="math display">\[
+\phi_{2}^{v}\left({\xi}_{1},{\xi}_{2}\right)=l_{1}\left(\eta_{1}\right)l_{0}\left(\eta_{2}\right)
+\]</span></p>
+<p><span class="math display">\[
+\phi_{3}^{v}\left({\xi}_{1},{\xi}_{2}\right)=l_{1}\left(\eta_{1}\right)l_{1}\left(\eta_{2}\right)+l_{0}\left(\eta_{1}\right)l_{1}\left(\eta_{2}\right)
+\]</span></p>
+<p>The gradient of vertex basis functions are given by</p>
+<p><span class="math display">\[
+\nabla_{\eta}\phi_{1}^{v}\left(\xi_{1},\xi_{2}\right)=\left[\begin{array}{c}
+\frac{dl_{0}\left(\eta_{1}\right)}{d\eta_{1}}l_{0}\left(\eta_{2}\right)\\
+l_{0}\left(\eta_{1}\right)\frac{d}{d\eta_{2}}l_{0}\left(\eta_{2}\right)
+\end{array}\right]
+\]</span></p>
+<p><span class="math display">\[
+\nabla_{\eta}\phi_{2}^{v}\left({\xi}_{1},{\xi}_{2}\right) =\left[\begin{array}{c} \frac{dl_{1}\left(\eta_{1}\right)}{d\eta_{1}}l_{0}\left(\eta_{2}\right)\\ l_{1}\left(\eta_{1}\right)\frac{d}{d\eta_{2}}l_{0}\left(\eta_{2}\right) \end{array}\right]
+\]</span></p>
+<p><span class="math display">\[
+\nabla_{\eta}\phi_{3}^{v}\left({\xi}_{1},{\xi}_{2}\right) =\left[\begin{array}{c} \frac{d}{d\eta_{1}}l_{1}\left(\eta_{1}\right)l_{1}\left(\eta_{2}\right)+\frac{d}{d\eta_{1}}l_{0}\left(\eta_{1}\right)l_{1}\left(\eta_{2}\right)\\ l_{1}\left(\eta_{1}\right)\frac{d}{d\eta_{2}}l_{1}\left(\eta_{2}\right)+l_{0}\left(\eta_{1}\right)\frac{d}{d\eta_{2}}l_{1}\left(\eta_{2}\right) \end{array}\right]
+\]</span></p>
+</section>
+<section id="edge-basis-functions-in-terms-of-biunit-square" class="level4">
+<h4 class="anchored" data-anchor-id="edge-basis-functions-in-terms-of-biunit-square">Edge basis functions (in terms of biunit square)</h4>
+<p><span class="math display">\[
+\phi_{k_{1}}^{e_{1}}\left(\xi_{1},\xi_{2}\right)= l_{0}\left(\eta_{1}\right)l_{1}\left(\eta_{1}\right)P_{k_{1}-2}^{\left(1,1\right)}\left(\eta_{1}\right)\left[l_{0}\left(\eta_{2}\right)\right]^{k_{1}},k_{1}=2,3,\cdots,p^{e_{1}}
+\]</span></p>
+<p><span class="math display">\[
+\phi_{k_{2}}^{e_{2}}\left(\xi_{1},\xi_{2}\right)= l_{0}\left(\eta_{1}\right)l_{0}\left(\eta_{2}\right)l_{1}\left(\eta_{2}\right)P_{k_{2}-2}^{\left(1,1\right)}\left(\eta_{2}\right),k_{2}=2,3,\cdots,p^{e_{2}}
+\]</span></p>
+<p><span class="math display">\[
+\phi_{k_{2}}^{e_{3}}\left(\xi_{1},\xi_{2}\right)= l_{1}\left(\eta_{1}\right)l_{0}\left(\eta_{2}\right)l_{1}\left(\eta_{2}\right)P_{k_{2}-2}^{\left(1,1\right)}\left(\eta_{2}\right),k_{2}=2,3,\cdots,p^{e_{3}}
+\]</span></p>
+</section>
+<section id="cell-basis-functions-in-terms-of-biunit-square" class="level4">
+<h4 class="anchored" data-anchor-id="cell-basis-functions-in-terms-of-biunit-square">Cell basis functions (in terms of biunit square)</h4>
+<p><span class="math display">\[
+\phi_{k_{1},k_{2},t}^{b}\left(\xi_{1},\xi_{2}\right)= l_{0}\left(\eta_{1}\right)l_{1}\left(\eta_{1}\right)P_{k_{1}-2}^{\left(1,1\right)}\left(\eta_{1}\right)\left[l_{0}\left(\eta_{2}\right)\right]^{k_{1}}l_{1}\left(\eta_{2}\right)P_{k_{2}-2}^{\left(2k_{1}-1,1\right)}\left(\eta_{2}\right),k_{1},k_{2}\ge2,k_{1}+k_{2}\le m+1
+\]</span></p>
+</section>
+</section>
+</section>
+<section id="numerical-integration" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-integration">Numerical integration</h2>
+<!-- markdownlint-disable MD041 MD013 MD033 MD012 -->
+<p>For evaluating the integrals on reference triangle one needs to employ the high order accurate quadrature rules. In this chapter we will discuss the two types of quadrature rules on reference triangle. The first type is simpler but less economical. These rules are derived by using Duffy mapping (collapsed coordinates) and tensor product of quadrature rules on bi-unit quadrangle. The other type of quadrature rules are more economical, but they are difficult to generate.</p>
+<section id="tensor-product-based-quadrature-rules" class="level3">
+<h3 class="anchored" data-anchor-id="tensor-product-based-quadrature-rules">Tensor product based quadrature rules</h3>
+<p>Let <span class="math inline">\(x_{1},x_{2}\)</span> be the coordinates in the reference unit triangle <span class="math inline">\(\mathcal{T}\)</span>, and <span class="math inline">\(\eta_{1},\eta_{2}\)</span> be the coordinates in reference bi-unit square <span class="math inline">\(\mathcal{Q}\)</span> (see <a href="#fig-triangle-square-map" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-triangle-square-map</span></a>).</p>
+<p><span class="math display">\[
+\mathcal{T}:=\left\{ \left(x_{1},x_{2}\right)\in\mathbb{R}^{2}:0&lt;x_{1},x_{2};x_{1}+x_{2}&lt;1\right\}
+\]</span></p>
+<p><span class="math display">\[
+\mathcal{Q}:=\left\{ \left(\eta_{1},\eta_{2}\right)\in\mathbb{R}^{2}:-1&lt;\eta_{1},\eta_{2}&lt;1\right\}
+\]</span></p>
+<p><span class="math display">\[
+\int_{\mathcal{T}} f(\xi_{1}, \xi_{2}) d\Omega = \int_{\mathcal{Q}} F(\eta_1, \eta_2) J_{TQ} d\Omega
+\]</span></p>
+<p>The mapping between <span class="math inline">\(\mathcal{Q}\)</span> and <span class="math inline">\(\mathcal{T}\)</span>, <span class="math inline">\(\left(\eta_{1},\eta_{2}\right)\rightarrow\left(\xi_{1},\xi_{2}\right)\)</span> is given by:</p>
+<p><span class="math display">\[
+\xi_{1}=\frac{1}{4}\left(1+\eta_{1}\right)\left(1-\eta_{2}\right)
+\]</span></p>
+<p><span class="math display">\[
+\xi_{2}=\frac{\eta_{2}+1}{2}
+\]</span></p>
+<p>The determinant of Jacobian of this mapping is given by</p>
+<p><span class="math display">\[
+J_{TQ} = \frac{1}{8}(1-\eta_{2})
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+\int_{\mathcal{T}} f(\xi_{1}, \xi_{2}) d\Omega = \frac{1}{8} \int_{\mathcal{Q}} F(\eta_1, \eta_2) (1-\eta_{2}) d\Omega
+\]</span></p>
+<p>Now, we can use a tensor-product Gaussian formula in <span class="math inline">\(\mathcal{Q}\)</span>. To do so we will use following strategy:</p>
+<ul>
+<li>Generate <span class="math inline">\(N+1\)</span> Gauss Legendre Lobatto points in <span class="math inline">\(\eta_1\)</span> direction.</li>
+<li>Generate <span class="math inline">\(N\)</span> point Left Gauss Radau points in <span class="math inline">\(\eta_2\)</span> direction with weight <span class="math inline">\((1-\eta_2)\)</span>. This means left Gauss Jacobi Radau points with <span class="math inline">\(\alpha=1\)</span>, <span class="math inline">\(\beta=0\)</span>.</li>
+</ul>
+<blockquote class="blockquote">
+<p>The Left Gauss Radau rule is preferable to N+1 point Gauss Lobatto points. This is because it excludes the singular point <span class="math inline">\(\eta_{2} = 1\)</span> from the integration nodes which makes life easier in the construction of stiffness matrices and improves the condition number.</p>
+</blockquote>
+<div class="callout callout-style-default callout-note callout-titled" title="Accuracy">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Accuracy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This formula is exact for all polynomials in <span class="math inline">\(\mathcal{Q}\)</span> of degree <span class="math inline">\(\le 2N-1\)</span> in each variable <span class="math inline">\(\eta_{1}\)</span>, <span class="math inline">\(\eta_{2}\)</span>.</p>
+<p>This formula is also exact for all polynomials in <span class="math inline">\(\mathcal{T}\)</span> of global degree <span class="math inline">\(2N-1\)</span> in the variables <span class="math inline">\(\xi_{1}\)</span> and <span class="math inline">\(\xi_{2}\)</span>.</p>
+</div>
+</div>
+<p>Note that number of degrees of freedom in triangle is</p>
+<p><span class="math display">\[
+\frac{1}{2}(N+1)(N+2)
+\]</span></p>
+<p>Compare to this number, then total number of quadrature points are <span class="math inline">\(N(N+1)\)</span>, which is almost double.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Therefore, we should not use these quadrature points to construct Lagrange polynomial on triangles.</p>
+</div>
+</div>
+</section>
+<section id="economical-quadrature-rules" class="level3">
+<h3 class="anchored" data-anchor-id="economical-quadrature-rules">Economical quadrature rules</h3>
+<p>Dunavant presented an overview of minimum number of quadrature points for Gaussian quadrature over triangles as show in table below.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Order</th>
+<th>Min number of points</th>
+<th>Achieved number of points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>12</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>13</td>
+<td>13</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>19</td>
+<td>19</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>24</td>
+<td>25</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>27</td>
+<td>27</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>33</td>
+<td>33</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>36</td>
+<td>37</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>40</td>
+<td>42</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>45</td>
+<td>48</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>51</td>
+<td>52</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>55</td>
+<td>61</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>63</td>
+<td>70</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>67</td>
+<td>73</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>73</td>
+<td>79</td>
+</tr>
+</tbody>
+</table>
+<section id="order-1" class="level4">
+<h4 class="anchored" data-anchor-id="order-1">Order 1</h4>
+<p><code>etaj</code> (order=1)=</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Point 1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\xi_1\)</span></td>
+<td>0.33333</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\xi_2\)</span></td>
+<td>0.33333</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(w\)</span></td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="order-2" class="level4">
+<h4 class="anchored" data-anchor-id="order-2">Order 2</h4>
+<p><code>etaj</code> (order=2)=</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>0.66667</td>
+<td>0.16667</td>
+<td>0.16667</td>
+</tr>
+<tr class="even">
+<td>0.16667</td>
+<td>0.66667</td>
+<td>0.16667</td>
+</tr>
+<tr class="odd">
+<td>0.16667</td>
+<td>0.16667</td>
+<td>0.16667</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="order-3" class="level4">
+<h4 class="anchored" data-anchor-id="order-3">order 3</h4>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>0.33333</td>
+<td>0.2</td>
+<td>0.2</td>
+<td>0.6</td>
+</tr>
+<tr class="even">
+<td>0.33333</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>0.2</td>
+</tr>
+<tr class="odd">
+<td>-0.28125</td>
+<td>0.26042</td>
+<td>0.26042</td>
+<td>0.26042</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="order-4" class="level4">
+<h4 class="anchored" data-anchor-id="order-4">order 4</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>9.15762E-02</td>
+<td>0.81685</td>
+<td>9.15762E-02</td>
+<td>0.44595</td>
+<td>0.44595</td>
+<td>0.1081</td>
+</tr>
+<tr class="even">
+<td>9.15762E-02</td>
+<td>9.15762E-02</td>
+<td>0.81685</td>
+<td>0.1081</td>
+<td>0.44595</td>
+<td>0.44595</td>
+</tr>
+<tr class="odd">
+<td>5.49759E-02</td>
+<td>5.49759E-02</td>
+<td>5.49759E-02</td>
+<td>0.11169</td>
+<td>0.11169</td>
+<td>0.11169</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="barycentric-coordiantes" class="level2">
+<h2 class="anchored" data-anchor-id="barycentric-coordiantes">Barycentric coordiantes</h2>
+<p>Barycentric coordinates are also known as the area coordinates. They have been used to construct the basis functions with rotational symmetry. Barycentric coordinates are denoted by <span class="math inline">\(l_1\)</span>, <span class="math inline">\(l_{2}\)</span>, <span class="math inline">\(l_{3}\)</span>, which are given by</p>
+<p><span class="math display">\[
+l_{i} = \frac{A_{i}}{A}, i=1,2,3
+\]</span></p>
+<p>where,</p>
+<p><span class="math display">\[
+A_{1} + A_{2} + A_{3} = A
+\]</span></p>
+<p>In this way, barycentric coordinates are NOT independent of each other as they satisfies the following equation:</p>
+<p><span class="math display">\[
+l_{1} + l_{3} + l_{3} = 1
+\]</span></p>
+<section id="barycentric-coordinates-for-biunit-triangle" class="level3">
+<h3 class="anchored" data-anchor-id="barycentric-coordinates-for-biunit-triangle">Barycentric coordinates for biunit triangle</h3>
+<p><span class="math display">\[
+l_{1}=-\frac{\xi_{1}+\xi_{2}}{2}
+\]</span></p>
+<p><span class="math display">\[
+l_{2}=\frac{1}{2}\left(1+\xi_{1}\right)
+\]</span></p>
+<p><span class="math display">\[
+l_{3}=\frac{1}{2}\left(1+\xi_{2}\right)
+\]</span></p>
+</section>
+<section id="barycentric-coordinates-for-unit-triangle" class="level3">
+<h3 class="anchored" data-anchor-id="barycentric-coordinates-for-unit-triangle">Barycentric coordinates for unit triangle</h3>
+<p><span class="math display">\[
+l_{1}= 1 - \xi_{1} - \xi_{2}
+\]</span></p>
+<p><span class="math display">\[
+l_{2}= \xi_{1}
+\]</span></p>
+<p><span class="math display">\[
+l_{3}= \xi_{2}
+\]</span></p>
+</section>
+<section id="relationship-between-barycentric-coordinates-and-collapsed-coordinate" class="level3">
+<h3 class="anchored" data-anchor-id="relationship-between-barycentric-coordinates-and-collapsed-coordinate">Relationship between barycentric coordinates and collapsed coordinate</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">TODO</label></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/poromechanics\.github\.io\/basis-fem");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./h1-conforming-line.html" class="pagination-link" aria-label="Line element">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Line element</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./h1-conforming-quadrangle.html" class="pagination-link" aria-label="Quadrangle">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quadrangle</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2025, Vikas Sharma</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/h1-conforming-triangle.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/vickysharma0812">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/vickysharma0812">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/vickysharma0812">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
