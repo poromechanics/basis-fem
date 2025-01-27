@@ -33,6 +33,9 @@ book:
   chapters:
     - index.md
     - intro.md
+    - part: "Differential forms"
+      chapters:
+        - ./differential-complexes.md
     - part: ./h1-conforming-basis.md
       chapters:
         - ./h1-conforming-line.md
@@ -40,6 +43,15 @@ book:
         - ./h1-conforming-quadrangle.md
         - ./h1-conforming-tetrahedron.md
         - ./h1-conforming-hexahedron.md
+    - part: ./hdiv-conforming-basis.md
+      chapters:
+        - ./hdiv-conforming-basis.md
+    - part: ./hcurl-conforming-basis.md
+      chapters:
+        - ./hcurl-conforming-basis.md
+    - part: ./numerical-integration.md
+      chapters:
+        - ./numerical-integration-line.md
     - summary.md
     - references.md
 

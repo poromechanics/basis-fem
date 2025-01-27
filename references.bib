@@ -1,19 +1,319 @@
-@article{knuth84,
-  author = {Knuth, Donald E.},
-  title = {Literate Programming},
-  year = {1984},
-  issue_date = {May 1984},
-  publisher = {Oxford University Press, Inc.},
-  address = {USA},
-  volume = {27},
+﻿@article{christiansen2018,
+  title = {Nodal Finite Element de {{Rham}} Complexes},
+  author = {Christiansen, Snorre H. and Hu, Jun and Hu, Kaibo},
+  year = {2018},
+  month = jun,
+  journal = {Numerische Mathematik},
+  volume = {139},
   number = {2},
-  issn = {0010-4620},
-  url = {https://doi.org/10.1093/comjnl/27.2.97},
-  doi = {10.1093/comjnl/27.2.97},
-  journal = {Comput. J.},
-  month = may,
-  pages = {97–111},
-  numpages = {15}
+  pages = {411--446},
+  issn = {0945-3245},
+  doi = {10.1007/s00211-017-0939-x},
+  abstract = {We construct 2D and 3D finite element de Rham sequences of arbitrary polynomial degrees with extra smoothness. Some of these elements have nodal degrees of freedom and can be considered as generalisations of scalar Hermite and Lagrange elements. Using the nodal values, the number of global degrees of freedom is reduced compared with the classical N\'ed\'elec and Brezzi\textendash Douglas\textendash Marini finite elements, and the basis functions are more canonical and easier to construct. Our finite elements for \$\$\{H\}(\textbackslash mathrm \{div\})\$\$with regularity \$\$r=2\$\$coincide with the nonstandard elements given by Stenberg~(Numer Math 115(1):131\textendash 139,~2010). We show how regularity decreases in the finite element complexes, so that they branch into known complexes. The standard de Rham complexes of Whitney forms and their higher order version can be regarded as the family with the lowest regularity. The construction of the new families is motivated by finite element systems.},
+  langid = {english},
+  keywords = {58A12,65N30}
+}
+
+@misc{arnold2002,
+  title = {Differential Complexes and Numerical Stability},
+  author = {Arnold, Douglas N.},
+  year = {2002},
+  month = nov,
+  number = {arXiv:math/0212391},
+  eprint = {math/0212391},
+  eprinttype = {arxiv},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.math/0212391},
+  abstract = {Differential complexes such as the de Rham complex have recently come to play an important role in the design and analysis of numerical methods for partial differential equations. The design of stable discretizations of systems of partial differential equations often hinges on capturing subtle aspects of the structure of the system in the discretization. In many cases the differential geometric structure captured by a differential complex has proven to be a key element, and a discrete differential complex which is appropriately related to the original complex is essential. This new geometric viewpoint has provided a unifying understanding of a variety of innovative numerical methods developed over recent decades and pointed the way to stable discretizations of problems for which none were previously known, and it appears likely to play an important role in attacking some currently intractable problems in numerical PDE.},
+  archiveprefix = {arXiv},
+  keywords = {65N12,Mathematics - Numerical Analysis}
 }
 
 
+
+@article{hiptmair2007,
+  title = {Nodal {{Auxiliary Space Preconditioning}} in {{H}}(Curl) and {{H}}(Div) {{Spaces}}},
+  author = {Hiptmair, Ralf and Xu, Jinchao},
+  year = {2007},
+  month = jan,
+  journal = {SIAM Journal on Numerical Analysis},
+  volume = {45},
+  number = {6},
+  pages = {2483--2509},
+  publisher = {{Society for Industrial and Applied Mathematics}},
+  issn = {0036-1429},
+  doi = {10.1137/060660588},
+  abstract = {In this paper, we develop and analyze a general approach to preconditioning linear systems of equations arising from conforming finite element discretizations of H(curl, )- and H(div, )-elliptic variational problems. The preconditioners exclusively rely on solvers for discrete Poisson problems. We prove mesh-independent effectivity of the preconditioners by using the abstract theory of auxiliary space preconditioning. The main tools are discrete analogues of so-called regular decomposition results in the function spaces H(curl, ) and H(div, ). Our preconditioner for H(curl, ) is similar to an algorithm proposed in [R. Beck, Algebraic Multigrid by Component Splitting for Edge Elements on Simplicial Triangulations, Tech. rep. SC 99-40, ZIB, Berlin, Germany, 1999].},
+  keywords = {65F10,65N22,65N30,65N55,auxiliary space preconditioning,fictitious space preconditioning}
+}
+
+@inproceedings{arnold2006a,
+  title = {Differential {{Complexes}} and {{Stability}} of {{Finite Element Methods I}}. {{The}} de {{Rham Complex}}},
+  booktitle = {Compatible {{Spatial Discretizations}}},
+  author = {Arnold, Douglas N. and Falk, Richard S. and Winther, Ragnar},
+  editor = {Arnold, Douglas N. and Bochev, Pavel B. and Lehoucq, Richard B. and Nicolaides, Roy A. and Shashkov, Mikhail},
+  year = {2006},
+  series = {The {{IMA Volumes}} in {{Mathematics}} and Its {{Applications}}},
+  pages = {23--46},
+  publisher = {{Springer}},
+  address = {{New York, NY}},
+  doi = {10.1007/0-387-38034-5_2},
+  abstract = {In this paper we explain the relation between certain piecewise polynomial subcomplexes of the de Rham complex and the stability of mixed finite element methods for elliptic problems.},
+  isbn = {978-0-387-38034-6},
+  langid = {english},
+  keywords = {de Rham complex,Mixed finite element method,stability}
+}
+
+
+
+@article{guzman2014,
+  title = {Conforming and Divergence-Free {{Stokes}} Elements in Three Dimensions},
+  author = {Guzm{\'a}n, Johnny and Neilan, Michael},
+  year = {2014},
+  month = oct,
+  journal = {IMA Journal of Numerical Analysis},
+  volume = {34},
+  number = {4},
+  pages = {1489--1508},
+  issn = {0272-4979},
+  doi = {10.1093/imanum/drt053},
+  abstract = {Conforming finite element pairs for the three-dimensional Stokes problem on general simplicial triangulations are constructed. The pressure space simply consists of piecewise constants, whereas the velo-city space consists of cubic polynomials augmented with rational functions. We show the existence of a bounded Fortin projection and therefore the necessary LBB condition is satisfied. In addition, the divergence operator maps the velocity space into the space of piecewise constants. Consequently, the method produces exactly divergence-free velocity approximations.}
+}
+
+
+
+@article{neilan2015,
+  title = {Discrete and Conforming Smooth de {{Rham}} Complexes in Three Dimensions},
+  author = {Neilan, Michael},
+  year = {2015},
+  month = sep,
+  journal = {Mathematics of Computation},
+  volume = {84},
+  number = {295},
+  pages = {2059--2081},
+  issn = {0025-5718, 1088-6842},
+  doi = {10.1090/S0025-5718-2015-02958-5},
+  abstract = {Conforming discrete de Rham complexes consisting of finite element spaces with extra smoothness are constructed. In particular, we develop \$H\^2\$, \$\textbackslash boldsymbol \{H\}\^1(\{\textbackslash text \{curl\}\})\$, \$\textbackslash boldsymbol \{H\}\^1\$ and \$L\^2\$ conforming finite element spaces and show that an exactness property is satisfied. These results naturally lead to discretizations for Stokes and Brinkman type problems as well as conforming approximations to fourth order curl problems. In addition, we reduce the question of stability of the three-dimensional Scott-Vogelius finite element to a simply stated conjecture.},
+  langid = {english},
+  keywords = {de Rham complex,divergence free,Finite elements}
+}
+
+
+
+@article{mardal2002a,
+  title = {A {{Robust Finite Element Method}} for {{Darcy--Stokes Flow}}},
+  author = {Mardal, Kent Andre and Tai, Xue-Cheng and Winther, Ragnar},
+  year = {2002},
+  month = jan,
+  journal = {SIAM Journal on Numerical Analysis},
+  volume = {40},
+  number = {5},
+  pages = {1605--1631},
+  publisher = {{Society for Industrial and Applied Mathematics}},
+  issn = {0036-1429},
+  doi = {10.1137/S0036142901383910},
+  abstract = {Finite element methods for a family of systems of singular perturbation problems of a saddle point structure are discussed. The system is approximately a linear Stokes problem when the perturbation parameter is large, while it degenerates to a mixed formulation of Poisson's equation as the perturbation parameter tends to zero. It is established, basically by numerical experiments, that most of the proposed finite element methods for Stokes problem or the mixed Poisson's system are not well behaved uniformly in the perturbation parameter. This is used as the motivation for introducing a new "robust" finite element which exhibits this property.},
+  keywords = {65N12,65N15,65N30,Darcy--Stokes flow,nonconforming finite elements,singular perturbation problems,uniform error estimates}
+}
+
+
+
+@article{tai2006,
+  title = {A Discrete de {{Rham}} Complex with Enhanced Smoothness},
+  author = {Tai, Xue{\textendash}Cheng and Winther, Ragnar},
+  year = {2006},
+  month = dec,
+  journal = {CALCOLO},
+  volume = {43},
+  number = {4},
+  pages = {287--306},
+  issn = {1126-5434},
+  doi = {10.1007/s10092-006-0124-6},
+  abstract = {Discrete de Rham complexes are fundamental tools in the construction of stable elements for some finite element methods. The purpose of this paper is to discuss a new discrete de Rham complex in three space dimensions, where the finite element spaces have extra smoothness compared to the standard requirements. The motivation for this construction is to produce discretizations which have uniform stability properties for certain families of singular perturbation problem. In particular, we show how the spaces constructed here lead to discretizations of Stokes type systems which have uniform convergence properties as the Stokes flow approaches a Darcy flow.},
+  langid = {english}
+}
+
+
+
+@inproceedings{arnold2006b,
+  title = {Defferential {{Complexes}} and {{Stability}} of {{Finite Element Methods II}}: {{The Elasticity Complex}}},
+  shorttitle = {Defferential {{Complexes}} and {{Stability}} of {{Finite Element Methods II}}},
+  booktitle = {Compatible {{Spatial Discretizations}}},
+  author = {Arnold, Douglas N. and Falk, Richard S. and Winther, Ragnar},
+  editor = {Arnold, Douglas N. and Bochev, Pavel B. and Lehoucq, Richard B. and Nicolaides, Roy A. and Shashkov, Mikhail},
+  year = {2006},
+  series = {The {{IMA Volumes}} in {{Mathematics}} and Its {{Applications}}},
+  pages = {47--67},
+  publisher = {{Springer}},
+  address = {{New York, NY}},
+  doi = {10.1007/0-387-38034-5_3},
+  abstract = {A close connection between the ordinary de Rham complex and a corresponding elasticity complex is utilized to derive new mixed finite element methods for linear elasticity. For a formulation with weakly imposed symmetry, this approach leads to methods which are simpler than those previously obtained. For example, we construct stable discretizations which use only piecewise linear elements to approximate the stress field and piecewise constant functions to approximate the displacement field. We also discuss how the strongly symmetric methods proposed in [8] can be derived in the present framework. The method of construction works in both two and three space dimensions, but for simplicity the discussion here is limited to the two dimensional case.},
+  isbn = {978-0-387-38034-6},
+  langid = {english},
+  keywords = {elasticity,Hellinger-Reissner principle,Mixed finite element method}
+}
+
+
+
+@article{arnold2008,
+  title = {Finite Elements for Symmetric Tensors in Three Dimensions},
+  author = {Arnold, Douglas and Awanou, Gerard and Winther, Ragnar},
+  year = {2008},
+  journal = {Mathematics of Computation},
+  volume = {77},
+  number = {263},
+  pages = {1229--1251},
+  issn = {0025-5718, 1088-6842},
+  doi = {10.1090/S0025-5718-08-02071-1},
+  abstract = {We construct finite element subspaces of the space of symmetric tensors with square-integrable divergence on a three-dimensional domain. These spaces can be used to approximate the stress field in the classical Hellinger\textendash Reissner mixed formulation of the elasticty equations, when standard discontinuous finite element spaces are used to approximate the displacement field. These finite element spaces are defined with respect to an arbitrary simplicial triangulation of the domain, and there is one for each positive value of the polynomial degree used for the displacements. For each degree, these provide a stable finite element discretization. The construction of the spaces is closely tied to discretizations of the elasticity complex and can be viewed as the three-dimensional analogue of the triangular element family for plane elasticity previously proposed by Arnold and Winther.},
+  langid = {english}
+}
+
+
+
+@book{bossavit1998a,
+  title = {Computational {{Electromagnetism}}},
+  author = {Bossavit, Alain},
+  year = {1998},
+  publisher = {{Elsevier}},
+  doi = {10.1016/B978-0-12-118710-1.X5000-4},
+  abstract = {Computational Electromagnetism refers to the modern concept of computer-aided analysis, and design, of virtually all electric devices such as motors, machines, transformers, etc., as well as of the equipment in the currently booming field of telecommunications, such as antennas, radars, etc. The present book is uniquely written to enable the reader-- be it a student, a scientist, or a practitioner-- to successfully perform important simulation techniques and to design efficient computer software for electromagnetic device analysis. Numerous illustrations, solved exercises, original ideas, and an extensive and up-to-date bibliography make it a valuable reference for both experts and beginners in the field. A researcher and practitioner will find in it information rarely available in other sources, such as on symmetry, bilateral error bounds by complimentarity, edge and face elements, treatment of infinite domains, etc. At the same time, the book is a useful teaching tool for courses in computational techniques in certain fields of physics and electrical engineering. As a self-contained text, it presents an extensive coverage of the most important concepts from Maxwells equations to computer-solvable algebraic systems-- for both static, quasi-static, and harmonic high-frequency problems.},
+  isbn = {978-0-12-118710-1},
+  langid = {english}
+}
+
+@article{christiansen2016,
+  title = {On High Order Finite Element Spaces of Differential Forms},
+  author = {Christiansen, Snorre and Rapetti, Francesca},
+  year = {2016},
+  month = mar,
+  journal = {Mathematics of Computation},
+  volume = {85},
+  number = {298},
+  pages = {517--548},
+  issn = {0025-5718, 1088-6842},
+  doi = {10.1090/mcom/2995},
+  abstract = {We show how the high order finite element spaces of differential forms due to Raviart-Thomas-N\'edelec-Hiptmair fit into the framework of finite element systems, in an elaboration of the finite element exterior calculus of Arnold-Falk-Winther. Based on observations by Bossavit, we provide new low order degrees of freedom. As an alternative to existing choices of bases, we provide canonical resolutions in terms of scalar polynomials and Whitney forms.},
+  langid = {english},
+  keywords = {differential forms,Finite elements,high order approximations}
+}
+
+
+
+@article{hiptmair1999,
+  title = {Canonical Construction of Finite Elements},
+  author = {Hiptmair, R.},
+  year = {1999},
+  month = jan,
+  journal = {Mathematics of Computation},
+  volume = {68},
+  pages = {1325--1346},
+  issn = {0025-5718},
+  abstract = {The mixed variational formulation of many elliptic boundary value problems involves vector valued function spaces, like, in three dimensions, H(curl;Omega) and H(Div,Omega). Thus finite element subspaces of these function spaces are indispensable for effective finite element discretization schemes. Given a simplicial triangulation of the computational domain Omega, among others, Raviart, Thomas and N39d39lec have found suitable conforming finite elements foH(Div;Omega) and H(curl;Omega). At first glance, it is hard to detect a common guiding principle behind these approaches. We take a fresh look at the construction of the finite spaces, viewing them from the angle of differential forms. This is motivated by the well-known relationships between differential forms and differential operators: div, curl and grad can all be regarded as special incarnations of the exterior derivative of a differential form. Moreover, in the realm of differential forms most concepts are basically dimension-independent. Thus, we arrive at a fairly canonical procedure to construct conforming finite element subspaces of function spaces related to differential forms. In any dimension we can give a simple characterization of the local polynomial spaces and degrees of freedom underlying the definition of the finite element spaces. With unprecedented ease we can recover the familiar H(Div;Omega)- and H(curl;Omega)-conforming finite elements, and establish the unisolvence of degrees of freedom. In addition, the use of differential forms makes it possible to establish crucial algebraic properties of the canonical interpolation operators and representation theorems in a single sweep for all kinds of spaces.},
+  annotation = {ADS Bibcode: 1999MaCom..68.1325H}
+}
+
+
+
+@article{hiptmair2002,
+  title = {Finite Elements in Computational Electromagnetism},
+  author = {Hiptmair, R.},
+  year = {2002},
+  month = jan,
+  journal = {Acta Numerica},
+  volume = {11},
+  pages = {237--339},
+  publisher = {{Cambridge University Press}},
+  issn = {1474-0508, 0962-4929},
+  doi = {10.1017/S0962492902000041},
+  abstract = {This article discusses finite element Galerkin schemes for a number of linear  model problems in electromagnetism. The finite element schemes are introduced  as discrete differential forms, matching the coordinate-independent  statement of Maxwell's equations in the calculus of differential forms. The  asymptotic convergence of discrete solutions is investigated theoretically. As  discrete differential forms represent a genuine generalization of conventional  Lagrangian finite elements, the analysis is based upon a judicious adaptation  of established techniques in the theory of finite elements. Risks and difficulties  haunting finite element schemes that do not fit the framework of discrete differential  forms are highlighted.},
+  langid = {english}
+}
+
+@article{arnold2010,
+  title = {Finite Element Exterior Calculus: From {{Hodge}} Theory to Numerical Stability},
+  shorttitle = {Finite Element Exterior Calculus},
+  author = {Arnold, Douglas and Falk, Richard and Winther, Ragnar},
+  year = {2010},
+  month = apr,
+  journal = {Bulletin of the American Mathematical Society},
+  volume = {47},
+  number = {2},
+  pages = {281--354},
+  issn = {0273-0979, 1088-9485},
+  doi = {10.1090/S0273-0979-10-01278-4},
+  abstract = {This article reports on the confluence of two streams of research, one emanating from the fields of numerical analysis and scientific computation, the other from topology and geometry. In it we consider the numerical discretization of partial differential equations that are related to differential complexes so that de Rham cohomology and Hodge theory are key tools for exploring the well-posedness of the continuous problem. The discretization methods we consider are finite element methods, in which a variational or weak formulation of the PDE problem is approximated by restricting the trial subspace to an appropriately constructed piecewise polynomial subspace. After a brief introduction to finite element methods, we develop an abstract Hilbert space framework for analyzing the stability and convergence of such discretizations. In this framework, the differential complex is represented by a complex of Hilbert spaces, and stability is obtained by transferring Hodge-theoretic structures that ensure well-posedness of the continuous problem from the continuous level to the discrete. We show stable discretization is achieved if the finite element spaces satisfy two hypotheses: they can be arranged into a subcomplex of this Hilbert complex, and there exists a bounded cochain projection from that complex to the subcomplex. In the next part of the paper, we consider the most canonical example of the abstract theory, in which the Hilbert complex is the de Rham complex of a domain in Euclidean space. We use the Koszul complex to construct two families of finite element differential forms, show that these can be arranged in subcomplexes of the de Rham complex in numerous ways, and for each construct a bounded cochain projection. The abstract theory therefore applies to give the stability and convergence of finite element approximations of the Hodge Laplacian. Other applications are considered as well, especially the elasticity complex and its application to the equations of elasticity. Background material is included to make the presentation self-contained for a variety of readers.},
+  langid = {english},
+  keywords = {de Rham cohomology,exterior calculus,FEEC,Finite element exterior calculus,Hodge Laplacian,Hodge theory,mixed finite elements}
+}
+
+
+
+@article{arnold2006,
+  title = {Finite Element Exterior Calculus, Homological Techniques, and Applications},
+  author = {Arnold, Douglas N. and Falk, Richard S. and Winther, Ragnar},
+  year = {2006},
+  month = may,
+  journal = {Acta Numerica},
+  volume = {15},
+  pages = {1--155},
+  publisher = {{Cambridge University Press}},
+  issn = {1474-0508, 0962-4929},
+  doi = {10.1017/S0962492906210018},
+  abstract = {Finite element exterior calculus is an approach to the design and understanding of finite element discretizations for a wide variety of systems of partial differential equations. This approach brings to bear tools from differential geometry, algebraic topology, and homological algebra to develop discretizations which are compatible with the geometric, topological, and algebraic structures which underlie well-posedness of the PDE problem being solved. In the finite element exterior calculus, many finite element spaces are revealed as spaces of piecewise polynomial differential forms. These connect to each other in discrete subcomplexes of elliptic differential complexes, and are also related to the continuous elliptic complex through projections which commute with the complex differential. Applications are made to the finite element discretization of a variety of problems, including the Hodge Laplacian, Maxwell's equations, the equations of elasticity, and elliptic eigenvalue problems, and also to preconditioners.},
+  langid = {english},
+  keywords = {FEEC}
+}
+
+
+
+@article{arnold2009,
+  title = {Geometric Decompositions and Local Bases for Spaces of Finite Element Differential Forms},
+  author = {Arnold, Douglas N. and Falk, Richard S. and Winther, Ragnar},
+  year = {2009},
+  month = may,
+  journal = {Computer Methods in Applied Mechanics and Engineering},
+  series = {Advances in {{Simulation-Based Engineering Sciences}} \textendash{} {{Honoring J}}. {{Tinsley Oden}}},
+  volume = {198},
+  number = {21},
+  pages = {1660--1672},
+  issn = {0045-7825},
+  doi = {10.1016/j.cma.2008.12.017},
+  abstract = {We study the two primary families of spaces of finite element differential forms with respect to a simplicial mesh in any number of space dimensions. These spaces are generalizations of the classical finite element spaces for vector fields, frequently referred to as Raviart\textendash Thomas, Brezzi\textendash Douglas\textendash Marini, and N\'ed\'elec spaces. In the present paper, we derive geometric decompositions of these spaces which lead directly to explicit local bases for them, generalizing the Bernstein basis for ordinary Lagrange finite elements. The approach applies to both families of finite element spaces, for arbitrary polynomial degree, arbitrary order of the differential forms, and an arbitrary simplicial triangulation in any number of space dimensions. A prominent role in the construction is played by the notion of a consistent family of extension operators, which expresses in an abstract framework a sufficient condition for deriving a geometric decomposition of a finite element space leading to a local basis.},
+  langid = {english},
+  keywords = {Berstein bases,FEEC,finite element bases,Finite element exterior calculus}
+}
+
+
+
+@article{kirby2014,
+  title = {Low-{{Complexity Finite Element Algorithms}} for the de {{Rham Complex}} on {{Simplices}}},
+  author = {Kirby, Robert C.},
+  year = {2014},
+  month = jan,
+  journal = {SIAM Journal on Scientific Computing},
+  volume = {36},
+  number = {2},
+  pages = {A846-A868},
+  publisher = {{Society for Industrial and Applied Mathematics}},
+  issn = {1064-8275},
+  doi = {10.1137/130927693},
+  abstract = {We combine recently developed finite element algorithms based on Bernstein polynomials [M. Ainsworth, G. Andriamaro, and O. Davydov, SIAM J. Sci. Comput., 33 (2011), pp. 3087--3109; R. C. Kirby, Numer. Math., 117 (2011), pp. 631--652] with the explicit basis construction of the finite element exterior calculus [D. N. Arnold, R. S. Falk, and R. Winther, Comput. Methods Appl. Mech. Engrg., 198 (2009), pp. 1660--1672] to give a family of algorithms for the de Rham complex on simplices that achieves stiffness matrix construction and matrix-free action in optimal complexity. These algorithms are based on realizing the exterior calculus bases as short combinations of Bernstein polynomials. Numerical results confirm optimal scaling of the algorithms and favorable comparison with FEniCS at high polynomial order as well. Additional empirical studies show that very high accuracy is achieved in the mixed discretization of the Poisson equation and the Maxwell eigenvalue problem as the polynomial degree increases.},
+  keywords = {65N30,Bernstein polynomials,finite element exterior calculus,spectral element method}
+}
+
+@article{guzman2014a,
+  title = {Conforming and Divergence-Free {{Stokes}} Elements on General Triangular Meshes},
+  author = {Guzm{\'a}n, Johnny and Neilan, Michael},
+  year = {2014},
+  month = jan,
+  journal = {Mathematics of Computation},
+  volume = {83},
+  number = {285},
+  pages = {15--36},
+  issn = {0025-5718, 1088-6842},
+  doi = {10.1090/S0025-5718-2013-02753-6},
+  abstract = {We present a family of conforming finite elements for the Stokes problem on general triangular meshes in two dimensions. The lowest order case consists of enriched piecewise linear polynomials for the velocity and piecewise constant polynomials for the pressure. We show that the elements satisfy the inf-sup condition and converges with order k for both the velocity and pressure. Moreover, the pressure space is exactly the divergence of the corresponding space for the velocity. Therefore the discretely divergence-free functions are divergence-free pointwise. We also show how the proposed elements are related to a class of C1 elements through the use of a discrete de Rham complex.},
+  langid = {english},
+  keywords = {conforming,divergence-free,Finite elements,Stokes}
+}
