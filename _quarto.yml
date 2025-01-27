@@ -33,6 +33,10 @@ book:
   chapters:
     - index.md
     - intro.md
+    - part: ./h1-conforming-basis.md
+      chapters:
+        - ./h1-conforming-line.md
+        - ./h1-conforming-triangle.md
     - summary.md
     - references.md
 

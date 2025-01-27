@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 200 200" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Layer-1" vectornator:layerName="Layer 1">
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.85308" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 16.484 154.515)" vectornator:layerName="tspan" vectornator:width="4.92654" x="0" y="0">
+<tspan textLength="1.92654" x="0" y="3">1</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.85308" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 145.931 146.331)" vectornator:layerName="tspan" vectornator:width="4.92654" x="0" y="0">
+<tspan textLength="1.92654" x="0" y="3">2</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.85308" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 17.8391 28.4076)" vectornator:layerName="tspan" vectornator:width="4.92654" x="0" y="0">
+<tspan textLength="1.92654" x="0" y="3">3</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.2109" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 135.056 166.51)" vectornator:layerName="tspan" vectornator:width="9.15213" x="0" y="0">
+<tspan textLength="6.15213" x="0" y="3">(1,0)</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.2109" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 33.2983 165.815)" vectornator:layerName="tspan" vectornator:width="9.15213" x="0" y="0">
+<tspan textLength="6.15213" x="0" y="3">(0,0)</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.2109" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 36.8723 28.7037)" vectornator:layerName="tspan" vectornator:width="9.15213" x="0" y="0">
+<tspan textLength="6.15213" x="0" y="3">(0,1)</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="4" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 159.521 141.159)" vectornator:layerName="tspan" vectornator:width="7" x="0" y="0">
+<tspan textLength="4" x="0" y="4">x1</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="4" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 38.7313 13.6859)" vectornator:layerName="tspan" vectornator:width="7" x="0" y="0">
+<tspan textLength="4" x="0" y="4">x2</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.38666" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 70.8308 50.7709)" vectornator:layerName="tspan" vectornator:width="20.2111" x="0" y="0">
+<tspan textLength="17.2111" x="0" y="3">Unit triangle</tspan>
+</text>
+<g opacity="1" vectornator:layerName="path">
+<path d="M186.214 161.508C174.974 161.508 10.3932 161.508 10.3932 161.508" fill="none" opacity="1" stroke="#666666" stroke-dasharray="0.9676336646080017" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.967634" vectornator:layerName="path"/>
+<path d="M185.367 161.508L182.827 164.894L189.6 161.508L182.827 158.121L185.367 161.508Z" fill="#666666" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="path"/>
+</g>
+<g opacity="1" vectornator:layerName="path 1">
+<path d="M30.8051 3.39323C30.8051 14.6328 30.8051 179.214 30.8051 179.214" fill="none" opacity="1" stroke="#666666" stroke-dasharray="0.9676336646080017" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.967634" vectornator:layerName="path"/>
+<path d="M30.8051 4.23991L34.1918 6.77995L30.8051 0.00651209L27.4184 6.77995L30.8051 4.23991Z" fill="#666666" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="path"/>
+</g>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.38666" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 16.93 96.1108)" vectornator:layerName="tspan" vectornator:width="6.19649" x="0" y="0">
+<tspan textLength="3.19649" x="0" y="3">e2</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.38666" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 91.9481 168.784)" vectornator:layerName="tspan" vectornator:width="6.19649" x="0" y="0">
+<tspan textLength="3.19649" x="0" y="3">e1</tspan>
+</text>
+<text fill="#000000" font-family="TimesNewRomanPSMT" font-size="3.38666" opacity="1" stroke="none" text-anchor="start" transform="matrix(2.835 0 0 2.835 88.541 86.4149)" vectornator:layerName="tspan" vectornator:width="6.19649" x="0" y="0">
+<tspan textLength="3.19649" x="0" y="3">e3</tspan>
+</text>
+<path d="M30.5258 35.5626L30.5258 163.079L146.79 163.079L30.5258 35.5626Z" fill="#eebf5b" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.600074" vectornator:layerName="path 2"/>
+<path d="M141.082 161.981C141.082 159.452 143.132 157.402 145.661 157.402C148.189 157.402 150.239 159.452 150.239 161.981C150.239 164.509 148.189 166.559 145.661 166.559C143.132 166.559 141.082 164.509 141.082 161.981Z" fill="#d9d7b7" fill-rule="nonzero" opacity="1" stroke="#241c1c" stroke-linecap="round" stroke-linejoin="miter" stroke-width="0.519148" vectornator:layerName="ellipse"/>
+<path d="M25.7708 162.223C25.7708 159.694 27.8207 157.644 30.3493 157.644C32.878 157.644 34.9279 159.694 34.9279 162.223C34.9279 164.751 32.878 166.801 30.3493 166.801C27.8207 166.801 25.7708 164.751 25.7708 162.223Z" fill="#d9d7b7" fill-rule="nonzero" opacity="1" stroke="#241c1c" stroke-linecap="round" stroke-linejoin="miter" stroke-width="0.519148" vectornator:layerName="ellipse 1"/>
+<path d="M26.5645 36.0008C26.5645 33.4721 28.6144 31.4222 31.1431 31.4222C33.6717 31.4222 35.7217 33.4721 35.7217 36.0008C35.7217 38.5295 33.6717 40.5794 31.1431 40.5794C28.6144 40.5794 26.5645 38.5295 26.5645 36.0008Z" fill="#d9d7b7" fill-rule="nonzero" opacity="1" stroke="#241c1c" stroke-linecap="round" stroke-linejoin="miter" stroke-width="0.519148" vectornator:layerName="ellipse 2"/>
+</g>
+</svg>
