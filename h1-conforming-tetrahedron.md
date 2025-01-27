@@ -504,7 +504,7 @@ $$
 
 ### Collapsed coordinates
 
-The Orthogonal basis in terms of [collapsed coordinates](./8-collapsed-coordinates.md) is given by following expressions.
+The Orthogonal basis in terms of collapsed coordinates is given by following expressions.
 
 $$
 \phi_{pqr}\left(\xi_{1},\xi_{3},\xi_{3}\right)=\widetilde{\psi}_{p}^{a}\left(\eta_{1}\right)\widetilde{\psi}_{pq}^{b}\left(\eta_{2}\right)\widetilde{\psi}_{pqr}^{c}\left(\eta_{3}\right)
