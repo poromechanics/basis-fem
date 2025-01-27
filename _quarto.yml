@@ -39,6 +39,7 @@ book:
         - ./h1-conforming-triangle.md
         - ./h1-conforming-quadrangle.md
         - ./h1-conforming-tetrahedron.md
+        - ./h1-conforming-hexahedron.md
     - summary.md
     - references.md
 
