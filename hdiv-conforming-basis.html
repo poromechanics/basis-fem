@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction – Basis functions of Finite Element Methods</title>
+<title>HDiv conforming basis – Basis functions of Finite Element Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,8 +50,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./differential-complexes.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./hcurl-conforming-basis.html" rel="next">
+<link href="./h1-conforming-hexahedron.html" rel="prev">
 <link href="././figures/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -71,7 +91,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta name="twitter:title" content="1&nbsp; Introduction – Basis functions of Finite Element Methods">
+<meta name="twitter:title" content="HDiv conforming basis – Basis functions of Finite Element Methods">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -84,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hdiv-conforming-basis.html">HDiv conforming basis</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -223,7 +244,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./hdiv-conforming-basis.html" class="sidebar-item-text sidebar-link">
+            <a href="./hdiv-conforming-basis.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">HDiv conforming basis</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -232,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hdiv-conforming-basis.html" class="sidebar-item-text sidebar-link">
+  <a href="./hdiv-conforming-basis.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">HDiv conforming basis</span></a>
   </div>
 </li>
@@ -297,7 +318,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title">HDiv conforming basis</h1>
 </div>
 
 
@@ -314,8 +335,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>H(div) elements with nodal degrees of freedom and incomplete polynomial shape function spaces were explored in <span class="citation" data-cites="guzman2014 guzman2014a">(<a href="references.html#ref-guzman2014" role="doc-biblioref">Guzmán and Neilan 2014b</a>, <a href="references.html#ref-guzman2014a" role="doc-biblioref">2014a</a>)</span></p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-guzman2014a" class="csl-entry" role="listitem">
+Guzmán, Johnny, and Michael Neilan. 2014a. <span>“Conforming and Divergence-Free <span>Stokes</span> Elements on General Triangular Meshes.”</span> <em>Mathematics of Computation</em> 83 (285): 15–36. <a href="https://doi.org/10.1090/S0025-5718-2013-02753-6">https://doi.org/10.1090/S0025-5718-2013-02753-6</a>.
+</div>
+<div id="ref-guzman2014" class="csl-entry" role="listitem">
+———. 2014b. <span>“Conforming and Divergence-Free <span>Stokes</span> Elements in Three Dimensions.”</span> <em>IMA Journal of Numerical Analysis</em> 34 (4): 1489–1508. <a href="https://doi.org/10.1093/imanum/drt053">https://doi.org/10.1093/imanum/drt053</a>.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -737,13 +767,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./h1-conforming-hexahedron.html" class="pagination-link" aria-label="Hexahedron">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hexahedron</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./differential-complexes.html" class="pagination-link" aria-label="Differential complexes">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Differential complexes</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./hcurl-conforming-basis.html" class="pagination-link" aria-label="Hcurl conforming basis">
+        <span class="nav-page-text">Hcurl conforming basis</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -755,7 +785,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/intro.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/hdiv-conforming-basis.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

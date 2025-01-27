@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction – Basis functions of Finite Element Methods</title>
+<title>Differential complexes – Basis functions of Finite Element Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,8 +50,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./differential-complexes.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./h1-conforming-basis.html" rel="next">
+<link href="./intro.html" rel="prev">
 <link href="././figures/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -70,8 +90,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="1&nbsp; Introduction – Basis functions of Finite Element Methods">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta name="twitter:title" content="Differential complexes – Basis functions of Finite Element Methods">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -84,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./differential-complexes.html">Differential forms</a></li><li class="breadcrumb-item"><a href="./differential-complexes.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Differential complexes</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,7 +209,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -174,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./differential-complexes.html" class="sidebar-item-text sidebar-link">
+  <a href="./differential-complexes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Differential complexes</span></span></a>
   </div>
 </li>
@@ -289,15 +339,34 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#de-rham-diagram" id="toc-de-rham-diagram" class="nav-link" data-scroll-target="#de-rham-diagram">De Rham diagram</a></li>
+  <li><a href="#literature-review" id="toc-literature-review" class="nav-link" data-scroll-target="#literature-review">Literature review</a>
+  <ul class="collapse">
+  <li><a href="#hiptmairs-work" id="toc-hiptmairs-work" class="nav-link" data-scroll-target="#hiptmairs-work">Hiptmair’s work</a></li>
+  <li><a href="#arnold-falk-winther" id="toc-arnold-falk-winther" class="nav-link" data-scroll-target="#arnold-falk-winther">Arnold-Falk-Winther</a></li>
+  <li><a href="#christiansens-work" id="toc-christiansens-work" class="nav-link" data-scroll-target="#christiansens-work">Christiansen’s work</a></li>
+  </ul></li>
+  <li><a href="#forms" id="toc-forms" class="nav-link" data-scroll-target="#forms">Forms</a>
+  <ul class="collapse">
+  <li><a href="#coordinates-for-vectors" id="toc-coordinates-for-vectors" class="nav-link" data-scroll-target="#coordinates-for-vectors">Coordinates for vectors</a></li>
+  <li><a href="#tangent-space-1-form" id="toc-tangent-space-1-form" class="nav-link" data-scroll-target="#tangent-space-1-form">Tangent space (1-Form)</a></li>
+  <li><a href="#tangent-space-2-forms" id="toc-tangent-space-2-forms" class="nav-link" data-scroll-target="#tangent-space-2-forms">Tangent space (2-Forms)</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/differential-complexes.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./differential-complexes.html">Differential forms</a></li><li class="breadcrumb-item"><a href="./differential-complexes.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Differential complexes</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title">Differential complexes</h1>
 </div>
 
 
@@ -314,8 +383,180 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Recently, it has been found by several researchers that differential complexes are an important tool in the study of finite element methods. This is because finite element differential complexes characterise finite element spaces and the operators among them, which are crucial for the stability of numerical formulations <span class="citation" data-cites="christiansen2018 arnold2002">(<a href="references.html#ref-christiansen2018" role="doc-biblioref">S. H. Christiansen, Hu, and Hu 2018</a>; <a href="references.html#ref-arnold2002" role="doc-biblioref">D. N. Arnold 2002</a>)</span>, and fast solvers <span class="citation" data-cites="hiptmair2007">(<a href="references.html#ref-hiptmair2007" role="doc-biblioref">Ralf Hiptmair and Xu 2007</a>)</span>. Bossavit pointed out that the lowest order mixed finite elements correspond to constructs in algebraic topology known as Whitney forms <span class="citation" data-cites="bossavit1998a">(<a href="references.html#ref-bossavit1998a" role="doc-biblioref">Bossavit 1998</a>)</span>.</p>
+<p>Following complexes have been proposed in the literature:</p>
+<ul>
+<li>de Rham complex<span class="citation" data-cites="hiptmair2002 arnold2006a">(<a href="references.html#ref-hiptmair2002" role="doc-biblioref">R. Hiptmair 2002</a>; <a href="references.html#ref-arnold2006a" role="doc-biblioref">D. N. Arnold, Falk, and Winther 2006b</a>)</span></li>
+<li>Stokes complex <span class="citation" data-cites="guzman2014 neilan2015">(<a href="references.html#ref-guzman2014" role="doc-biblioref">Guzmán and Neilan 2014</a>; <a href="references.html#ref-neilan2015" role="doc-biblioref">Neilan 2015</a>)</span></li>
+<li>Darcy-Stokes complex <span class="citation" data-cites="mardal2002a tai2006">(<a href="references.html#ref-mardal2002a" role="doc-biblioref">Mardal, Tai, and Winther 2002</a>; <a href="references.html#ref-tai2006" role="doc-biblioref">Tai and Winther 2006</a>)</span></li>
+<li>Elasticity complex <span class="citation" data-cites="arnold2006b arnold2008">(<a href="references.html#ref-arnold2006b" role="doc-biblioref">D. N. Arnold, Falk, and Winther 2006a</a>; <a href="references.html#ref-arnold2008" role="doc-biblioref">D. Arnold, Awanou, and Winther 2008</a>)</span></li>
+</ul>
+<p>Stokes complexes and Darcy–Stokes complexes have the same differential operators as the standard de Rham complexes, and the only difference is that the spaces of Stokes and Darcy–Stokes have higher continuity.</p>
+<p>The finite element de Rham sequences can be based on incomplete polynomials, such as Nedelec elements of first kind, Raviart-Thomas elements, or complete polynomials, such as Nedelec elements of second kind and Brezzi-Douglas-Marini elements.</p>
+<p>Vector elements cannot be represented by Lagrange nodal basis functions.</p>
+</section>
+<section id="de-rham-diagram" class="level2">
+<h2 class="anchored" data-anchor-id="de-rham-diagram">De Rham diagram</h2>
+<p>In 2D, there are two forms:</p>
+<p><span class="math display">\[
+H^{1}\stackrel{\nabla}{\rightarrow}H(\text{curl})\stackrel{\nabla\times}{\rightarrow}L^{2}
+\]</span></p>
+<p><span class="math display">\[
+H^{1}\stackrel{\nabla\times}{\rightarrow}H(\text{div})\stackrel{\nabla\cdot}{\rightarrow}L^{2}
+\]</span></p>
+<p>In 3D, we have</p>
+<p><span class="math display">\[
+H^{1}\stackrel{\nabla}{\rightarrow}H(\text{curl})\stackrel{\nabla\times}{\rightarrow}H(\text{div})\stackrel{\nabla\cdot}{\rightarrow}L^{2}
+\]</span></p>
+<p>In 2D, the vector-valued <strong>curl</strong> of a scalar function <span class="math inline">\(\phi\)</span> is defined by</p>
+<p><span class="math display">\[
+\nabla\times\phi=\left(\begin{array}{c}
+-\frac{\partial\phi}{\partial x_{2}}\\
+\frac{\partial\phi}{\partial x_{1}}
+\end{array}\right)=\mathcal{T}\nabla\phi
+\]</span></p>
+<p>where, <span class="math inline">\(\mathcal{T}\)</span>is a 90 degree counter clockwise rotation operator, that is</p>
+<p><span class="math display">\[
+\mathcal{T}\left(\begin{array}{c}
+x\\
+y
+\end{array}\right)=\left(\begin{array}{c}
+-y\\
+x
+\end{array}\right)
+\]</span></p>
+</section>
+<section id="literature-review" class="level2">
+<h2 class="anchored" data-anchor-id="literature-review">Literature review</h2>
+<section id="hiptmairs-work" class="level3">
+<h3 class="anchored" data-anchor-id="hiptmairs-work">Hiptmair’s work</h3>
+<p>Hiptmair <span class="citation" data-cites="hiptmair1999 hiptmair2002">(<a href="references.html#ref-hiptmair1999" role="doc-biblioref">R. Hiptmair 1999</a>, <a href="references.html#ref-hiptmair2002" role="doc-biblioref">2002</a>)</span> extended Whitney forms to high order, that is, higher degree polynomials and Nedelec elements to any space dimension.</p>
+<p>These high order spaces of can be referred to as trimmed polynomial differential forms, since for a given degree, some of the top degree polynomials are (carefully) removed from the space. These spaces are naturally spanned by products of polynomials with Whitney forms, but this is not a tensor product.</p>
+</section>
+<section id="arnold-falk-winther" class="level3">
+<h3 class="anchored" data-anchor-id="arnold-falk-winther">Arnold-Falk-Winther</h3>
+<p>Arnold, Falk and Winther developed the idea of Finite Element Exterior Calculus <span class="citation" data-cites="arnold2002 arnold2010">(<a href="references.html#ref-arnold2002" role="doc-biblioref">D. N. Arnold 2002</a>; <a href="references.html#ref-arnold2010" role="doc-biblioref">D. Arnold, Falk, and Winther 2010</a>)</span></p>
+<p>In <span class="citation" data-cites="arnold2006">(<a href="references.html#ref-arnold2006" role="doc-biblioref">D. N. Arnold, Falk, and Winther 2006c</a>)</span> the construction of Hiptmair was reworked in terms of the Koszul complex, emphasizing the fundamental duality, through degrees of freedom, between the denominated <span class="math inline">\(\mathcal{P}_{r}^{-}\varLambda^{k}\)</span> and <span class="math inline">\(\mathcal{P}_{r}\varLambda^{k}\)</span> spaces there, which correspond to Nédélec’s first and second family. It was also placed in a general framework of discretizations of Hilbert complexes by subcomplexes, which has applications to other situations, such as elasticity.</p>
+<p>In <span class="citation" data-cites="arnold2009">(<a href="references.html#ref-arnold2009" role="doc-biblioref">D. N. Arnold, Falk, and Winther 2009</a>)</span> bases are proposed for differential forms in arbitrary space dimension, and these have been used for implementations by <span class="citation" data-cites="kirby2014">(<a href="references.html#ref-kirby2014" role="doc-biblioref">Kirby 2014</a>)</span>.</p>
+</section>
+<section id="christiansens-work" class="level3">
+<h3 class="anchored" data-anchor-id="christiansens-work">Christiansen’s work</h3>
+<p>On high order finite element spaces of differential forms <span class="citation" data-cites="christiansen2016">(<a href="references.html#ref-christiansen2016" role="doc-biblioref">S. Christiansen and Rapetti 2016</a>)</span></p>
+<ul>
+<li>The high order finite element spaces of differential forms due to Raviart-Thomas-Nedelec-Hiptmair fit into the framework of finite element systems, in an elaboration of the finite element exterior calculus of Arnold-Falk-Winther.</li>
+<li>Based on observations by Bossavit, we provide new low order degrees of freedom. As an alternative to existing choices of bases, we provide canonical resolutions in terms of scalar polynomials and Whitney forms.</li>
+<li>A notion of finite element systems (FES) has also been developed. It is a general theory, abstracting the good properties of known mixed finite elements, but allowing for cellular decompositions of space and non-polynomial differential forms. In precisely determined circumstances, they provide good subcomplexes of the de Rham complex. This framework can be used to construct dual finite elements, minimal ones, tensor-products, and upwinded variants.</li>
+</ul>
+</section>
+</section>
+<section id="forms" class="level2">
+<h2 class="anchored" data-anchor-id="forms">Forms</h2>
+<section id="coordinates-for-vectors" class="level3">
+<h3 class="anchored" data-anchor-id="coordinates-for-vectors">Coordinates for vectors</h3>
+<p>Vectors are invariant objects in math. However, description of a vector requires adoptation of coordinate system. A coordinate system is a collection of points. For example in <span class="math inline">\(R^{2}\)</span> the location of a point is given by <span class="math inline">\((x,y)\)</span>, in <span class="math inline">\(R^{3}\)</span> it is given by <span class="math inline">\(\left(x_{1},x_{2},x_{3}\right)\)</span>, and in <span class="math inline">\(R^{n}\)</span> it is given by <span class="math inline">\(\left(x_{1},\cdots,x_{n}\right)\)</span>. So coordinates are a way of assigning a set of numbers to a point in space.</p>
+<p>In other words, coordinates are functions which take points of a space and return a set of numbers. For example, consider a plane <span class="math inline">\(P\subset R^{2}\)</span>, then the <span class="math inline">\(x\)</span> coordinate is a function defined as <span class="math inline">\(x:P\rightarrow R\)</span>, such that <span class="math inline">\(\forall p\in P\)</span>, <span class="math inline">\(x(p)\)</span> and <span class="math inline">\(y(p)\)</span> give us two numbers, <span class="math inline">\(\left(x(p),y(p)\right)\)</span> denoting the coordinates of point <span class="math inline">\(p\)</span>.</p>
+</section>
+<section id="tangent-space-1-form" class="level3">
+<h3 class="anchored" data-anchor-id="tangent-space-1-form">Tangent space (1-Form)</h3>
+<p>1-form is a linear functional which acts on a vector and returns a number. Consider <span class="math inline">\(T_{p}R^{2}\)</span> for some fixed point, <span class="math inline">\(p\)</span>, then a linear function <span class="math inline">\(\omega:T_{p}R^{2}\rightarrow R\)</span> is given by</p>
+<p><span class="math display">\[
+\omega:=\omega\left(\left\langle dx,dy\right\rangle \right)=adx+bdy=\left\langle a,b\right\rangle \cdot\left\langle dx,dy\right\rangle
+\]</span></p>
+<p>Hence, to specify a 1-form on <span class="math inline">\(T_{p}R^{2}\)</span> we need two parameters <span class="math inline">\(a,b\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}\omega\left(\left\langle dx,dy\right\rangle \right) &amp; =\frac{\left\langle a,b\right\rangle }{\Vert\left\langle a,b\right\rangle \Vert}\cdot\left\langle dx,dy\right\rangle \Vert\left\langle a,b\right\rangle \Vert\\
+&amp; =\Vert\left\langle a,b\right\rangle \Vert\mathcal{P}_{&lt;a,b&gt;}\left\langle dx,dy\right\rangle
+\end{aligned}
+\]</span></p>
+<blockquote class="blockquote">
+<p>Evaluating a 1-form on a vector is the same as projecting the vector onto some line and then multiplying with the length of that line. Evaluating a 1-form on a vector is the same as projecting onto each coordinate axis, scaling each by some constant and adding the results.</p>
+</blockquote>
+</section>
+<section id="tangent-space-2-forms" class="level3">
+<h3 class="anchored" data-anchor-id="tangent-space-2-forms">Tangent space (2-Forms)</h3>
+<p>A 2-form acts on a pair of vectors and returns a number. 2-form can be written in terms of two 1-form. Let <span class="math inline">\(\omega\)</span> and <span class="math inline">\(\nu\)</span> be two 1-forms, then 2-form is given by</p>
+<p><span class="math display">\[
+\omega\wedge\nu\left(v_{1},v_{2}\right)=\left|\begin{array}{cc}
+\omega\left(v_{1}\right) &amp; \nu\left(v_{1}\right)\\
+\omega\left(v_{2}\right) &amp; \nu\left(v_{2}\right)
+\end{array}\right|
+\]</span></p>
+<p>Properties of 2-form</p>
+<ul>
+<li>Skew-symmetric <span class="math inline">\(\omega\wedge\nu(v_{1},v_{2})=-\omega\wedge\nu(v_{2},v_{1})\)</span></li>
+<li><span class="math inline">\(\omega\wedge\nu(v,v)=0\)</span></li>
+<li><span class="math inline">\(\omega\wedge\nu(v_{1},v_{2})=-\nu\wedge\omega(v_{2},v_{1})\)</span></li>
+<li><span class="math inline">\(\omega\wedge\omega(v_{1},v_{2})=0\)</span></li>
+<li><span class="math inline">\(\omega\wedge\nu(\alpha v_{1}+\beta v_{2},v_{3})=\alpha\omega\wedge\nu(v_{1},v_{3})+\beta\omega\wedge\nu(v_{2},v_{3})\)</span></li>
+<li><span class="math inline">\(\omega\wedge\nu(\alpha v_{1},v_{2})=\alpha\omega\wedge\nu(v_{1},v_{2})=\omega\wedge\nu(v_{1},\alpha v_{2})\)</span></li>
+<li><span class="math inline">\(\left(\omega+\nu\right)\wedge\psi=\omega\wedge\psi+\nu\wedge\psi\)</span></li>
+</ul>
+<p>All 2-forms on <span class="math inline">\(T_{p}R^{3}\)</span> can be written as a product of 1-forms. Every 2-form on <span class="math inline">\(T_{p}R^{3}\)</span>projects paris of vectors onto some plane and returns the area of the resulting parallelogra, scaled by some constant.</p>
+<p>If V is a vector, then <span class="math inline">\(\left\langle V\right\rangle ^{-1}\)</span>be the corresponding 1-form.</p>
+<p>If <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are 1-forms on <span class="math inline">\(T_{p}R^{3}\)</span> and <span class="math inline">\(V\)</span> is a vector in the plane spaned by <span class="math inline">\(\left\langle \alpha\right\rangle\)</span> and <span class="math inline">\(\left\langle \beta\right\rangle\)</span> then there is a vector, <span class="math inline">\(W\)</span>, in this plane such that <span class="math inline">\(\alpha\wedge\beta=\left\langle V\right\rangle ^{-1}\wedge\left\langle W\right\rangle ^{-1}.\)</span></p>
+<p>If <span class="math inline">\(\omega_{1}=\alpha_{1}\wedge\beta_{1}\)</span> and <span class="math inline">\(\omega_{2}=\alpha_{2}\wedge\beta_{2}\)</span> are 2-forms on <span class="math inline">\(T_{p}R^{3}\)</span> then there exist 1-forms, <span class="math inline">\(\alpha_{3}\)</span> and <span class="math inline">\(\beta_{3}\)</span> such that <span class="math inline">\(\omega_{1}+\omega_{2}=\alpha_{3}\wedge\beta_{3}\)</span>.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-arnold2002" class="csl-entry" role="listitem">
+Arnold, Douglas N. 2002. <span>“Differential Complexes and Numerical Stability.”</span> <span>arXiv</span>. <a href="https://doi.org/10.48550/arXiv.math/0212391">https://doi.org/10.48550/arXiv.math/0212391</a>.
+</div>
+<div id="ref-arnold2006b" class="csl-entry" role="listitem">
+Arnold, Douglas N., Richard S. Falk, and Ragnar Winther. 2006a. <span>“Defferential <span>Complexes</span> and <span>Stability</span> of <span>Finite Element Methods II</span>: <span>The Elasticity Complex</span>.”</span> In <em>Compatible <span>Spatial Discretizations</span></em>, edited by Douglas N. Arnold, Pavel B. Bochev, Richard B. Lehoucq, Roy A. Nicolaides, and Mikhail Shashkov, 47–67. The <span>IMA Volumes</span> in <span>Mathematics</span> and Its <span>Applications</span>. <span>New York, NY</span>: <span>Springer</span>. <a href="https://doi.org/10.1007/0-387-38034-5_3">https://doi.org/10.1007/0-387-38034-5_3</a>.
+</div>
+<div id="ref-arnold2006a" class="csl-entry" role="listitem">
+———. 2006b. <span>“Differential <span>Complexes</span> and <span>Stability</span> of <span>Finite Element Methods I</span>. <span>The</span> de <span>Rham Complex</span>.”</span> In <em>Compatible <span>Spatial Discretizations</span></em>, edited by Douglas N. Arnold, Pavel B. Bochev, Richard B. Lehoucq, Roy A. Nicolaides, and Mikhail Shashkov, 23–46. The <span>IMA Volumes</span> in <span>Mathematics</span> and Its <span>Applications</span>. <span>New York, NY</span>: <span>Springer</span>. <a href="https://doi.org/10.1007/0-387-38034-5_2">https://doi.org/10.1007/0-387-38034-5_2</a>.
+</div>
+<div id="ref-arnold2006" class="csl-entry" role="listitem">
+———. 2006c. <span>“Finite Element Exterior Calculus, Homological Techniques, and Applications.”</span> <em>Acta Numerica</em> 15 (May): 1–155. <a href="https://doi.org/10.1017/S0962492906210018">https://doi.org/10.1017/S0962492906210018</a>.
+</div>
+<div id="ref-arnold2009" class="csl-entry" role="listitem">
+———. 2009. <span>“Geometric Decompositions and Local Bases for Spaces of Finite Element Differential Forms.”</span> <em>Computer Methods in Applied Mechanics and Engineering</em>, Advances in <span>Simulation-Based Engineering Sciences</span> <span>Honoring J</span>. <span>Tinsley Oden</span>, 198 (21): 1660–72. <a href="https://doi.org/10.1016/j.cma.2008.12.017">https://doi.org/10.1016/j.cma.2008.12.017</a>.
+</div>
+<div id="ref-arnold2008" class="csl-entry" role="listitem">
+Arnold, Douglas, Gerard Awanou, and Ragnar Winther. 2008. <span>“Finite Elements for Symmetric Tensors in Three Dimensions.”</span> <em>Mathematics of Computation</em> 77 (263): 1229–51. <a href="https://doi.org/10.1090/S0025-5718-08-02071-1">https://doi.org/10.1090/S0025-5718-08-02071-1</a>.
+</div>
+<div id="ref-arnold2010" class="csl-entry" role="listitem">
+Arnold, Douglas, Richard Falk, and Ragnar Winther. 2010. <span>“Finite Element Exterior Calculus: From <span>Hodge</span> Theory to Numerical Stability.”</span> <em>Bulletin of the American Mathematical Society</em> 47 (2): 281–354. <a href="https://doi.org/10.1090/S0273-0979-10-01278-4">https://doi.org/10.1090/S0273-0979-10-01278-4</a>.
+</div>
+<div id="ref-bossavit1998a" class="csl-entry" role="listitem">
+Bossavit, Alain. 1998. <em>Computational <span>Electromagnetism</span></em>. <span>Elsevier</span>. <a href="https://doi.org/10.1016/B978-0-12-118710-1.X5000-4">https://doi.org/10.1016/B978-0-12-118710-1.X5000-4</a>.
+</div>
+<div id="ref-christiansen2018" class="csl-entry" role="listitem">
+Christiansen, Snorre H., Jun Hu, and Kaibo Hu. 2018. <span>“Nodal Finite Element de <span>Rham</span> Complexes.”</span> <em>Numerische Mathematik</em> 139 (2): 411–46. <a href="https://doi.org/10.1007/s00211-017-0939-x">https://doi.org/10.1007/s00211-017-0939-x</a>.
+</div>
+<div id="ref-christiansen2016" class="csl-entry" role="listitem">
+Christiansen, Snorre, and Francesca Rapetti. 2016. <span>“On High Order Finite Element Spaces of Differential Forms.”</span> <em>Mathematics of Computation</em> 85 (298): 517–48. <a href="https://doi.org/10.1090/mcom/2995">https://doi.org/10.1090/mcom/2995</a>.
+</div>
+<div id="ref-guzman2014" class="csl-entry" role="listitem">
+Guzmán, Johnny, and Michael Neilan. 2014. <span>“Conforming and Divergence-Free <span>Stokes</span> Elements in Three Dimensions.”</span> <em>IMA Journal of Numerical Analysis</em> 34 (4): 1489–1508. <a href="https://doi.org/10.1093/imanum/drt053">https://doi.org/10.1093/imanum/drt053</a>.
+</div>
+<div id="ref-hiptmair1999" class="csl-entry" role="listitem">
+Hiptmair, R. 1999. <span>“Canonical Construction of Finite Elements.”</span> <em>Mathematics of Computation</em> 68 (January): 1325–46.
+</div>
+<div id="ref-hiptmair2002" class="csl-entry" role="listitem">
+———. 2002. <span>“Finite Elements in Computational Electromagnetism.”</span> <em>Acta Numerica</em> 11 (January): 237–339. <a href="https://doi.org/10.1017/S0962492902000041">https://doi.org/10.1017/S0962492902000041</a>.
+</div>
+<div id="ref-hiptmair2007" class="csl-entry" role="listitem">
+Hiptmair, Ralf, and Jinchao Xu. 2007. <span>“Nodal <span>Auxiliary Space Preconditioning</span> in <span>H</span>(curl) and <span>H</span>(div) <span>Spaces</span>.”</span> <em>SIAM Journal on Numerical Analysis</em> 45 (6): 2483–2509. <a href="https://doi.org/10.1137/060660588">https://doi.org/10.1137/060660588</a>.
+</div>
+<div id="ref-kirby2014" class="csl-entry" role="listitem">
+Kirby, Robert C. 2014. <span>“Low-<span>Complexity Finite Element Algorithms</span> for the de <span>Rham Complex</span> on <span>Simplices</span>.”</span> <em>SIAM Journal on Scientific Computing</em> 36 (2): A846–68. <a href="https://doi.org/10.1137/130927693">https://doi.org/10.1137/130927693</a>.
+</div>
+<div id="ref-mardal2002a" class="csl-entry" role="listitem">
+Mardal, Kent Andre, Xue-Cheng Tai, and Ragnar Winther. 2002. <span>“A <span>Robust Finite Element Method</span> for <span>Darcy–Stokes Flow</span>.”</span> <em>SIAM Journal on Numerical Analysis</em> 40 (5): 1605–31. <a href="https://doi.org/10.1137/S0036142901383910">https://doi.org/10.1137/S0036142901383910</a>.
+</div>
+<div id="ref-neilan2015" class="csl-entry" role="listitem">
+Neilan, Michael. 2015. <span>“Discrete and Conforming Smooth de <span>Rham</span> Complexes in Three Dimensions.”</span> <em>Mathematics of Computation</em> 84 (295): 2059–81. <a href="https://doi.org/10.1090/S0025-5718-2015-02958-5">https://doi.org/10.1090/S0025-5718-2015-02958-5</a>.
+</div>
+<div id="ref-tai2006" class="csl-entry" role="listitem">
+Tai, XueCheng, and Ragnar Winther. 2006. <span>“A Discrete de <span>Rham</span> Complex with Enhanced Smoothness.”</span> <em>CALCOLO</em> 43 (4): 287–306. <a href="https://doi.org/10.1007/s10092-006-0124-6">https://doi.org/10.1007/s10092-006-0124-6</a>.
+</div>
+</div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -737,13 +978,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./differential-complexes.html" class="pagination-link" aria-label="Differential complexes">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Differential complexes</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./h1-conforming-basis.html" class="pagination-link" aria-label="H1 conforming basis">
+        <span class="nav-page-text">H1 conforming basis</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -755,7 +996,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/intro.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/differential-complexes.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

@@ -9,6 +9,10 @@
     <lastmod>2025-01-27T02:49:03.612Z</lastmod>
   </url>
   <url>
+    <loc>https://poromechanics.github.io/basis-fem/differential-complexes.html</loc>
+    <lastmod>2025-01-27T07:57:34.816Z</lastmod>
+  </url>
+  <url>
     <loc>https://poromechanics.github.io/basis-fem/h1-conforming-basis.html</loc>
     <lastmod>2025-01-27T02:55:06.606Z</lastmod>
   </url>
@@ -30,7 +34,23 @@
   </url>
   <url>
     <loc>https://poromechanics.github.io/basis-fem/h1-conforming-hexahedron.html</loc>
-    <lastmod>2025-01-27T07:36:02.918Z</lastmod>
+    <lastmod>2025-01-27T07:37:38.866Z</lastmod>
+  </url>
+  <url>
+    <loc>https://poromechanics.github.io/basis-fem/hdiv-conforming-basis.html</loc>
+    <lastmod>2025-01-27T08:01:02.715Z</lastmod>
+  </url>
+  <url>
+    <loc>https://poromechanics.github.io/basis-fem/hcurl-conforming-basis.html</loc>
+    <lastmod>2025-01-27T07:59:46.927Z</lastmod>
+  </url>
+  <url>
+    <loc>https://poromechanics.github.io/basis-fem/numerical-integration.html</loc>
+    <lastmod>2025-01-27T08:01:44.185Z</lastmod>
+  </url>
+  <url>
+    <loc>https://poromechanics.github.io/basis-fem/numerical-integration-line.html</loc>
+    <lastmod>2025-01-27T08:31:33.195Z</lastmod>
   </url>
   <url>
     <loc>https://poromechanics.github.io/basis-fem/summary.html</loc>

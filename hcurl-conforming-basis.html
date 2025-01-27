@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction – Basis functions of Finite Element Methods</title>
+<title>Hcurl conforming basis – Basis functions of Finite Element Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./differential-complexes.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./numerical-integration.html" rel="next">
+<link href="./hdiv-conforming-basis.html" rel="prev">
 <link href="././figures/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -70,8 +70,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="1&nbsp; Introduction – Basis functions of Finite Element Methods">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta name="twitter:title" content="Hcurl conforming basis – Basis functions of Finite Element Methods">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -84,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hcurl-conforming-basis.html">Hcurl conforming basis</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -240,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./hcurl-conforming-basis.html" class="sidebar-item-text sidebar-link">
+            <a href="./hcurl-conforming-basis.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Hcurl conforming basis</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -249,7 +279,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hcurl-conforming-basis.html" class="sidebar-item-text sidebar-link">
+  <a href="./hcurl-conforming-basis.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Hcurl conforming basis</span></a>
   </div>
 </li>
@@ -289,15 +319,22 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#conformity-requirements" id="toc-conformity-requirements" class="nav-link active" data-scroll-target="#conformity-requirements">Conformity requirements</a></li>
+  <li><a href="#de-rham-diagram" id="toc-de-rham-diagram" class="nav-link" data-scroll-target="#de-rham-diagram">De Rham diagram</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/hcurl-conforming-basis.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title">Hcurl conforming basis</h1>
 </div>
 
 
@@ -314,8 +351,41 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>In finite element computation of Maxwell’s equation, it was found that vector-valued finite elements, whose components span <span class="math inline">\(H^{1}\)</span>conforming polynomial subspaces, are inappropriate. This finding motivated researchers to develop the theory of <strong>H</strong>(curl)-conforming finite elements.</p>
+<ul>
+<li>This has led to the application of Whitney elements [204] that constitute a lowest-order approximation over the element with constant tangential components on the edges.</li>
+<li>However, there is an increasingly widespread interest in the use of higher- order finite element schemes.</li>
+<li>Cubic finite elements were constructed in [4, 89, 202] for triangular meshes.</li>
+<li>A basis that allows for arbitrary order of approximation on triangles and tetrahedra can be found in [203].</li>
+<li>Other two-dimensional finite elements of variable order have been proposed in [160].</li>
+<li>For a more theoretical discussion of degrees of freedom on hybrid meshes with uniform order of approximation see [115, 116, 139].</li>
+<li>The problem of deriving bases for arbitrary order approximation of H (curl) and H (div) was addressed mainly in more recent works [5, 6, 67, 65, 183].</li>
+</ul>
+<section id="conformity-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="conformity-requirements">Conformity requirements</h2>
+<p>Consider a domain <span class="math inline">\(\Omega^{h}\subset R^{d}\)</span> covered with a finite element mesh <span class="math inline">\(\mathcal{T}_{p}^{h}\)</span> . Consider a function <span class="math inline">\(\mathbf{v}:\Omega^{h}\rightarrow R^{d}\)</span> such that</p>
+<ol type="1">
+<li><p><span class="math inline">\(v\vert_{K}\in\left[H^{1}\left(K\right)\right]^{d}\)</span> for <span class="math inline">\(\forall K\in\mathcal{T}_{p}^{h}\)</span></p></li>
+<li><p>for each common face <span class="math inline">\(f=\bar{K}_{1}\cap\bar{K}_{2},\bar{K}_{1},\bar{K}_{2}\in\mathcal{T}_{p}^{h}\)</span> , the trace of the tangential component <span class="math inline">\(\boldsymbol{n}\times\boldsymbol{v}\)</span> on <span class="math inline">\(f\)</span> is continuous.</p></li>
+</ol>
+<p>Then <span class="math inline">\(\boldsymbol{v}\in\boldsymbol{H}\left(curl\right)\)</span>.</p>
+<p>In comparison with the space <span class="math inline">\(H^{1}\)</span>, where the requirement of global continuity of approximation constrained the function values at the vertices and on edges and faces, the space <span class="math inline">\(\boldsymbol{H}\left(curl\right)\)</span> has reduced conformity requirements. This appropriately simplifies the hierarchic structure of master element shape functions. Note that there will be no vertex functions in Q, as function values at vertices are not constrained in <span class="math inline">\(\boldsymbol{H}(curl)\)</span>.</p>
+<p>In the case of scalar <span class="math inline">\(H^{1}\)</span> conforming space, the shape functions restricted to edges vanishes at vertices, in order not to interfere with values of vertex functions. In the <span class="math inline">\(\boldsymbol{H}(curl)\)</span>-conforming case, however, tangential components of edge functions do not have to vanish at element vertices anymore, and thus we can use the Legendre polynomials <span class="math inline">\(P_{0},P_{1},\cdots\)</span> to generate the corresponding polynomial subspaces.</p>
+<p>Legendre polynomials are a natural choice suggested also by the De Rham diagram, as they appear in tangential components of gradients of scalar edge functions.</p>
+</section>
+<section id="de-rham-diagram" class="level2">
+<h2 class="anchored" data-anchor-id="de-rham-diagram">De Rham diagram</h2>
+<p>In 2D and 3D following relationship is followed.</p>
+<p><span class="math display">\[
+H^{1}\stackrel{\nabla}{\rightarrow}\boldsymbol{H}(\text{curl})
+\]</span></p>
+<p>In other words, every <span class="math inline">\(\boldsymbol{H}(curl)\)</span>-conforming element <span class="math inline">\(\mathcal{K}^{curl}:=\left(K,Q,\sum^{curl}\right)\)</span> can be obtained from an appropriate scalar finite element <span class="math inline">\(\mathcal{K}^{1}:=\left(K,W,\sum^{1}\right)\)</span>, such that</p>
+<p><span class="math display">\[
+W\stackrel{\nabla}{\rightarrow}Q
+\]</span></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -737,13 +807,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./hdiv-conforming-basis.html" class="pagination-link" aria-label="HDiv conforming basis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">HDiv conforming basis</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./differential-complexes.html" class="pagination-link" aria-label="Differential complexes">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Differential complexes</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./numerical-integration.html" class="pagination-link" aria-label="Numerical Integration">
+        <span class="nav-page-text">Numerical Integration</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -755,7 +825,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/intro.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/poromechanics/basis-fem/edit/main/hcurl-conforming-basis.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/poromechanics/basis-fem/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
